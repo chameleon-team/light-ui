@@ -1,6 +1,0 @@
-<view class=" cml-base cml-view cml-1ce6cf86"><c-page title="audio" class=" cml-base cml-c-page cml-1ce6cf86">
-  <view class=" cml-base cml-view cml-1ce6cf86"><c-scroller height="{{-1}}" class=" cml-base cml-c-scroller cml-1ce6cf86">
-    <view class=" cml-base cml-view cml-1ce6cf86"><c-header title="audio" class=" cml-base cml-c-header cml-1ce6cf86"></c-header></view>
-    <view class=" cml-base cml-view cml-1ce6cf86"><c-audio src="{{src}}" name="{{name}}" poster="{{poster}}" author="{{author}}" controls="{{controls}}" loop="{{loop}}" onPlay="_cmlEventProxy" data-eventplay="{{['onPlay']}}" onPause="_cmlEventProxy" data-eventpause="{{['onPause']}}" onTimeupdate="_cmlEventProxy" data-eventtimeupdate="{{['updateTime']}}" onEnded="_cmlEventProxy" data-eventended="{{['ended']}}" onError="_cmlEventProxy" data-eventerror="{{['onError']}}" class=" cml-base cml-c-audio cml-1ce6cf86"></c-audio></view>
-  </c-scroller></view>
-  </c-page></view>

@@ -1,9 +1,0 @@
-<view class="page-head  cml-base cml-view cml-d300df4e">
-  <view class="page-head-title  cml-base cml-view cml-d300df4e">
-    <text class="page-head-title-text  cml-base cml-text cml-d300df4e">{{title}}</text>
-  </view>
-  <view class="page-head-line  cml-base cml-view cml-d300df4e"></view>
-  <view a:if="{{desc}}" class="page-head-desc  cml-base cml-view cml-d300df4e">
-    <text class="page-head-desc-text  cml-base cml-text cml-d300df4e">{{desc}}</text>
-  </view>
-</view>

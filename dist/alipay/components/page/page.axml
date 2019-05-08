@@ -1,3 +1,0 @@
-<view class="page  cml-base cml-view cml-10eee19c">
-  <slot class=" cml-base cml-slot cml-10eee19c"></slot>
-</view>
