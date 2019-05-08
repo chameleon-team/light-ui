@@ -1,0 +1,49 @@
+<view class=" cml-base cml-view cml-4d2c66e2"><c-page title="button" class=" cml-base cml-c-page cml-4d2c66e2">
+    <view class=" cml-base cml-view cml-4d2c66e2"><c-scroller height="{{-1}}" class=" cml-base cml-c-scroller cml-4d2c66e2">
+      <view class=" cml-base cml-view cml-4d2c66e2">
+        <view class="g-main-btn  cml-base cml-view cml-4d2c66e2"><c-button class="g-main-btn  cml-base cml-c-button cml-4d2c66e2" type="blue" text="{{''}}" disabled="{{false}}" btn-style="background-color:red;" width="{{300}}" btn-hover-style="background-color:green;" text-style="color:black;" text-hover-style="color:pink" onOnclick="_cmlEventProxy" data-eventonclick="{{['testclick']}}">
+          <text style="color:blue" class=" cml-base cml-text cml-4d2c66e2">确定</text>
+        </c-button></view>
+      </view>
+      <view class=" cml-base cml-view cml-4d2c66e2"><c-header title="button" class=" cml-base cml-c-header cml-4d2c66e2"></c-header></view>
+      <view class="section-title  cml-base cml-view cml-4d2c66e2">
+        <text class="section-title-text  cml-base cml-text cml-4d2c66e2">类型样式</text>
+      </view>
+      <view class="button-list  cml-base cml-view cml-4d2c66e2">
+        <text class="button-text  cml-base cml-text cml-4d2c66e2">default/blue</text>
+        <view class=" cml-base cml-view cml-4d2c66e2"><c-button onOnclick="_cmlEventProxy" data-eventonclick="{{['testclick']}}" text="按钮" class=" cml-base cml-c-button cml-4d2c66e2"></c-button></view>
+
+        <text class="button-text  cml-base cml-text cml-4d2c66e2">disabled</text>
+        <view class=" cml-base cml-view cml-4d2c66e2"><c-button type="blue" text="确定" disabled="{{true}}" onOnclick="_cmlEventProxy" data-eventonclick="{{['testclick']}}" class=" cml-base cml-c-button cml-4d2c66e2">
+        </c-button></view>
+
+        <text class="button-text  cml-base cml-text cml-4d2c66e2">orange</text>
+        <view class=" cml-base cml-view cml-4d2c66e2"><c-button type="orange" text="确定" onOnclick="_cmlEventProxy" data-eventonclick="{{['testclick']}}" class=" cml-base cml-c-button cml-4d2c66e2">
+        </c-button></view>
+
+        <text class="button-text  cml-base cml-text cml-4d2c66e2">red && disabled</text>
+        <view class=" cml-base cml-view cml-4d2c66e2"><c-button type="red" text="确定" disabled="{{true}}" onOnclick="_cmlEventProxy" data-eventonclick="{{['testclick']}}" class=" cml-base cml-c-button cml-4d2c66e2">
+        </c-button></view>
+
+        <text class="button-text  cml-base cml-text cml-4d2c66e2">white</text>
+        <view class=" cml-base cml-view cml-4d2c66e2"><c-button type="white" text="确定" onOnclick="_cmlEventProxy" data-eventonclick="{{['testclick']}}" class=" cml-base cml-c-button cml-4d2c66e2">
+        </c-button></view>
+      </view>
+
+      <view class="section-title  cml-base cml-view cml-4d2c66e2">
+        <text class="section-title-text  cml-base cml-text cml-4d2c66e2">尺寸</text>
+      </view>
+      <view class="button-list button-list-auto  cml-base cml-view cml-4d2c66e2">
+        <text class="button-text  cml-base cml-text cml-4d2c66e2">stretch && white && disabled</text>
+        <view class=" cml-base cml-view cml-4d2c66e2"><c-button onOnclick="_cmlEventProxy" data-eventonclick="{{['testclick']}}" size="stretch" disabled="{{true}}" type="white" class=" cml-base cml-c-button cml-4d2c66e2">确定</c-button></view>
+
+        <text class="button-text  cml-base cml-text cml-4d2c66e2">auto</text>
+        <view class=" cml-base cml-view cml-4d2c66e2"><c-button type="green" text="确定" size="auto" onOnclick="_cmlEventProxy" data-eventonclick="{{['testclick']}}" class=" cml-base cml-c-button cml-4d2c66e2">
+        </c-button></view>
+
+        <text class="button-text  cml-base cml-text cml-4d2c66e2">small</text>
+        <view class=" cml-base cml-view cml-4d2c66e2"><c-button type="red" text="确定" size="small" disabled="{{false}}" onOnclick="_cmlEventProxy" data-eventonclick="{{['testclick']}}" class=" cml-base cml-c-button cml-4d2c66e2">
+        </c-button></view>
+      </view>
+    </c-scroller></view>
+  </c-page></view>

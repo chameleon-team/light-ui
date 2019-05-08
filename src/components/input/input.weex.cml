@@ -1,0 +1,197 @@
+<template>
+  <input
+    class="input-wrap"
+    style="{{computedStyle}}"
+
+    value="{{inputValue}}"
+    type="{{type}}"
+    placeholder="{{placeholder}}"
+    disabled="{{disabled}}"
+    maxlength="{{maxlength}}"
+
+    c-bind:input="inputEvent"
+    c-bind:blur="blurEvent"
+    c-bind:focus="focusEvent"
+    c-bind:change="confirmEvent"
+
+    ref="weexinput"
+    return-key-type="{{returnKeyType}}"
+  />
+</template>
+<script>
+/*
+event: inputevent blurevent focusevent cconfirmevent
+*/
+import {getValBetweenMaxAndMin} from '../../assets/js/utils/utils';
+ class Input implements InputInterface {
+    props = {
+      cStyle: {
+        type: String,
+        default: ''
+      },
+      cstyle: {
+        type: String,
+        default: ''
+      },
+      //input的内容
+      value: {
+        type: String,
+        default: ''
+      },
+      //input的类型
+      type: {
+        type: String,
+        default: 'text'  //枚举值 text number password
+      },
+      //input的placerholder
+      placeholder: {
+        type: String,
+        default: ''
+      },
+      //是否禁用input输入
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      //控制input是否聚焦
+      focus: {
+        type: Boolean,
+        default: false
+      },
+      //最大长度
+      maxlength: {
+        type: Number,
+        default: 140
+      },
+      //右下角返回键类型
+      returnKeyType: { //枚举值 done search next go
+        type: String,
+        default: 'done'
+      },
+      placerHolderColor: {
+        type: String,
+        default: '#bebebe'
+      },
+      maxValue: { //type=number 最大值
+        type: Number,
+        default: Infinity
+      },
+      minValue: { //type=number 最小值
+        type: Number,
+        default: -Infinity
+      }
+    }
+    data = {
+      inputValue: ''
+    }
+    computed ={
+      computedStyle() {
+        let style = this.cStyle || this.cstyle
+        
+        if(style[style.length-1] !== ';') {
+          style +=';'
+        }
+        style += `placeholder-color: ${this.placerHolderColor};`
+        return style
+      },
+      isInputNumber () {
+        return this.type === 'number';
+      }
+    }
+    watch = {
+      focus: function(newVal, oldVal) {
+        this.changeFocus(newVal);
+      },
+      value: function(newVal, oldVal) {
+        this.inputValue = newVal;
+      }
+    }
+    mounted() {
+      this.changeFocus(this.focus)
+      
+      this.inputValue = this.value;
+    }
+    methods = {
+      changeFocus(focus) {
+        if(focus) {
+          this.$refs['weexinput'].focus();
+        } else {
+          this.$refs['weexinput'].blur();
+        }       
+      },
+
+      inputEvent(e) {
+        this.handleDetail(e)
+
+        this.$cmlEmit('input',{
+          value: this.inputValue
+        })
+        this.$cmlEmit('inputevent',{
+          value: this.inputValue
+        })
+      },
+      blurEvent() {
+        this.$cmlEmit('blur',{
+          value: this.inputValue
+        });
+        this.$cmlEmit('blurevent',{
+          value: this.inputValue
+        });
+      },
+      focusEvent() {
+        this.$cmlEmit('focus', {
+          value: this.inputValue
+        });
+        this.$cmlEmit('focusevent', {
+          value: this.inputValue
+        });
+      },
+      confirmEvent(e) {
+        this.handleDetail(e)
+
+        this.$cmlEmit('confirm', {
+          value: this.inputValue
+        })
+        this.$cmlEmit('confirmevent', {
+          value: this.inputValue
+        })
+      },
+      handleDetail(e) {
+        if (!e) {
+          return ''
+        }
+        
+        let value = e.detail.value;
+
+        if (this.isInputNumber) {
+          value = getValBetweenMaxAndMin(value, this.maxValue, this.minValue);
+        }
+        return this.inputValue = value || ''
+      }
+    }
+  }
+  export default new Input();
+</script>
+
+<style scoped>
+.input-wrap {
+  font-size: 33cpx;
+  height: 80cpx;
+  line-height: 80cpx;
+  padding-left: 20cpx;
+  padding-right: 20cpx;
+  color: #000;
+  border: 1cpx solid #999;
+  border-radius: 8cpx;
+  text-align: left;
+  background-color: #fff;
+}
+</style>
+
+<script cml-type="json">
+{
+  "weex": {
+    "component": true
+  }
+}
+</script>

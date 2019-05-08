@@ -1,0 +1,8 @@
+<c-page title="video" class=" cml-view cml-c-page">
+  <view class="container  cml-base cml-view">
+    <c-header title="video" class=" cml-view cml-c-header"></c-header>
+      <text class=" cml-base cml-text">视频state: </text>
+      <text class="info  cml-base cml-text">{{state}}</text>
+      <c-video class="video  cml-view cml-c-video" src="{{videoSrc}}" autoplay="{{true}}" controls="{{true}}" bindstart="_cmlEventProxy" data-eventstart="{{['onstart']}}" bindpause="_cmlEventProxy" data-eventpause="{{['onpause']}}" bindfinish="_cmlEventProxy" data-eventfinish="{{['onfinish']}}" bindfail="_cmlEventProxy" data-eventfail="{{['onfail']}}" cstyle="display:flex;flex-direction: column;align-items: center;width: 700cpx;"></c-video>
+  </view>
+</c-page>

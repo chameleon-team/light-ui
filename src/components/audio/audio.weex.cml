@@ -1,0 +1,41 @@
+<template>
+  <view class="audio">
+    <text>暂未实现</text>
+  </view>
+</template>
+<script>
+
+class Audio implements AudioInterface {
+  props = {
+    src: String,
+    name: {
+      type: String,
+      default: '未知音频'
+    },
+    poster: String,
+    author: {
+      type: String,
+      default: '未知作者'
+    },
+    controls: {
+      type: Boolean,
+      default: false
+    },
+    loop: {
+      type: Boolean,
+      default: false
+    }
+  }
+}
+
+export default new Audio()
+</script>
+<style scoped>
+</style>
+<script cml-type="json">
+{
+  "base": {
+    "component": true
+  }
+}
+</script>

@@ -1,0 +1,1 @@
+<audio poster="{{poster}}" name="{{name}}" author="{{author}}" src="{{src}}" controls="{{controls}}" loop="{{loop}}" bindplay="play" bindpause="pause" bindtimeupdate="timeupdate" bindended="ended" binderror="error" class=" cml-base cml-origin-audio"></audio>

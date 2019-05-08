@@ -1,0 +1,11 @@
+{
+    "usingComponents": {
+        "c-page": "./../../../components/page/page",
+        "c-header": "./../../components/header/header",
+        "c-audio": "./../../../components/audio/audio",
+        "c-scroller": "./../../../components/scroller/scroller"
+    },
+    "navigationBarTitleText": "audio",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#E2E2E2"
+}

@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "c-page": "./../../../components/page/page",
+        "c-textarea": "./../../../components/textarea/textarea",
+        "c-scroller": "./../../../components/scroller/scroller"
+    },
+    "component": true
+}

@@ -1,0 +1,3 @@
+<view class="audio  cml-base cml-view cml-c1928238">
+  <audio poster="{{poster}}" name="{{name}}" author="{{author}}" src="{{src}}" controls="{{controls}}" loop="{{loop}}" bindplay="play" bindpause="pause" bindtimeupdate="timeupdate" bindended="ended" binderror="error" class=" cml-base cml-origin-audio cml-c1928238"></audio>
+</view>

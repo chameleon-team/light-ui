@@ -1,0 +1,143 @@
+<template>
+  <inputable 
+    :value="value"
+    :placeholder="placeholder"
+    :disabled="disabled"
+    :maxlength="maxlength"
+    :rows="rows"
+    :focus="focus"
+    :returnKeyType="returnKeyType"
+    :placerHolderColor="placerHolderColor"
+    :computedStyle="computedStyle"
+    template="textarea"
+
+    @input="inputEvent"
+    @blur="blurEvent"
+    @focus="focusEvent"
+    @confirm="keyupEvent"
+  ></inputable>
+</template>
+<script>
+/*
+event: cinput cblur cfocus cconfirm
+*/
+ class Textarea implements TextareaInterface {
+    props = {
+      cStyle: {
+        type: String,
+        default: ''
+      },
+      cstyle: {
+        type: String,
+        default: ''
+      },
+      rows: {
+        type: Number,
+        default: 2
+      },
+      value: {
+        type: String,
+        default: ''
+      },
+      //placerholder
+      placeholder: {
+        type: String,
+        default: ''
+      },
+      //是否禁用输入
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      //控制是否聚焦
+      focus: {
+        type: Boolean,
+        default: false
+      },
+      //最大长度
+      maxlength: {
+        type: Number,
+        default: 140
+      },
+      //右下角返回键类型
+      returnKeyType: { //枚举值 done search next go
+        type: String,
+        default: 'done'
+      },
+      placerHolderColor: {
+        type: String,
+        default: '#bebebe'
+      }
+    }
+    data = {
+      defaultStyle: "font-size: 18px; height: 75px; line-height: 25px; padding-left:10px; padding-right:10px; color: #000; text-align: left; background-color: #fff; border: 1px solid #999; border-radius: 4px;"
+    }
+    // watch = {
+    //   value: function (val) {
+    //     this.$refs['c-textarea'].value = val
+    //   }
+    // }
+    computed ={
+      computedStyle() {
+        return this.defaultStyle + (this.cStyle || this.cstyle)
+      }
+    }
+    methods = {
+      inputEvent(e) {
+        this.$cmlEmit('input', {
+          value: e.target.value || ''
+        });
+        this.$cmlEmit('inputevent', {
+          value: e.target.value || ''
+        });
+      },
+      blurEvent(e) {
+        window.scroll(0,0); // 键盘收起留白的bug
+        this.$cmlEmit('blur', {
+          value: e.target.value || ''
+        });
+        this.$cmlEmit('blurevent', {
+          value: e.target.value || ''
+        });
+      },
+      focusEvent(e) {
+        this.$cmlEmit('focus', {
+          value: e.target.value || ''
+        });
+        this.$cmlEmit('focusevent', {
+          value: e.target.value || ''
+        });
+      },
+      // support enter key event
+      keyupEvent (e) {
+        this.$cmlEmit('confirm', {
+          value: e.target.value || ''
+        })
+        this.$cmlEmit('confirmevent', {
+          value: e.target.value || ''
+        })
+      }
+    }
+    // mounted() {
+    //   this.changeFocus(this.focus);
+    //   // textarea无法默认赋值
+    //   this.$refs['c-textarea'].value = this.value;
+    // }
+  }
+  export default new Textarea();
+</script>
+<style scoped>
+</style>
+<script cml-type="json">
+{
+  "web": {
+    "component": true,
+    "usingComponents": {
+        "inputable": "../../assets/vue/inputable"
+      }
+  }
+}
+</script>
+
+
+

@@ -1,0 +1,6 @@
+<c-page title="audio" class=" cml-view cml-c-page">
+  <c-scroller height="{{-1}}" class=" cml-view cml-c-scroller">
+    <c-header title="audio" class=" cml-view cml-c-header"></c-header>
+    <c-audio src="{{src}}" name="{{name}}" poster="{{poster}}" author="{{author}}" controls="{{controls}}" loop="{{loop}}" bindplay="_cmlEventProxy" data-eventplay="{{['onPlay']}}" bindpause="_cmlEventProxy" data-eventpause="{{['onPause']}}" bindtimeupdate="_cmlEventProxy" data-eventtimeupdate="{{['updateTime']}}" bindended="_cmlEventProxy" data-eventended="{{['ended']}}" binderror="_cmlEventProxy" data-eventerror="{{['onError']}}" class=" cml-view cml-c-audio"></c-audio>
+  </c-scroller>
+</c-page>
