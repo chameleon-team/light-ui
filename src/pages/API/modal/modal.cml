@@ -1,0 +1,26 @@
+<template>
+<view>
+<text>Modal</text>
+</view>
+</template>
+<script>
+class Modal {
+
+}
+
+export default new Modal();
+</script>
+<style scoped>
+
+</style>
+<script cml-type="json">
+{
+    "base": {
+        "usingComponents": {
+        },
+        "navigationBarTitleText": "index",
+        "backgroundTextStyle": "dark",
+        "backgroundColor": "#E2E2E2"
+    }
+}
+</script>

@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e
 
-# !!!发布前需要修改chameleon.config.js 的 public path
-
 # 当前目录
 BD_BIN="${BASH_SOURCE-$0}"
 BD_BIN="$(dirname "${BD_BIN}")"
@@ -11,7 +9,7 @@ BD_BIN="$(cd "${BD_BIN}"; pwd)"
 PROJECT_ROOT="${BD_BIN}"
 
 #PROJECT NAME
-PROJECT_NAME="chameleon-ui-builtin"
+PROJECT_NAME="chameleon-ui"
 
 PLATFORM=$1
 DIST_FOLDER="$PROJECT_ROOT/dist/$PLATFORM"

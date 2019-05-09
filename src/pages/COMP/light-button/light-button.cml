@@ -1,0 +1,71 @@
+<template>
+<page title="light-button">
+  <view class="container">
+    <c-header title="light-button"></c-header>
+    <light-button></light-button>
+    
+  </view>
+</page>
+</template>
+<script>
+class CToast {
+
+  data = {
+    
+  }
+
+  computed = {
+  }
+
+  watch  = {
+  }
+
+  methods = {
+  }
+  
+
+  beforeCreate() {
+  }
+
+  created() {
+  }
+
+  beforeMount() {
+  }
+
+  mounted() {
+  }
+
+  beforeDestroy() {
+  }
+
+  destroyed() {
+  }
+}
+
+export default new CToast();
+</script>
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: #f8f8f8;
+}
+.btn {
+  margin-top: 20cpx;
+}
+</style>
+<script cml-type="json">
+{
+    "base": {
+        "usingComponents": {
+          "c-header": "../../components/c-header/c-header",
+          "light-button": "/components/light-button/light-button"
+        },
+        "navigationBarTitleText": "c-toast",
+        "backgroundTextStyle": "dark",
+        "backgroundColor": "#E2E2E2"
+    }
+}
+</script>

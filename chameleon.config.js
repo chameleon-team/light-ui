@@ -1,15 +1,13 @@
 
 //设置静态资源的线上路径
-const publicPath = 'https://beatles-chameleon.github.io/chameleon-ui-builtin/dist';
+const publicPath = 'https://beatles-chameleon.github.io/cml-ui/dist';
 //设置api请求前缀
 const apiPrefix = 'https://api.chameleon.com';
 
 cml.config.merge({
   cmlNpm: [
   ],
-  devPort: 5556,
-  isBuildInProject: true,
-  templateType: 'html',
+  platforms: ["web","weex","wx", "baidu", "alipay"],
   cmlComponents: [
   ],
   buildInfo: {
@@ -26,6 +24,7 @@ cml.config.merge({
   },
   web: {
     dev: {
+      hash: true,
       analysis: false,
       console: false
     },

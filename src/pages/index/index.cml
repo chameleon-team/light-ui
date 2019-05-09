@@ -1,60 +1,53 @@
 <template>
-  <c-page title="cml内置组件库">
-    <view class="index-page">
-      <view class="index-body" style="{{bodyComputedStyl}}">
-        <c-scroller height="{{-1}}">
-          <view ref="index-content-wrap" class="index-content-wrap" style="{{computedStyle}}" >
-            <view class="index-item-content">
-              <view class="index-hd">
-                <image class="index-logo" src="{{comLogoSrc}}"></image>
-                <view class="index-desc">
-                  <text>以下将展示chameleon自定义组件能力，组件样式仅供参考，开发者可根据自身需求自定义组件样式，具体属性参数详见chameleon开发文档。</text>
-                </view>
+<page title="chameleon组件展示">
+  <view slot="titlebar" class="titlebar">
+    <text class="titlebar-text">chameleon组件展示</text>
+  </view>
+  <view class="index-page">
+    <view class="index-body" style="{{bodyComputedStyl}}">
+      <scroller cstyle="{{scrollerStyl}}" height="{{-1}}">
+        <view ref="index-content-wrap" class="index-content-wrap" style="{{computedStyle}}">
+          <view class="index-item-content">
+            <view class="index-hd">
+              <image class="index-logo" src="{{comLogoSrc}}"></image>
+              <view class="index-desc">
+                <text class="index-desc-text">以下将展示chameleon自定义组件能力，组件样式仅供参考，开发者可根据自身需求自定义组件样式，具体属性参数详见chameleon开发文档。</text>
               </view>
-              <view class="index-bd">
-                <view class="kind-list">
+            </view>
+            <view class="index-bd">
+              <view class="kind-list">
 
-                  <view c-for="{{comList}}" c-for-item="item" c-for-index="i">
-                    <view class="{{item.open ? 'kind-list-item-show' : 'kind-list-item'}}">
-                      <view id="{{item.id}}" class="{{item.open ? 'kind-list-item-hd-show' : 'kind-list-item-hd'}}" c-bind:tap="kindToggle">
-                        <view class="kind-list-text">
-                          <text>{{item.name}}</text>
-                        </view>
-                        <image class="kind-list-img" src="{{item.src}}"></image>
+                <view c-for="{{comList}}" c-for-item="item" c-for-index="i">
+                  <view class="{{item.open ? 'kind-list-item-show' : 'kind-list-item'}}">
+                    <view id="{{item.cid}}" class="{{item.open ? 'kind-list-item-hd-show' : 'kind-list-item-hd'}}" c-bind:tap="kindToggle">
+                      <view class="kind-list-text">
+                        <text>{{item.name}}</text>
                       </view>
-                      <view class="{{item.open ? 'kind-list-item-bd-show' : 'kind-list-item-bd'}}">
-                        <view class="{{item.open ? 'navigator-box-show' : 'navigator-box'}}">
-                          <view c-for="{{item.pages}}" c-for-item="page" c-for-index="j">
-                            <view data-routepath="{{page.path}}" data-routeurl="{{page.url}}" class="navigator" c-bind:tap="routeTo">
-                              <view class="navigator-text">
-                                <text>{{page.name}}</text>
-                              </view>
-                              <image class="navigator-arrow" src="{{arrowIcon}}"></image>
+                      <image class="kind-list-img" src="{{item.src}}"></image>
+                    </view>
+                    <view class="{{item.open ? 'kind-list-item-bd-show' : 'kind-list-item-bd'}}">
+                      <view class="{{item.open ? 'navigator-box-show' : 'navigator-box'}}">
+                        <view c-for="{{item.pages}}" c-for-item="page" c-for-index="j">
+                          <view data-routepath="{{page.path}}" data-routeurl="{{page.url}}" class="navigator" c-bind:tap="routeTo">
+                            <view class="navigator-text">
+                              <text>{{page.name}}</text>
                             </view>
+                            <image class="navigator-arrow" src="{{arrowIcon}}"></image>
                           </view>
                         </view>
                       </view>
                     </view>
                   </view>
+                </view>
 
-                </view>
-              </view>
-            </view>
-            <view class="index-item-content">
-              <view class="index-hd">
-                <image class="index-logo" src="{{apiLogoSrc}}"></image>
-                <view class="index-desc">
-                  <text>以下将演示chameleon接口能力，具体属性参数详见chameleon开发文档。</text>
-                </view>
-              </view>
-              <view class="index-bd">
               </view>
             </view>
           </view>
-        </c-scroller>
-      </view>
+        </view>
+      </scroller>
     </view>
-  </c-page>
+  </view>
+</page>
 </template>
 <script>
 import cml from "chameleon-api"
@@ -71,123 +64,60 @@ class Demo {
   data = {
     comList: [
       {
-        id: "content",
+        cid: "content",
         name: "基础内容",
         open: false,
         pages: [
-          routeObj["text"],
-          // routeObj["richtext"],
-          routeObj["view"]
+          routeObj["c-toast"],
         ],
         src: require(`../../assets/images/component/kind/content.png`)
       },
       {
-        id: "view",
-        name: "视图容器",
-        open: false,
-        pages: [
-          routeObj["list"],
-          routeObj["scroller"],
-          routeObj["carousel"]
-        ],
-        src: require(`../../assets/images/component/kind/view.png`)
-      },
-      {
-        id: "layout",
-        name: "布局容器",
-        open: false,
-        pages: [
-          routeObj["row"],
-          routeObj["layout"]
-        ],
-        src: require(`../../assets/images/component/kind/view.png`)
-      },
-      {
-        id: "form",
+        cid: "form",
         name: "表单组件",
         open: false,
         pages: [
-          routeObj["button"],
-          routeObj["input"],
-          routeObj["textarea"],
-          routeObj["switch"],
-          routeObj["radio"],
-          routeObj["checkbox"]
         ],
         src: require(`../../assets/images/component/kind/form.png`)
       },
       {
-        id: "media",
-        name: "媒体组件",
+        cid: "nav",
+        name: "导航",
         open: false,
         pages: [
-          routeObj["image"],
-          routeObj["audio"],
-          routeObj["video"]
         ],
-        src: require(`../../assets/images/component/kind/media.png`)
+        src: require(`../../assets/images/component/kind/nav.png`)
       }
     ],
     apiList: [
       {
-        id: "page",
+        cid: "page",
         name: "界面",
         open: false,
-        pages: [routeObj["cml.modal"], routeObj["cml.toast"]],
+        pages: [
+
+        ],
         src: require(`../../assets/images/api/kind/page.png`)
       },
-      {
-        id: "network",
-        name: "网络",
-        open: false,
-        pages: [routeObj["cml.post"], routeObj["cml.get"]],
-        src: require(`../../assets/images/api/kind/network.png`)
-      },
-      {
-        id: "storage",
-        name: "数据",
-        open: false,
-        pages: [routeObj["cml.storage"]],
-        src: require(`../../assets/images/api/kind/storage.png`)
-      },
-      {
-        id: "weex",
-        name: "weex端扩展能力",
-        open: false,
-        pages: [routeObj["cml.weex"]],
-        src: require(`../../assets/images/api/kind/device.png`)
-      }
     ],
     comLogoSrc: require(`../../assets/images/component/kind/logo.png`),
     apiLogoSrc: require(`../../assets/images/api/kind/logo.png`),
-    tabList: [
-      {
-        title: "组件",
-        selected: true,
-        iconPath: require(`../../assets/images/index/icon_component.png`),
-        selectedIconPath: require(`../../assets/images/index/icon_component_HL.png`)
-      },
-      {
-        title: "接口",
-        selected: false,
-        iconPath: require(`../../assets/images/index/icon_API.png`),
-        selectedIconPath: require(`../../assets/images/index/icon_API_HL.png`)
-      }
-    ],
     activeTab: "component",
     arrowIcon: "https://gw.alicdn.com/tfs/TB11zBUpwMPMeJjy1XbXXcwxVXa-22-22.png"
   }
 
   computed = {
+    scrollerStyl() {
+      return this.winHeight ? `height: ${this.winHeight}cpx;` : ''
+    },
     computedStyle() {
       let transVal = this.activeTab === "api" ? "-750" : "0";
-      let styl = `transform: translateX(${transVal}cpx);`;
+      let styl = `transform: translateX(${transVal}cpx)`;
 
       return styl;
     },
     bodyComputedStyl() {
       let styl = "";
-
       return styl;
     }
   }
@@ -196,40 +126,51 @@ class Demo {
   }
 
   methods = {
-    kindToggle (e) {
+    kindToggle: function(e) {
+      console.log('kindToggle');
       let id = e.currentTarget.id;
       let list = this.activeTab === "component" ? this.comList : this.apiList;
 
       for (var i = 0, len = list.length; i < len; ++i) {
-        if (list[i].id == id) {
+        if (list[i].cid == id) {
           list[i].open = !list[i].open;
         } else {
           list[i].open = false;
         }
       }
     },
-    tabItemClick(e) {
-      let tar = e.currentTarget;
-      let dataset = tar.dataset;
-      let index = parseInt(dataset.index);
-
-      this.tabList[index].selected = true;
-      this.tabList[(index + 1) % 2].selected = false;
-
-      this.activeTab = index == 0 ? "component" : "api";
-    },
+    
     routeTo(e) {
       let tar = e.currentTarget;
       let dataset = tar.dataset;
-      let path = dataset.routepath;
       let url = dataset.routeurl;
+      let path = dataset.routepath;
       cml.navigateTo({
         path: path
       });
     }
   }
 
+  beforeCreate() {
+  }
+
+  created() {
+    
+  }
+
+  beforeMount() {
+  }
+
   mounted() {
+    cml.getSystemInfo().then((info)=>{
+      this.winHeight = info.viewportHeight
+    })
+  }
+
+  beforeDestroy() {
+  }
+
+  destroyed() {
   }
 }
 
@@ -267,6 +208,12 @@ export default new Demo();
   height: 86cpx;
 }
 .index-desc {
+  text-align: center;
+  margin-top: 20cpx;
+}
+
+.index-desc-text {
+  display: block;
   text-align: center;
   margin-top: 20cpx;
   color: #888888;
@@ -318,13 +265,13 @@ export default new Demo();
   overflow: hidden;
   height: 120cpx;
 }
+
 .kind-list-item-show {
   margin: 20cpx 0;
   background-color: #ffffff;
   border-radius: 4cpx;
   overflow: hidden;
 }
-
 .kind-list-text {
   flex: 1;
 }
@@ -401,8 +348,8 @@ export default new Demo();
   flex-direction: row;
   justify-content: space-around;
   background-color: #fff;
-  border-top: 1cpx solid #ccc;
-  padding-bottom: 0cpx;
+  border-top: 1px solid #ccc;
+  padding-bottom: 0;
 }
 
 .tab-item {
@@ -428,12 +375,11 @@ export default new Demo();
 {
     "base": {
         "usingComponents": {
-          "c-page": "/components/page/page",
-          "c-scroller": "/components/scroller/scroller"
         },
-        "navigationBarTitleText": "内置组件库",
+        "navigationBarTitleText": "cml-ui组件库",
         "backgroundTextStyle": "dark",
-        "backgroundColor": "#E2E2E2"
+        "backgroundColor": "#E2E2E2",
+        "enablePullDownRefresh": true
     }
 }
 </script>
