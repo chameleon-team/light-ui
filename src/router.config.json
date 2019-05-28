@@ -9,9 +9,15 @@
       "mock": "index.php"
     },
     {
-      "name": "c-toast",
+      "name": "light-button",
       "url": "/pages/COMP/light-button/light-button",
       "path": "/pages/COMP/light-button/light-button",
+      "mock": "index.php"
+    },
+    {
+      "name": "light-switch",
+      "url": "/pages/COMP/light-switch/index",
+      "path": "/pages/COMP/light-switch/index",
       "mock": "index.php"
     }
   ]

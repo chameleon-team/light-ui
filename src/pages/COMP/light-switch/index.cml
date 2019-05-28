@@ -1,0 +1,97 @@
+<template>
+<page title="light-button">
+  <view class="container">
+    <c-header title="light-switch"></c-header>
+    <view class="switch-line" c-for="{{switchData}}">
+      <text>{{item.desc}}</text>
+      <light-switch
+        checked="{{item.checked}}"
+        disabled="{{item.disabled}}"
+        width="{{item.width || 80}}"
+        theme="{{item.theme || '#1D6EF0'}}"
+        checked-text="{{item.checkedText}}"
+        unchecked-text="{{item.uncheckedText}}"
+        c-bind:change="toggleSwitch(index, $event)"
+      >
+      </light-switch>
+    </view>
+  </view>
+</page>
+</template>
+<script>
+import cml from 'chameleon-api';
+
+class LigthSwitch {
+
+  data = {
+    switchData:[
+      {
+        desc: '默认的switch',
+        checked: false,
+        disabled: false
+      },
+      {
+        desc: '禁用的switch',
+        checked: true,
+        disabled: true,
+      },
+      { 
+        desc: '自定义颜色、宽度的switch',
+        checked: true,
+        theme: '#ff0000',
+        width: 100
+      },
+      {
+        desc: '带有文字说明的switch',
+        checked: true,
+        theme: 'orange',
+        width: '120',
+        checkedText: 'ON',
+        uncheckedText: 'OFF'
+      }
+    ],
+  }
+
+
+  methods = {
+    toggleSwitch(index, $event) {
+      let current = this.switchData[index];
+      current.checked = !current.checked;
+      this.switchData.splice(index, 1, current);
+      cml.showToast({
+        message: '当前switch value: ' + JSON.stringify($event.detail.value),
+        duration: 500
+      })
+    },
+  }
+
+}
+
+export default new LigthSwitch();
+</script>
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.switch-line {
+  margin-bottom: 30cpx;
+  padding-left: 30cpx;
+}
+
+</style>
+<script cml-type="json">
+{
+    "base": {
+        "usingComponents": {
+          "c-header": "../../components/c-header/c-header",
+          "light-switch": "/components/light-switch/index"
+        },
+        "navigationBarTitleText": "c-toast",
+        "backgroundTextStyle": "dark",
+        "backgroundColor": "#E2E2E2"
+    }
+}
+</script>

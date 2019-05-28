@@ -2,16 +2,20 @@
 <page title="light-button">
   <view class="container">
     <c-header title="light-button"></c-header>
-    <light-button></light-button>
-    
+    <view>
+      <text>待办</text>
+    </view>
   </view>
 </page>
 </template>
 <script>
-class CToast {
+class LightButton {
 
   data = {
-    
+    switchValue1: true,
+    switchValue2: true,
+    switchValue3: true,
+    disabled: false
   }
 
   computed = {
@@ -21,6 +25,21 @@ class CToast {
   }
 
   methods = {
+    toggleSwitch1(e) {
+      let { value } = e.detail;
+      console.log(value)
+      this.switchValue1 = value;
+    },
+    toggleSwitch2(e) {
+      let { value } = e.detail;
+      console.log(value)
+      this.switchValue2 = value;
+    },
+    toggleSwitch3(e) {
+      let { value } = e.detail;
+      console.log(value)
+      this.switchValue3 = value;
+    }
   }
   
 
@@ -43,7 +62,7 @@ class CToast {
   }
 }
 
-export default new CToast();
+export default new LightButton();
 </script>
 <style scoped>
 .container {
@@ -61,7 +80,8 @@ export default new CToast();
     "base": {
         "usingComponents": {
           "c-header": "../../components/c-header/c-header",
-          "light-button": "/components/light-button/light-button"
+          "light-button": "/components/light-button/light-button",
+          "light-switch": "/components/light-switch/index"
         },
         "navigationBarTitleText": "c-toast",
         "backgroundTextStyle": "dark",

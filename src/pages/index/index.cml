@@ -68,7 +68,8 @@ class Demo {
         name: "基础内容",
         open: false,
         pages: [
-          routeObj["c-toast"],
+          routeObj["light-button"],
+          routeObj['light-switch']
         ],
         src: require(`../../assets/images/component/kind/content.png`)
       },
@@ -145,6 +146,7 @@ class Demo {
       let dataset = tar.dataset;
       let url = dataset.routeurl;
       let path = dataset.routepath;
+      console.log(path)
       cml.navigateTo({
         path: path
       });
@@ -162,6 +164,11 @@ class Demo {
   }
 
   mounted() {
+    // setTimeout(() => {
+    //   cml.navigateTo({
+    //     path: "/pages/COMP/light-button/light-button"
+    //   })
+    // }, 2000);
     cml.getSystemInfo().then((info)=>{
       this.winHeight = info.viewportHeight
     })
