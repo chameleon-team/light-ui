@@ -69,7 +69,8 @@ class Demo {
         open: false,
         pages: [
           routeObj["light-button"],
-          routeObj['light-switch']
+          routeObj['light-switch'],
+          routeObj['light-badge']
         ],
         src: require(`../../assets/images/component/kind/content.png`)
       },

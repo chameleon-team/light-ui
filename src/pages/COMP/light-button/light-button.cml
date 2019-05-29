@@ -12,10 +12,6 @@
 class LightButton {
 
   data = {
-    switchValue1: true,
-    switchValue2: true,
-    switchValue3: true,
-    disabled: false
   }
 
   computed = {
@@ -25,21 +21,6 @@ class LightButton {
   }
 
   methods = {
-    toggleSwitch1(e) {
-      let { value } = e.detail;
-      console.log(value)
-      this.switchValue1 = value;
-    },
-    toggleSwitch2(e) {
-      let { value } = e.detail;
-      console.log(value)
-      this.switchValue2 = value;
-    },
-    toggleSwitch3(e) {
-      let { value } = e.detail;
-      console.log(value)
-      this.switchValue3 = value;
-    }
   }
   
 

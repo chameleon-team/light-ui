@@ -19,6 +19,12 @@
       "url": "/pages/COMP/light-switch/index",
       "path": "/pages/COMP/light-switch/index",
       "mock": "index.php"
+    },
+    {
+      "name": "light-badge",
+      "url": "/pages/COMP/light-badge/index",
+      "path": "/pages/COMP/light-badge/index",
+      "mock": "index.php"
     }
   ]
 }
