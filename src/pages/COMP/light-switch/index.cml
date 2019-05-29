@@ -3,7 +3,7 @@
   <view class="container">
     <c-header title="light-switch"></c-header>
     <view class="switch-line" c-for="{{switchData}}">
-      <text>{{item.desc}}</text>
+      <text class="switch-desc">{{item.desc}}</text>
       <light-switch
         checked="{{item.checked}}"
         disabled="{{item.disabled}}"
@@ -31,9 +31,14 @@ class LigthSwitch {
         disabled: false
       },
       {
-        desc: '禁用的switch',
+        desc: '禁用的switch打开',
         checked: true,
         disabled: true,
+      },
+      {
+        desc: '禁用的switch关闭',
+        checked: false,
+        disabled: true
       },
       { 
         desc: '自定义颜色、宽度的switch',
@@ -76,9 +81,15 @@ export default new LigthSwitch();
   flex: 1;
 }
 
+.switch-desc {
+  margin-right: 30cpx;
+}
+
 .switch-line {
   margin-bottom: 30cpx;
   padding-left: 30cpx;
+  flex-direction: row;
+  height: 100cpx;
 }
 
 </style>
