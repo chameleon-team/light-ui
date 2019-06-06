@@ -70,7 +70,9 @@ class Demo {
         pages: [
           routeObj["light-button"],
           routeObj['light-switch'],
-          routeObj['light-badge']
+          routeObj['light-badge'],
+          routeObj['light-bartips'],
+          routeObj['light-popup']
         ],
         src: require(`../../assets/images/component/kind/content.png`)
       },

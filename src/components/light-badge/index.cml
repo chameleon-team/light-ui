@@ -116,7 +116,7 @@ export default new Badge();
   position: absolute;
   right: 0;
   top: 0;
-  // weex的 translate支持百分比
+  // weex的translate支持百分比
   transform: translate(50%, -50%) 
 }
 

@@ -25,6 +25,17 @@
       "url": "/pages/COMP/light-badge/index",
       "path": "/pages/COMP/light-badge/index",
       "mock": "index.php"
+    },
+    {
+      "name": "light-bartips",
+      "url": "/pages/COMP/light-bartips/index",
+      "path": "/pages/COMP/light-bartips/index",
+      "mock": "index.php"
+    },
+    {
+      "name": "light-popup",
+      "url": "/pages/COMP/light-popup/index",
+      "path": "/pages/COMP/light-popup/index"
     }
   ]
 }

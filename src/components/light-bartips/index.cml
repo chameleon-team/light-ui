@@ -1,0 +1,113 @@
+<template>
+  <light-popup position="top" mask="{{false}}" show="{{show}}">
+    <view class="light-bartips" style="{{bartipStyle}}" c-bind:tap="handleClick">
+      <view class="bartips-main">
+        <image class="bartips-icon" c-if="{{icon}}" src="{{icon}}"></image>
+        <text class="bartips-text">{{text}}</text>
+      </view>
+      <image 
+        class="bartips-operator" 
+        c-if="{{operateIcon}}" 
+        src="{{operateIcon}}" 
+        c-catch:tap="handleOperate"
+      />
+    </view>
+  </light-popup>
+</template>
+
+<script>
+import cml from 'chameleon-api';
+
+class LightBartips {
+
+  props = {
+    show: {
+      type: Boolean,
+      default: false
+    },
+    height: {
+      type: [Number, String],
+      default: 80
+    },
+    icon: {
+      type: String,
+      default: ''
+    },
+    text: {
+      type: String,
+      default: ''
+    },
+    operateIcon: {
+      type: String,
+      default: ''
+    },
+    theme: {
+      type: String,
+      default: '#35406B'
+    },
+
+  }
+  computed = {
+    bartipStyle() {
+      return `background:${this.theme};height: ${this.height}cpx;`
+    }
+  }
+
+  methods = {
+    handleClick() {
+      this.$cmlEmit('onclick')
+    },
+    handleOperate() {
+      this.$cmlEmit('operate')
+    },
+  }
+
+}
+
+export default new LightBartips();
+</script>
+<style scope lang="less">
+@import "../../assets/css/var.less";
+.light-bartips {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding-left: 32cpx;
+  padding-right: 72cpx;
+}
+.bartips-main {
+  flex-direction: row;
+  width: 640cpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  align-items: center;
+}
+.bartips-text {
+  color: #FFFFFF;
+  font-size: 24cpx;
+}
+.bartips-icon {
+  width: 24cpx;
+  height: 24cpx;
+  margin-right: 16cpx;
+}
+.bartips-operator {
+  width: 20cpx;
+  height: 24cpx;
+  position: absolute;
+  right: 32cpx;
+}
+
+
+</style>
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {
+      "light-popup": "/components/light-popup/index"
+    }
+  }
+}
+</script>

@@ -1,0 +1,97 @@
+<template>
+  <view class="container">
+   <light-bartips
+      show="{{show}}"
+      height="{{80}}"
+      icon="{{icon}}"
+      operate-icon="{{operateIcon}}"
+      text="我是文案要简短居中对其最多一行, 超出显示省略号反反复复反反复复"
+      c-bind:onclick="handleClick"
+      c-bind:operate="handleOperate"
+    >
+    </light-bartips>  
+    <view>
+      <button c-bind:onclick="toogleShow" text="切换显示隐藏"></button>
+    </view>
+
+  </view>
+</template>
+
+<script>
+import cml from 'chameleon-api';
+
+class LightBartips   {
+
+  data = {
+    icon: require('./images/icon.png'),
+    show: false,
+    operateIcon: require('./images/right_arrow.png')
+  }
+  computed = {
+
+  }
+
+  methods = {
+    handleClick() {
+      cml.showToast({
+        message: '点击了bartips',
+      })
+    },
+    handleOperate() {
+      cml.showToast({
+        message: '点击了bartips的操作符号'
+      })
+    },
+    toogleShow() {
+      this.show = !this.show;
+    }
+
+
+  }
+  
+}
+
+export default new LightBartips();
+</script>
+
+<style>
+.container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+}
+</style>
+
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {
+      "light-bartips": "/components/light-bartips/index"
+    }
+  },
+  "wx": {
+    "navigationBarTitleText": "index",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#E2E2E2"
+  },
+  "alipay": {
+    "defaultTitle": "index",
+    "pullRefresh": false,
+    "allowsBounceVertical": "YES",
+    "titleBarColor": "#ffffff"
+  },
+  "baidu": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "index",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50
+  }
+}
+</script>

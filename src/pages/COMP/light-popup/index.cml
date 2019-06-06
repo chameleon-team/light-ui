@@ -1,0 +1,111 @@
+<template>
+  <view class="container">
+    <light-popup
+      show="{{show}}"
+      position="{{position}}"
+      mask="{{true}}"
+      c-bind:close="hidePopup"
+    >
+     <view style="{{contentStyle}}" >
+        <text c-bind:tap="hidePopup">X</text>
+      </view>
+    </light-popup>
+    <view>
+        <button c-bind:onclick="toogleShow" text="切换:left/top/right/bottom/center"></button>
+    </view>
+  </view>
+</template>
+
+<script>
+import cml from 'chameleon-api';
+const direction = ['left', 'top', 'right', 'bottom', 'center'];
+let clickTime = 0;
+
+class LightBartips   {
+
+  data = {
+    icon: '',
+    show: false,
+    position: direction[0],
+  }
+  computed = {
+    contentStyle() {
+      let style = 'background:red;';
+      switch (this.position) {
+        case 'right':
+        case 'left': 
+          style += "width: 300cpx;";
+          break;
+        case 'top':
+        case 'bottom':
+          style += "height: 300cpx;"
+          break;
+        default:
+          style += 'height:300cpx;width:600cpx;'
+          break;
+      }
+      return style;
+    }
+
+  }
+
+  methods = {
+    toogleShow() {
+      this.position = direction[clickTime % 5];
+      ++clickTime;
+      this.show = !this.show;
+    },
+    hidePopup() {
+      this.show = false;
+    }
+
+
+  }
+  
+}
+
+export default new LightBartips();
+</script>
+
+<style>
+.container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+}
+</style>
+
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {
+      "light-bartips": "/components/light-bartips/index",
+      "light-popup": "/components/light-popup/index"
+    }
+  },
+  "wx": {
+    "navigationBarTitleText": "index",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#E2E2E2"
+  },
+  "alipay": {
+    "defaultTitle": "index",
+    "pullRefresh": false,
+    "allowsBounceVertical": "YES",
+    "titleBarColor": "#ffffff"
+  },
+  "baidu": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "index",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50
+  }
+}
+</script>
