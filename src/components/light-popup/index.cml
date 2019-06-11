@@ -1,7 +1,7 @@
 <template>
-  <view c-if="{{visible}}" class="{{popupClass}}">
+  <view c-if="{{visible}}" class="{{popupClass}}" style="{{popupStyle}}">
     <view class="mask" c-if="{{mask}}" c-catch:tap="handleHide"></view>
-    <view class="popup-main {{positionClass}} {{animateClass}}">
+    <view class="popup-main {{positionClass}} {{animateClass}}" style="{{mainStyle}}">
       <slot></slot>
     </view>
   </view>
@@ -21,6 +21,7 @@ class LightPopup {
       type: Boolean,
       default: false
     },
+    // mask为false时，页面的其余部分时可操作的
     mask: {
       type: Boolean,
       default: true
@@ -50,6 +51,12 @@ class LightPopup {
     },
     popupClass() {
       return (this.mask || this.position === 'center') ? 'popup-with-mask' : ''
+    },
+    popupStyle() {
+      return (this.mask || this.position === 'center') ? `z-index: ${this.zIndex || 9}` : ''
+    },
+    mainStyle() {
+      return `z-index: ${this.zIndex + 1}`;
     }
   }
 
@@ -67,7 +74,7 @@ class LightPopup {
       if (this.show) {
         this.animateClass = `hide-slide-out-${this.position}`;
         this.visible = true;
-        await utils.wait(50); // 兼容小程序与weex, 需要wait久一些
+        await utils.wait(50); // 兼容小程序与weex, 不能wait(0)
         this.animateClass = `show-slide-out-${this.position}`;
       } else {
         this.animateClass = `hide-slide-out-${this.position}`;
@@ -75,7 +82,6 @@ class LightPopup {
         this.visible = false;
       }
     }
-
   }
 
   mounted() {
@@ -101,14 +107,12 @@ export default new LightPopup();
   right: 0;
   bottom: 0;
   top: 0;
-  z-index: 9;
   justify-content: center;
   align-items: center;
 }
 .popup-main {
   transition-property: width, height, transform;
   transition-duration:  200ms;
-  z-index: 10;
   overflow: hidden;
 }
 // 从中间显示

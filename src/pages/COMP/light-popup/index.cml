@@ -6,12 +6,12 @@
       mask="{{true}}"
       c-bind:close="hidePopup"
     >
-     <view style="{{contentStyle}}" >
-        <text c-bind:tap="hidePopup">X</text>
+     <view style="{{contentStyle}}" class="content" >
+        <text c-bind:tap="hidePopup">点击关闭popup</text>
       </view>
     </light-popup>
     <view>
-        <button c-bind:onclick="toogleShow" text="切换:left/top/right/bottom/center"></button>
+      <button c-bind:onclick="toogleShow" text="切换:left/top/right/bottom/center"></button>
     </view>
   </view>
 </template>
@@ -30,7 +30,7 @@ class LightBartips   {
   }
   computed = {
     contentStyle() {
-      let style = 'background:red;';
+      let style = '';
       switch (this.position) {
         case 'right':
         case 'left': 
@@ -76,6 +76,11 @@ export default new LightBartips();
   top: 0;
   align-items: center;
   justify-content: center;
+}
+.content {
+  justify-content: center;
+  align-items: center;
+  background: #FFFFFF;
 }
 </style>
 

@@ -4,14 +4,15 @@
       show="{{show}}"
       height="{{80}}"
       icon="{{icon}}"
+      zIndex="{{99}}"
       operate-icon="{{operateIcon}}"
-      text="我是文案要简短居中对其最多一行, 超出显示省略号反反复复反反复复"
+      text="我是文案要简短居中我是文案要简短居中我是文案要简短居中我是文案要简短居中"
       c-bind:onclick="handleClick"
       c-bind:operate="handleOperate"
     >
     </light-bartips>  
     <view>
-      <button c-bind:onclick="toogleShow" text="切换显示隐藏"></button>
+      <button c-bind:onclick="toogleShow" text="切换bartips状态"></button>
     </view>
 
   </view>
@@ -24,8 +25,8 @@ class LightBartips   {
 
   data = {
     icon: require('./images/icon.png'),
+    operateIcon: require('./images/right_arrow.png'),
     show: false,
-    operateIcon: require('./images/right_arrow.png')
   }
   computed = {
 
@@ -56,13 +57,7 @@ export default new LightBartips();
 
 <style>
 .container {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  align-items: center;
-  justify-content: center;
+  padding-top: 200px;
 }
 </style>
 

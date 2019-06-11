@@ -1,10 +1,11 @@
+<!--顶部通知条-->
 <template>
-  <light-popup position="top" mask="{{false}}" show="{{show}}">
-    <view class="light-bartips" style="{{bartipStyle}}" c-bind:tap="handleClick">
-      <view class="bartips-main">
-        <image class="bartips-icon" c-if="{{icon}}" src="{{icon}}"></image>
-        <text class="bartips-text">{{text}}</text>
-      </view>
+  <light-popup position="top" mask="{{false}}" show="{{show}}" zIndex="{{zIndex}}">
+    <view class="light-bartips" style="{{bartipStyle}}" c-catch:tap="handleClick">
+      <view>
+        <image class="bartips-icon" src="{{icon}}"/>
+      </view>    
+      <text class="bartips-text">{{text}}</text>
       <image 
         class="bartips-operator" 
         c-if="{{operateIcon}}" 
@@ -45,7 +46,10 @@ class LightBartips {
       type: String,
       default: '#35406B'
     },
-
+    zIndex: {
+      type: Number,
+      default: 9
+    },
   }
   computed = {
     bartipStyle() {
@@ -70,32 +74,41 @@ export default new LightBartips();
 @import "../../assets/css/var.less";
 .light-bartips {
   display: flex;
+  width: 750cpx;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   position: relative;
   padding-left: 32cpx;
   padding-right: 72cpx;
 }
-.bartips-main {
-  flex-direction: row;
-  width: 640cpx;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  align-items: center;
-}
-.bartips-text {
-  color: #FFFFFF;
-  font-size: 24cpx;
-}
 .bartips-icon {
-  width: 24cpx;
-  height: 24cpx;
+  width: 15cpx;
+  height: 20cpx;
   margin-right: 16cpx;
 }
+@media cml-type(weex) {
+  .bartips-text {
+     max-width: 640cpx;
+     color: #FFFFFF;
+     font-size: 24cpx;
+     lines:1;
+  }
+}
+@media cml-type(web, wx) {
+  .bartips-text {
+    display: block;
+    max-width: 640cpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #FFFFFF;
+    font-size: 24cpx;
+  }
+}
 .bartips-operator {
-  width: 20cpx;
-  height: 24cpx;
+  width: 15cpx;
+  height: 20cpx;
   position: absolute;
   right: 32cpx;
 }
