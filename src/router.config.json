@@ -36,6 +36,11 @@
       "name": "light-popup",
       "url": "/pages/COMP/light-popup/index",
       "path": "/pages/COMP/light-popup/index"
+    },
+    {
+      "name": "light-noticetips",
+      "url": "/pages/COMP/light-noticetips/index",
+      "path": "/pages/COMP/light-noticetips/index"
     }
   ]
 }

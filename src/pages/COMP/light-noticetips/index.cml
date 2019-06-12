@@ -1,0 +1,92 @@
+<template>
+  <view class="container">
+    <light-noticetips
+      show="{{show}}"
+      icon="{{icon}}"
+      title="{{'消息类别'}}"
+      text="{{'这里是消息内容最多支持两行这里是消息内容最多这里是消息内容最多这里是消息内容最多这里是消息内容最多'}}"
+      duration="{{5000}}"
+      c-bind:close="hide"
+      c-bind:onclick="handleNoticeClick"
+    >
+    </light-noticetips>
+    <view>
+      <button text="点击打开noticetip" c-bind:onclick="open"></button>
+      <text>Tip: 当noticetip打开时，你可以上滑关闭它，也可等待它自动关闭(默认的关闭时间是5秒) </text>
+    </view>
+    <cml-console/>
+  </view>
+</template>
+
+<script>
+import cml from 'chameleon-api';
+
+class LightNoticeTips   {
+
+  data = {
+    show: false,
+    icon: require('./images/icon.jpg')
+  }
+
+  methods = {
+    open() {
+      this.show = true
+    },
+    hide() {
+      this.show = false
+    },
+    handleNoticeClick() {
+      cml.showToast({
+        message: '点击了noticeTips'
+      })
+    }
+  }
+  
+}
+
+export default new LightNoticeTips();
+</script>
+
+<style>
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 40cpx; 
+  justify-content: center;
+  align-items: center;
+}
+</style>
+
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {
+      "light-noticetips": "/components/light-noticetips/index",
+      "cml-console": "@didi/cml-console/cml-console"
+    }
+  },
+  "wx": {
+    "navigationBarTitleText": "index",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#E2E2E2"
+  },
+  "alipay": {
+    "defaultTitle": "index",
+    "pullRefresh": false,
+    "allowsBounceVertical": "YES",
+    "titleBarColor": "#ffffff"
+  },
+  "baidu": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "index",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50
+  }
+}
+</script>

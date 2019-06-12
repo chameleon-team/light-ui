@@ -72,7 +72,8 @@ class Demo {
           routeObj['light-switch'],
           routeObj['light-badge'],
           routeObj['light-bartips'],
-          routeObj['light-popup']
+          routeObj['light-popup'],
+          routeObj['light-noticetips']
         ],
         src: require(`../../assets/images/component/kind/content.png`)
       },

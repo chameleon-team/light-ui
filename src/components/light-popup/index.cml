@@ -113,7 +113,7 @@ export default new LightPopup();
 .popup-main {
   transition-property: width, height, transform;
   transition-duration:  200ms;
-  transition-delay: 0s;
+  transition-delay: 0ms;
   // weex bug: 一定要指定timing-function，否则位移过后不能回到指定位置
   transition-timing-function: ease; 
   overflow: hidden;
@@ -176,10 +176,10 @@ export default new LightPopup();
   bottom: 0;
 }
 .show-slide-out-bottom {
-  transform: translate(0, 0)
+  transform: translateY(0)
 }
 .hide-slide-out-bottom{
-  transform: translate(0, 100%);
+  transform: translateY(100%);
 }
 
 

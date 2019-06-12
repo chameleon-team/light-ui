@@ -1,0 +1,274 @@
+<template>
+  <light-popup z-index="{{zIndex}}" show="{{show}}" position="top" mask="{{false}}" >
+    <view 
+      class="light-notice-tip"
+      style="{{compStyle}} {{animateStyle}}"
+      c-bind:touchstart="touchStart"
+      c-bind:touchmove="touchMove"
+      c-bind:touchend="touchEnd"
+      c-catch:tap="handleClick"
+    >
+      <view class="content-container">
+        <view class="icon-container" c-if="{{icon}}">
+          <image class="icon" src="{{icon}}"></image>
+        </view>
+        <view class="content">
+          <view class="title-container">
+            <text class="title">{{title}}</text>
+          </view>
+          <view class="text-container">
+            <text class="text">{{text}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="guide-line-container">
+        <view class="guide-line"></view>
+      </view>
+    </view>
+  </light-popup>
+</template>
+
+<script>
+import cml from 'chameleon-api';
+
+let _timer;
+const CHECK_THRESHOLD = 100; // 滑动检查阈值, 超过阈值才算是有效滑动，单位cpx
+
+class LightNoticeTips{
+
+  props = {
+    show: {
+      type: Boolean,
+      default: false
+    },
+    height: {
+      type: [Number, String],
+      default: 200
+    },
+    icon: {
+      type: String
+    },
+    title: {
+      type: [Number, String],
+      default: '',
+      required: true
+    },
+    text: {
+      type: [Number, String],
+      default: '',
+      required: true
+    },
+    theme: {
+      type: String,
+      default: '#35406B'
+    },
+    zIndex: {
+      type: Number,
+      default: 9
+    },
+    duration: {
+      type: Number,
+      default: 5 * 1000 // 持续时间, 默认5秒关闭
+    }
+  }
+  data = {
+    originClientY: 0,
+    lastClientY: 0,
+    touchDis: 0,
+    animateStyle: '',
+    isValidTouch: false,  // 是否是有效滑动, 只有有效滑动时才向外抛出关闭事件
+    shouldCancelTouch: false, // 是否应该取消滑动，例如当触摸方向向下时应该取消滑动
+  }
+
+  watch = {
+    show(val) {
+      this.resetData();
+      this.delayedClose();
+    }
+  }
+  computed =  {
+    compStyle() {
+      return `height:${this.height}cpx; background:${this.theme};`;
+    }
+  }
+
+  methods = {
+    resetData() {
+      if (this.show) {
+        this.animateStyle = 'transform: translateY(0);';
+      }
+      this.isValidTouch = false;
+    },
+    delayedClose() {
+      if (this.show) {
+        _timer = setTimeout(() => {
+          this.$cmlEmit('close');
+        }, this.duration);
+      } else {
+        clearTimeout(_timer);
+      }
+    },
+    touchStart(event) {
+      this.shouldCancelTouch = false;
+      this.lastClientY = this.originClientY =  event.changedTouches[0].clientY;
+      // 距离弹框下沿的距离
+      let bottomDis = 50;
+      // 只有触碰弹框的下半部分触发上滑操作, 否则取消touchmove
+      if (cml.px2cpx(this.originClientY) < this.height - bottomDis) {
+        this.shouldCancelTouch = true;
+      }
+    },
+    touchMove(event) {
+      if (this.shouldCancelTouch) {
+        return;
+      }
+      // weex使用event.changedTouches
+      let clientY  = event.changedTouches[0].clientY;
+      // 是否向下滑动
+      let isSlideDown = clientY > this.lastClientY;
+      // 相对于原始位置的滑动距离
+      this.touchDis = clientY - this.originClientY;
+      // 重新赋值上次的位置
+      this.lastClientY = clientY;
+
+      this.animateStyle = this.touchDis < 0 
+        ? `transform:translateY(${cml.px2cpx(this.touchDis)}cpx)`
+        : 'transform:translateY(0)';
+
+      // 向下滑动，则认为不应该抛出关闭事件
+      if (isSlideDown) {
+        this.isValidTouch = false;
+        return;
+      }
+      // 向上滑动并且滑动距离大于滑动阈值时才认为是要关闭
+      if (cml.px2cpx(Math.abs(this.touchDis)) > CHECK_THRESHOLD) {
+        this.isValidTouch = true;
+      }
+    },
+    touchEnd() {
+      // 有效滑动则抛出close事件，否则回到原位
+      if (this.isValidTouch) {
+        this.$cmlEmit('close');
+      } else {
+        this.animateStyle = 'transform: translateY(0);'
+      }
+      this.isValidTouch = false;
+    },
+    handleClick() {
+      this.$cmlEmit('onclick')
+    }
+  }
+
+  mounted() {
+    this.resetData();
+    this.delayedClose();
+  }
+
+}
+
+export default new LightNoticeTips();
+</script>
+<style scope lang="less">
+@import "../../assets/css/var.less";
+.light-notice-tip {
+  margin-left: 24cpx;
+  margin-right: 24cpx;
+  position: relative;
+  padding: 40cpx;
+  padding-bottom: 0;
+  transition-property: transform;
+  transition-duration: 200ms;
+  transition-timing-function: ease; 
+  opacity: .9;
+}
+.content-container {
+  flex-direction: row;
+}
+.icon-container {
+  margin-right: 16cpx;
+}
+.icon {
+  width: 80cpx;
+  height: 80cpx;
+  border-radius: 80cpx;
+}
+.content {
+  margin-bottom: 32cpx;
+  flex: 1;
+  overflow: hidden;
+}
+@media cml-type(web, wx) {
+  .text-container {
+    line-height: 36cpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  .title-container {
+    margin-bottom: 8cpx;
+  }
+  .title {
+    color: #FFFFFF;
+    opacity: .6;
+    font-size: 32cpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .text {
+    color: #FFFFFF;
+    font-size: 28cpx;
+    vertical-align: center;
+  }
+}
+@media cml-type(weex) {
+  .title {
+    lines: 1;
+    color: #FFFFFF;
+    opacity: .6;
+    font-size: 32cpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .text {
+    lines: 2;
+    // hack: weex端必须添加最大宽度
+    max-width: 300cpx;
+    line-height: 36cpx;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #FFFFFF;
+    font-size: 28cpx;
+    vertical-align: center;
+    overflow: hidden;
+  }
+}
+
+.guide-line-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+  padding-top: 12cpx;
+  padding-bottom: 12cpx;
+}
+.guide-line {
+  width: 40cpx;
+  height: 6cpx;
+  background: #FFFFFF;
+  opacity: .4;
+}
+</style>
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {
+      "light-popup": "/components/light-popup/index"
+    }
+  }
+}
+</script>
