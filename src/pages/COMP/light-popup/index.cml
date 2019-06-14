@@ -1,5 +1,6 @@
 <template>
   <view class="container">
+    <c-header title="light-popup"></c-header>
     <light-popup
       show="{{show}}"
       position="{{position}}"
@@ -10,8 +11,8 @@
         <text c-bind:tap="hidePopup">点击关闭popup</text>
       </view>
     </light-popup>
-    <view>
-      <button c-bind:onclick="toogleShow" text="切换:left/top/right/bottom/center"></button>
+    <view class="operator">
+      <button c-bind:onclick="toogleShow" text="popup:left/top/right/bottom/center"></button>
     </view>
   </view>
 </template>
@@ -69,18 +70,19 @@ export default new LightBartips();
 
 <style>
 .container {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  align-items: center;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: #f8f8f8;
 }
 .content {
   justify-content: center;
   align-items: center;
   background: #FFFFFF;
+}
+.operator {
+  margin-top: 50cpx;
+  padding: 20cpx;
 }
 </style>
 
@@ -88,8 +90,8 @@ export default new LightBartips();
 {
   "base": {
     "usingComponents": {
-      "light-bartips": "/components/light-bartips/index",
-      "light-popup": "/components/light-popup/index"
+      "light-popup": "/components/light-popup/index",
+      "c-header": "../../components/c-header/c-header"
     }
   },
   "wx": {

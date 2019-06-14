@@ -41,6 +41,11 @@
       "name": "light-noticetips",
       "url": "/pages/COMP/light-noticetips/index",
       "path": "/pages/COMP/light-noticetips/index"
+    },
+    {
+      "name": "light-alert",
+      "url": "/pages/COMP/light-alert/index",
+      "path": "/pages/COMP/light-alert/index"
     }
   ]
 }

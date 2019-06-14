@@ -1,7 +1,7 @@
 <template>
-<page title="chameleon组件展示">
+<page title="light-ui">
   <view slot="titlebar" class="titlebar">
-    <text class="titlebar-text">chameleon组件展示</text>
+    <text class="titlebar-text">light-ui</text>
   </view>
   <view class="index-page">
     <view class="index-body" style="{{bodyComputedStyl}}">
@@ -11,7 +11,7 @@
             <view class="index-hd">
               <image class="index-logo" src="{{comLogoSrc}}"></image>
               <view class="index-desc">
-                <text class="index-desc-text">以下将展示chameleon自定义组件能力，组件样式仅供参考，开发者可根据自身需求自定义组件样式，具体属性参数详见chameleon开发文档。</text>
+                <text class="index-desc-text">以下展示light-ui组件支持情况</text>
               </view>
             </view>
             <view class="index-bd">
@@ -73,7 +73,8 @@ class Demo {
           routeObj['light-badge'],
           routeObj['light-bartips'],
           routeObj['light-popup'],
-          routeObj['light-noticetips']
+          routeObj['light-noticetips'],
+          routeObj['light-alert']
         ],
         src: require(`../../assets/images/component/kind/content.png`)
       },

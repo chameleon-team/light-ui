@@ -197,7 +197,7 @@ export default new LightNoticeTips();
   flex: 1;
   overflow: hidden;
 }
-@media cml-type(web, wx) {
+@media cml-type(web, wx, alipay, baidu) {
   .text-container {
     line-height: 36cpx;
     overflow: hidden;

@@ -1,5 +1,6 @@
 <template>
   <view class="container">
+    <c-header title="light-noticetips"></c-header>
     <light-noticetips
       show="{{show}}"
       icon="{{icon}}"
@@ -10,11 +11,11 @@
       c-bind:onclick="handleNoticeClick"
     >
     </light-noticetips>
-    <view>
+    <view class="operator">
       <button text="点击打开noticetip" c-bind:onclick="open"></button>
       <text>Tip: 当noticetip打开时，你可以上滑关闭它，也可等待它自动关闭(默认的关闭时间是5秒) </text>
     </view>
-    <cml-console/>
+   <!-- <cml-console/> -->
   </view>
 </template>
 
@@ -49,14 +50,12 @@ export default new LightNoticeTips();
 
 <style>
 .container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  padding: 40cpx; 
   justify-content: center;
   align-items: center;
+}
+.operator {
+  margin-top: 50cpx;
+  padding: 20cpx;
 }
 </style>
 
@@ -65,7 +64,7 @@ export default new LightNoticeTips();
   "base": {
     "usingComponents": {
       "light-noticetips": "/components/light-noticetips/index",
-      "cml-console": "@didi/cml-console/cml-console"
+      "c-header": "../../components/c-header/c-header"
     }
   },
   "wx": {
