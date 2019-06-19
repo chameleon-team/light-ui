@@ -1,0 +1,66 @@
+<template>
+  <view c-if="{{show}}" class="hf_container"><text>Hello Chameleon!</text></view>
+</template>
+
+<script>
+
+class LightHalfScreen {
+  props = {
+    show:{
+      type:Boolean,
+      default:true,
+    }
+  }
+
+  data = {
+  }
+
+  computed = {
+  }
+
+  watch  = {
+  }
+
+  methods = {
+  }
+
+  beforeCreate() {
+  }
+
+  created() {
+  }
+
+  beforeMount() {
+  }
+
+  mounted() {
+  }
+
+  beforeDestroy() {
+  }
+
+  destroyed() {
+  }
+}
+
+export default new LightHalfScreen();
+</script>
+<style>
+@import '../../assets/css/var.less';
+.hf_container{
+  opacity: 0.4;
+  background: #000000;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+</style>
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {}
+  }
+}
+</script>

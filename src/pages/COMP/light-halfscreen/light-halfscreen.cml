@@ -1,0 +1,84 @@
+<template>
+<page title="light-button">
+  <view class="container">
+    <c-header title="light-button"></c-header>
+    <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
+      <text c-bind:tap="handleTap">打开半屏弹窗</text>
+    </view>
+
+    <light-halfscreen 
+      show="{{halfShow}}" 
+      c-bind:close="closeHalfScreen">
+    </light-halfscreen>
+
+  </view>
+</page>
+</template>
+<script>
+class CToast {
+
+  data = {
+    halfShow:false
+  }
+
+  computed = {
+  }
+
+  watch  = {
+  }
+
+  methods = {
+    closeHalfScreen(){
+      this.halfShow = false;
+    },
+    handleTap(){
+      this.halfShow = true;
+    }
+  }
+  
+
+  beforeCreate() {
+  }
+
+  created() {
+  }
+
+  beforeMount() {
+  }
+
+  mounted() {
+  }
+
+  beforeDestroy() {
+  }
+
+  destroyed() {
+  }
+}
+
+export default new CToast();
+</script>
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: #f8f8f8;
+}
+.btn {
+  margin-top: 20cpx;
+}
+</style>
+<script cml-type="json">
+{
+    "base": {
+        "usingComponents": {
+          "c-header": "../../components/c-header/c-header",
+          "light-halfscreen": "/components/light-halfscreen/light-halfscreen"
+        },
+        "navigationBarTitleText": "c-toast",
+        "backgroundTextStyle": "dark",
+        "backgroundColor": "#E2E2E2"
+    }
+}
+</script>

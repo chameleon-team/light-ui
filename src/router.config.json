@@ -13,6 +13,12 @@
       "url": "/pages/COMP/light-button/light-button",
       "path": "/pages/COMP/light-button/light-button",
       "mock": "index.php"
+    },
+    {
+      "name": "light-halfscreen",
+      "url": "/pages/COMP/light-halfscreen/light-halfscreen",
+      "path": "/pages/COMP/light-halfscreen/light-halfscreen",
+      "mock": "index.php"
     }
   ]
 }

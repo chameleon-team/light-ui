@@ -69,6 +69,7 @@ class Demo {
         open: false,
         pages: [
           routeObj["c-toast"],
+          routeObj["light-halfscreen"],
         ],
         src: require(`../../assets/images/component/kind/content.png`)
       },
