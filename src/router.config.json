@@ -19,7 +19,14 @@
       "url": "/pages/COMP/light-halfscreen/light-halfscreen",
       "path": "/pages/COMP/light-halfscreen/light-halfscreen",
       "mock": "index.php"
-    },{
+    },
+    {
+      "name": "light-fullscreen",
+      "url": "/pages/COMP/light-fullscreen/light-fullscreen",
+      "path": "/pages/COMP/light-fullscreen/light-fullscreen",
+      "mock": "index.php"
+    },
+    {
       "name": "light-switch",
       "url": "/pages/COMP/light-switch/index",
       "path": "/pages/COMP/light-switch/index",

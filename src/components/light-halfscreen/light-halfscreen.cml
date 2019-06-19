@@ -35,7 +35,7 @@
         <view 
           class="hf-btn-center hf-right-btn" 
           style="{{computedRightBtnStyle}}"
-          c-bind:tap="handleComfirm"
+          c-bind:tap="handleConfirm"
           >
           <text>{{confirmText}}</text>
         </view>     
@@ -88,7 +88,7 @@ class LightHalfScreen {
   }
 
   data = {
-    closeImg:require("./images/shape.png"),
+    closeImg:require("../../assets/images/close.png"),
   }
 
   computed = {
@@ -114,6 +114,12 @@ class LightHalfScreen {
   methods = {
     handleClose(){
       this.$cmlEmit('close');
+    },
+    handleCancel(){
+      this.$cmlEmit('cancel');
+    },
+    handleConfirm(){
+      this.$cmlEmit('confirm')
     }
   }
 

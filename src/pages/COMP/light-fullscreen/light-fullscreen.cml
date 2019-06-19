@@ -3,10 +3,10 @@
   <view class="container">
     <c-header title="light-button"></c-header>
     <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
-      <text c-bind:tap="handleTap">打开半屏弹窗</text>
+      <text c-bind:tap="handleTap">打开全屏弹窗</text>
     </view>
 
-    <light-halfscreen 
+    <light-fullscreen 
       show="{{halfShow}}" 
       c-bind:close="closeHalfScreen"
       c-bind:confirm="handleConfirm"
@@ -14,11 +14,9 @@
       confirm-text="主要操作"
       cancel-text="次要操作"
       cancel-style="color:green"
-      main-title="主标题"
-      sub-title="副标题"
       >
-      <view style="height:400cpx;">this is content</view>
-    </light-halfscreen>
+      <view style="height:600cpx;" class="content">this is content</view>
+    </light-fullscreen>
 
   </view>
 </page>
@@ -82,6 +80,11 @@ export default new CToast();
   flex: 1;
   background: #f8f8f8;
 }
+.content{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
 .btn {
   margin-top: 20cpx;
 }
@@ -121,7 +124,7 @@ export default new CToast();
     "base": {
         "usingComponents": {
           "c-header": "../../components/c-header/c-header",
-          "light-halfscreen": "/components/light-halfscreen/light-halfscreen"
+          "light-fullscreen": "/components/light-fullscreen/light-fullscreen"
         },
         "navigationBarTitleText": "c-toast",
         "backgroundTextStyle": "dark",
