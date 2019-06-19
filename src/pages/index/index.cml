@@ -70,6 +70,7 @@ class Demo {
         pages: [
           routeObj["light-halfscreen"],
           routeObj["light-fullscreen"],
+          routeObj["light-checkbox"],
           routeObj["light-button"],
           routeObj['light-switch'],
           routeObj['light-badge'],

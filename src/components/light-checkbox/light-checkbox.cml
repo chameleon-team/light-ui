@@ -1,0 +1,96 @@
+<template>
+  <view class="light-checkbox" c-bind:tap="hanleTap">
+    <image class="checkbox-img" src="{{checkBoxImg}}"></image>
+  </view>
+  
+</template>
+
+<script>
+
+class LightHalfScreen {
+  props = {
+    disable:{
+      type:Boolean,
+      default:false,
+    }
+
+  }
+
+  data = {
+    selectedImg:require("../../assets/images/checkbox-selected.png"),
+    unavailableImg:require("../../assets/images/checkbox-unavailable.png"),
+    unselectedImg:require("../../assets/images/checkbox-unselected.png"),
+    isChecked:false,
+  }
+
+  computed = {
+   checkBoxImg(){
+     if(this.disable){
+       return this.unavailableImg;
+     }else if(this.isChecked){
+       return this.selectedImg
+     }else{
+       return this.unselectedImg
+     }
+   }
+    
+  }
+
+  watch  = {
+  }
+
+  methods = {
+    hanleTap(){
+      if(this.disable){
+        return ;
+      }
+      this.isChecked = !this.isChecked;
+      this.$cmlEmit('change',{value:this.isChecked})
+    }
+    
+  }
+
+  beforeCreate() {
+  }
+
+  created() {
+  }
+
+  beforeMount() {
+  }
+
+  mounted() {
+  }
+
+  beforeDestroy() {
+  }
+
+  destroyed() {
+  }
+}
+
+export default new LightHalfScreen();
+</script>
+<style lang="less">
+@import '../../assets/css/var.less';
+.light-checkbox{
+  width:36cpx;
+  height:36cpx;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.checkbox-img{
+  width:36cpx;
+  height:36cpx;
+}
+
+</style>
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {
+    }
+  }
+}
+</script>

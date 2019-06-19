@@ -27,6 +27,12 @@
       "mock": "index.php"
     },
     {
+      "name": "light-checkbox",
+      "url": "/pages/COMP/light-checkbox/light-checkbox",
+      "path": "/pages/COMP/light-checkbox/light-checkbox",
+      "mock": "index.php"
+    },
+    {
       "name": "light-switch",
       "url": "/pages/COMP/light-switch/index",
       "path": "/pages/COMP/light-switch/index",
