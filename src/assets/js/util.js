@@ -24,3 +24,11 @@ export function cmlStyleTransfer (str) {
     });
     return obj;
 }
+
+export function wait(delay = 0) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve();
+        }, delay);
+    })
+}
