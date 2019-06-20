@@ -26,7 +26,7 @@
   <view class="checkbox-container">
     <text>可用-默认不选中</text>
     <light-checklabel
-    label="我是label"
+    label="选项文案最长不能查过14个，字数超过14个的用省略号代替"
     c-model="{{isChecked2}}"
     c-bind:change="handleChange2"
     >
