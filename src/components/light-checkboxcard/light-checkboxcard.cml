@@ -1,13 +1,19 @@
 <template>
-  <view class="light-checkbox" c-bind:tap="handleTap">
-    <image class="checkbox-img" src="{{checkBoxImg}}"></image>
+  <view class="light-checkboxcard" style="{{cardStyle}}">
+    <view class="ck-title">
+      <text class="ck-main-title">{{mainTitle}}</text>
+      <text class="ck-sub-title">{{subTitle}}</text>
+    </view>
+    <view class="ck-img">
+      <image class="checkbox-img" src="{{checkBoxImg}}"></image>
+    </view>
   </view>
   
 </template>
 
 <script>
 
-class LightCheckbox {
+class LightCheckboxCard {
   props = {
     disable:{
       type:Boolean,
@@ -16,6 +22,18 @@ class LightCheckbox {
     value:{
       type:Boolean,
       default:false,
+    },
+    cStyle:{
+      type:String,
+      default:''
+    },
+    mainTitle:{
+      type:String,
+      default:'',
+    },
+    subTitle:{
+      type:String,
+      default:""
     }
   }
 
@@ -34,6 +52,9 @@ class LightCheckbox {
      }else{
        return this.unselectedImg
      }
+   },
+   cardStyle(){
+     return this.cStyle;
    }
     
   }
@@ -42,7 +63,7 @@ class LightCheckbox {
   }
 
   methods = {
-    handleTap(){
+    handle(){
       if(this.disable){
         return ;
       }
@@ -72,14 +93,41 @@ class LightCheckbox {
   }
 }
 
-export default new LightCheckbox();
+export default new LightCheckboxCard();
 </script>
 <style lang="less">
 @import '../../assets/css/var.less';
-.light-checkbox{
+.light-checkboxcard{
   display:flex;
   justify-content: center;
   align-items: center;
+  flex-direction:row;
+  width:750cpx;
+  box-sizing:border-box;
+  height:160cpx;
+  padding-left:48cpx;
+  padding-right:48cpx;
+}
+.ck-title{
+  width:554cpx;
+  display:flex;
+  flex-direction:column;
+
+}
+.ck-main-title{
+  font-size:32cpx;
+  color:@major-color;
+  font-weight:bold;
+}
+.ck-sub-title{
+  font-size:24cpx;
+  color:@hint-color;
+}
+.ck-img{
+  display:flex;
+  flex-direction:row;
+  flex:1;
+  justify-content:flex-end;
 }
 .checkbox-img{
   width:36cpx;

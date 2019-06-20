@@ -71,6 +71,7 @@ class Demo {
           routeObj["light-halfscreen"],
           routeObj["light-fullscreen"],
           routeObj["light-checkbox"],
+          routeObj["light-checkboxcard"],
           routeObj["light-button"],
           routeObj['light-switch'],
           routeObj['light-badge'],

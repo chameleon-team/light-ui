@@ -14,7 +14,7 @@
       confirm-text="主要操作"
       cancel-text="次要操作"
       cancel-style="color:green"
-      main-title="主标题"
+      main-title="主标题主标题主标题主标题主标题主标题主标题主标题"
       sub-title="副标题"
       >
       <view style="height:400cpx;">this is content</view>
