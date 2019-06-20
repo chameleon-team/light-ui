@@ -28,7 +28,6 @@ class LightChecklabel {
 
   computed = {
     labelText(){
-      debugger;
       if(this.label.length < 14){
         return this.label
       }else{
