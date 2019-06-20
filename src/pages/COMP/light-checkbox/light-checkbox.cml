@@ -1,20 +1,33 @@
 <template>
-<page title="light-button">
+<page title="light-checkbox">
   <view class="container">
-    <c-header title="light-button"></c-header>
+    <c-header title="light-checkbox"></c-header>
     <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
       <text c-bind:tap="handleTap">checkbox</text>
     </view>
-
+  </view>
+  <view class="checkbox-container">
+    <text>不可用</text>
     <light-checkbox
-      disable="{{true}}"
-      >
+    disable="{{true}}"
+    >
     </light-checkbox>
+  </view>
+  <view class="checkbox-container">
+    <text>可用-默认选中</text>
     <light-checkbox
-      c-bind:change="handleChange"
-      >
+    c-model="{{isChecked1}}"
+    c-bind:change="handleChange1"
+    >
     </light-checkbox>
-
+  </view>
+  <view class="checkbox-container">
+    <text>可用-默认不选中</text>
+    <light-checkbox
+    c-model="{{isChecked2}}"
+    c-bind:change="handleChange2"
+    >
+    </light-checkbox>
   </view>
 </page>
 </template>
@@ -23,7 +36,9 @@ class CToast {
 
   data = {
     halfShow:false,
-    imgSrc:require('../../../assets/images/chameleon.jpg')
+    imgSrc:require('../../../assets/images/chameleon.jpg'),
+    isChecked1:true,
+    isChecked2:false
   }
 
   computed = {
@@ -33,8 +48,13 @@ class CToast {
   }
 
   methods = {
-    handleChange(e){
-      console.log('e',e)
+    handleChange1(e){
+      console.log('e',e);
+      console.log('this.isChecked1',this.isChecked1)
+    },
+    handleChange2(e){
+      console.log('e',e);
+      console.log('this.isChecked2',this.isChecked1)
     }
   }
   
@@ -73,6 +93,15 @@ export default new CToast();
   justify-content: center;
   align-items: center;
 }
+.checkbox-container{
+  border:1cpx solid #ECEDF0;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content: space-around;
+  height:200cpx;
+}
+
 .btn {
   margin-top: 20cpx;
 }

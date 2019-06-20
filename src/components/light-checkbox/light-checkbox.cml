@@ -1,5 +1,5 @@
 <template>
-  <view class="light-checkbox" c-bind:tap="hanleTap">
+  <view class="light-checkbox" c-bind:tap="handle">
     <image class="checkbox-img" src="{{checkBoxImg}}"></image>
   </view>
   
@@ -12,22 +12,24 @@ class LightHalfScreen {
     disable:{
       type:Boolean,
       default:false,
+    },
+    value:{
+      type:Boolean,
+      default:false,
     }
-
   }
 
   data = {
     selectedImg:require("../../assets/images/checkbox-selected.png"),
     unavailableImg:require("../../assets/images/checkbox-unavailable.png"),
     unselectedImg:require("../../assets/images/checkbox-unselected.png"),
-    isChecked:false,
   }
 
   computed = {
    checkBoxImg(){
      if(this.disable){
        return this.unavailableImg;
-     }else if(this.isChecked){
+     }else if(this.value){
        return this.selectedImg
      }else{
        return this.unselectedImg
@@ -40,12 +42,13 @@ class LightHalfScreen {
   }
 
   methods = {
-    hanleTap(){
+    handle(){
       if(this.disable){
         return ;
       }
-      this.isChecked = !this.isChecked;
-      this.$cmlEmit('change',{value:this.isChecked})
+      let newValue = !this.value;
+      this.$cmlEmit('input',{value:newValue});
+      this.$cmlEmit('change',{value:newValue})
     }
     
   }

@@ -1,7 +1,7 @@
 <template>
-<page title="light-button">
+<page title="light-halfscreen">
   <view class="container">
-    <c-header title="light-button"></c-header>
+    <c-header title="light-halfscreen"></c-header>
     <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
       <text c-bind:tap="handleTap">打开半屏弹窗</text>
     </view>
