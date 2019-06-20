@@ -1,33 +1,36 @@
 <template>
-<page title="light-checkbox">
+<page title="light-checklabel">
   <view class="container">
-    <c-header title="light-checkbox"></c-header>
+    <c-header title="light-checklabel"></c-header>
     <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
-      <text c-bind:tap="handleTap">checkbox</text>
+      <text c-bind:tap="handleTap">checklabel</text>
     </view>
   </view>
   <view class="checkbox-container">
     <text>不可用</text>
-    <light-checkbox
+    <light-checklabel
+    label="我是label"
     disable="{{true}}"
     >
-    </light-checkbox>
+    </light-checklabel>
   </view>
   <view class="checkbox-container">
     <text>可用-默认选中</text>
-    <light-checkbox
+    <light-checklabel
+    label="我是label"
     c-model="{{isChecked1}}"
     c-bind:change="handleChange1"
     >
-    </light-checkbox>
+    </light-checklabel>
   </view>
   <view class="checkbox-container">
     <text>可用-默认不选中</text>
-    <light-checkbox
-    value="{{isChecked2}}"
+    <light-checklabel
+    label="我是label"
+    c-model="{{isChecked2}}"
     c-bind:change="handleChange2"
     >
-    </light-checkbox>
+    </light-checklabel>
   </view>
 </page>
 </template>
@@ -54,8 +57,7 @@ class CToast {
     },
     handleChange2(e){
       console.log('e',e);
-      console.log('this.isChecked2',this.isChecked2);
-      this.isChecked2 = !this.isChecked2;
+      console.log('this.isChecked2',this.isChecked1)
     }
   }
   
@@ -142,7 +144,7 @@ export default new CToast();
     "base": {
         "usingComponents": {
           "c-header": "../../components/c-header/c-header",
-          "light-checkbox": "/components/light-checkbox/light-checkbox"
+          "light-checklabel": "/components/light-checklabel/light-checklabel"
         },
         "navigationBarTitleText": "c-toast",
         "backgroundTextStyle": "dark",

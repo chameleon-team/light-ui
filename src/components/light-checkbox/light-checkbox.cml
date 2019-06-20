@@ -6,7 +6,9 @@
 </template>
 
 <script>
-
+/*可以通过传递一个value的值，然后父组件改变这个值；
+也可以传递一个c-model的值，父组件不用手动改这个值；
+*/
 class LightCheckbox {
   props = {
     disable:{

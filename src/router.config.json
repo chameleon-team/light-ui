@@ -39,6 +39,12 @@
       "mock": "index.php"
     },
     {
+      "name": "light-checklabel",
+      "url": "/pages/COMP/light-checklabel/light-checklabel",
+      "path": "/pages/COMP/light-checklabel/light-checklabel",
+      "mock": "index.php"
+    },
+    {
       "name": "light-switch",
       "url": "/pages/COMP/light-switch/index",
       "path": "/pages/COMP/light-switch/index",
