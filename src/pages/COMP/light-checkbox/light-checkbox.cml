@@ -1,0 +1,152 @@
+<template>
+<page title="light-checkbox">
+  <view class="container">
+    <c-header title="light-checkbox"></c-header>
+    <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
+      <text c-bind:tap="handleTap">checkbox</text>
+    </view>
+  </view>
+  <view class="checkbox-container">
+    <text>不可用</text>
+    <light-checkbox
+    disable="{{true}}"
+    >
+    </light-checkbox>
+  </view>
+  <view class="checkbox-container">
+    <text>可用-默认选中</text>
+    <light-checkbox
+    c-model="{{isChecked1}}"
+    c-bind:change="handleChange1"
+    >
+    </light-checkbox>
+  </view>
+  <view class="checkbox-container">
+    <text>可用-默认不选中</text>
+    <light-checkbox
+    value="{{isChecked2}}"
+    c-bind:change="handleChange2"
+    >
+    </light-checkbox>
+  </view>
+</page>
+</template>
+<script>
+class CToast {
+
+  data = {
+    halfShow:false,
+    imgSrc:require('../../../assets/images/chameleon.jpg'),
+    isChecked1:true,
+    isChecked2:false
+  }
+
+  computed = {
+  }
+
+  watch  = {
+  }
+
+  methods = {
+    handleChange1(e){
+      console.log('e',e);
+      console.log('this.isChecked1',this.isChecked1)
+    },
+    handleChange2(e){
+      console.log('e',e);
+      console.log('this.isChecked2',this.isChecked2);
+      this.isChecked2 = !this.isChecked2;
+    }
+  }
+  
+
+  beforeCreate() {
+  }
+
+  created() {
+  }
+
+  beforeMount() {
+  }
+
+  mounted() {
+  }
+
+  beforeDestroy() {
+  }
+
+  destroyed() {
+  }
+}
+
+export default new CToast();
+</script>
+<style scoped lang="less">
+@import '../../../assets/css/var.less';
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: #f8f8f8;
+}
+.content{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.checkbox-container{
+  border:1cpx solid #ECEDF0;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content: space-around;
+  height:200cpx;
+}
+
+.btn {
+  margin-top: 20cpx;
+}
+.hf-title{
+  display:flex;
+  flex-direction:row;
+  background-color:#FFFFFF;
+  height:136cpx;
+}
+.hf-main-title{
+  color:@major-color;
+  font-size:40cpx;
+  font-weight:bold;
+}
+.hf-operation{
+  display:flex;
+  flex-direction:row;
+  align-self:flex-end;
+}
+
+.hf-ope-text{
+  font-size:28cpx;
+  font-weight:Normal;
+  color:@major-color;
+}
+.hf-arrow{
+    width: 10cpx;
+    height: 10cpx;
+    border-top: 2cpx solid @major-color;
+    border-right: 2cpx solid @major-color;
+    transform: rotate(45deg);
+
+}
+</style>
+<script cml-type="json">
+{
+    "base": {
+        "usingComponents": {
+          "c-header": "../../components/c-header/c-header",
+          "light-checkbox": "/components/light-checkbox/light-checkbox"
+        },
+        "navigationBarTitleText": "c-toast",
+        "backgroundTextStyle": "dark",
+        "backgroundColor": "#E2E2E2"
+    }
+}
+</script>

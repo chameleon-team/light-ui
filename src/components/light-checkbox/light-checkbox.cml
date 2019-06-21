@@ -1,0 +1,99 @@
+<template>
+  <view class="light-checkbox" c-bind:tap="handleTap">
+    <image class="checkbox-img" src="{{checkBoxImg}}"></image>
+  </view>
+  
+</template>
+
+<script>
+/*可以通过传递一个value的值，然后父组件改变这个值；
+也可以传递一个c-model的值，父组件不用手动改这个值；
+*/
+class LightCheckbox {
+  props = {
+    disable:{
+      type:Boolean,
+      default:false,
+    },
+    value:{
+      type:Boolean,
+      default:false,
+    }
+  }
+
+  data = {
+    selectedImg:require("../../assets/images/checkbox-selected.png"),
+    unavailableImg:require("../../assets/images/checkbox-unavailable.png"),
+    unselectedImg:require("../../assets/images/checkbox-unselected.png"),
+  }
+
+  computed = {
+   checkBoxImg(){
+     if(this.disable){
+       return this.unavailableImg;
+     }else if(this.value){
+       return this.selectedImg
+     }else{
+       return this.unselectedImg
+     }
+   }
+    
+  }
+
+  watch  = {
+  }
+
+  methods = {
+    handleTap(){
+      if(this.disable){
+        return ;
+      }
+      let newValue = !this.value;
+      this.$cmlEmit('input',{value:newValue});
+      this.$cmlEmit('change',{value:newValue})
+    }
+    
+  }
+
+  beforeCreate() {
+  }
+
+  created() {
+  }
+
+  beforeMount() {
+  }
+
+  mounted() {
+  }
+
+  beforeDestroy() {
+  }
+
+  destroyed() {
+  }
+}
+
+export default new LightCheckbox();
+</script>
+<style lang="less">
+@import '../../assets/css/var.less';
+.light-checkbox{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.checkbox-img{
+  width:36cpx;
+  height:36cpx;
+}
+
+</style>
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {
+    }
+  }
+}
+</script>

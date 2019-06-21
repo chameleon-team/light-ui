@@ -68,6 +68,11 @@ class Demo {
         name: "基础内容",
         open: false,
         pages: [
+          routeObj["light-halfscreen"],
+          routeObj["light-fullscreen"],
+          routeObj["light-checkbox"],
+          routeObj["light-checkboxcard"],
+          routeObj["light-checklabel"],
           routeObj["light-button"],
           routeObj['light-switch'],
           routeObj['light-badge'],

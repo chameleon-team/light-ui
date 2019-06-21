@@ -15,6 +15,36 @@
       "mock": "index.php"
     },
     {
+      "name": "light-halfscreen",
+      "url": "/pages/COMP/light-halfscreen/light-halfscreen",
+      "path": "/pages/COMP/light-halfscreen/light-halfscreen",
+      "mock": "index.php"
+    },
+    {
+      "name": "light-fullscreen",
+      "url": "/pages/COMP/light-fullscreen/light-fullscreen",
+      "path": "/pages/COMP/light-fullscreen/light-fullscreen",
+      "mock": "index.php"
+    },
+    {
+      "name": "light-checkbox",
+      "url": "/pages/COMP/light-checkbox/light-checkbox",
+      "path": "/pages/COMP/light-checkbox/light-checkbox",
+      "mock": "index.php"
+    },
+    {
+      "name": "light-checkboxcard",
+      "url": "/pages/COMP/light-checkboxcard/light-checkboxcard",
+      "path": "/pages/COMP/light-checkboxcard/light-checkboxcard",
+      "mock": "index.php"
+    },
+    {
+      "name": "light-checklabel",
+      "url": "/pages/COMP/light-checklabel/light-checklabel",
+      "path": "/pages/COMP/light-checklabel/light-checklabel",
+      "mock": "index.php"
+    },
+    {
       "name": "light-switch",
       "url": "/pages/COMP/light-switch/index",
       "path": "/pages/COMP/light-switch/index",
@@ -35,17 +65,20 @@
     {
       "name": "light-popup",
       "url": "/pages/COMP/light-popup/index",
-      "path": "/pages/COMP/light-popup/index"
+      "path": "/pages/COMP/light-popup/index",
+      "mock": "index.php"
     },
     {
       "name": "light-noticetips",
       "url": "/pages/COMP/light-noticetips/index",
-      "path": "/pages/COMP/light-noticetips/index"
+      "path": "/pages/COMP/light-noticetips/index",
+      "mock": "index.php"
     },
     {
       "name": "light-alert",
       "url": "/pages/COMP/light-alert/index",
-      "path": "/pages/COMP/light-alert/index"
+      "path": "/pages/COMP/light-alert/index",
+      "mock": "index.php"
     }
   ]
 }

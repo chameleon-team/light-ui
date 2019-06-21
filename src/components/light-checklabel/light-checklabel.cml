@@ -1,0 +1,136 @@
+<template>
+  <view class="light-checklabel {{ckLabel}}" c-bind:tap="handleTap">
+    <text class="ck-label-text {{ckLabelText}}">{{labelText}}</text>
+  </view>
+  
+</template>
+
+<script>
+
+class LightChecklabel {
+  props = {
+    disable:{
+      type:Boolean,
+      default:false,
+    },
+    value:{
+      type:Boolean,
+      default:false,
+    },
+    label:{
+      type:String,
+      default:""
+    }
+  }
+
+  data = {
+  }
+
+  computed = {
+    labelText(){
+      if(this.label.length < 14){
+        return this.label
+      }else{
+        return `${this.label.slice(0,13)}...`
+      }
+    },
+    ckLabel(){
+     if(this.disable){//border: 1px solid #ECEDF0;
+       return 'ck-label-unavailable';
+     }else if(this.value){//
+       return 'ck-label-selected'
+     }else{
+       return 'ck-label-unselected';//background: #FFFFFF;border: 1px solid #CACDD3;
+     }
+   },
+    ckLabelText(){
+     if(this.disable){//border: 1px solid #ECEDF0;
+       return 'ck-text-unavailable';
+     }else if(this.value){//
+       return 'ck-text-selected'
+     }else{
+       return 'ck-text-unselected';//background: #FFFFFF;border: 1px solid #CACDD3;
+     }
+   }
+    
+  }
+
+  watch  = {
+  }
+
+  methods = {
+    handleTap(){
+      if(this.disable){
+        return ;
+      }
+      let newValue = !this.value;
+      this.$cmlEmit('input',{value:newValue});
+      this.$cmlEmit('change',{value:newValue})
+    }
+    
+  }
+
+  beforeCreate() {
+  }
+
+  created() {
+  }
+
+  beforeMount() {
+  }
+
+  mounted() {
+  }
+
+  beforeDestroy() {
+  }
+
+  destroyed() {
+  }
+}
+
+export default new LightChecklabel();
+</script>
+<style lang="less">
+@import '../../assets/css/var.less';
+.light-checklabel{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height:64cpx;
+  padding-left:24cpx;
+  padding-right:24cpx;
+  color:red;
+}
+.ck-label-unavailable{
+  border: 1cpx solid #ECEDF0;
+}
+.ck-label-unselected{
+  border: 1cpx solid #CACDD3;
+}
+.ck-label-selected{
+  border: 1px solid #1D6EF0;
+}
+.ck-text-unavailable{
+  color:@unable-color;
+}
+.ck-text-unselected{
+  color:@minor-color;
+}
+.ck-text-selected{
+  color:@first-color;
+}
+.ck-label-text{
+  font-size:24cpx;
+
+}
+
+</style>
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {
+    }
+  }
+}
+</script>

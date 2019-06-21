@@ -1,0 +1,230 @@
+<template>
+  <!-- <view c-if="{{show}}" class="hf_container"><text>Hello Chameleon!</text></view> -->
+  <light-popup position="bottom" show="{{show}}">
+    <view class="hf-screen" style="{{computedFullStyle}}">
+      <view class="hf-close" c-bind:tap="handleClose">
+        <image src="{{closeImg}}" style="width:26cpx;height:26cpx;"></image>
+      </view>
+      <!-- 内容区域 -->
+      <view class="hf-content">
+        <slot></slot>
+      </view>
+      <!-- 按钮区域 -->
+      <view class="hf-btnwrap">
+        <view 
+          c-if="{{cancelText}}" 
+          class="hf-btn-center hf-left-btn" 
+          style="{{computedLeftBtnStyle}}"
+          c-bind:tap="handleCancel"
+          >
+          <text>{{cancelText}}</text>
+        </view>   
+
+        <view 
+          class="hf-btn-center hf-right-btn" 
+          style="{{computedRightBtnStyle}}"
+          c-bind:tap="handleConfirm"
+          >
+          <text>{{confirmText}}</text>
+        </view>     
+      </view>
+    </view>
+  </light-popup>
+</template>
+
+<script>
+import cml from 'chameleon-api';
+class LightFullScreen {
+  props = {
+    show:{
+      type:Boolean,
+      default:true,
+    },
+    hasCloseBtn:{
+      type:Boolean,
+      default:true
+    },
+    cancelText:{
+      type:String,
+      default:''
+    },
+    confirmText:{
+      type:String,
+      default:''
+    },
+    cancelStyle:{
+      type:String,
+      default:''
+    },
+    confirmStyle:{
+      type:String,
+      default:''
+    }
+
+  }
+
+  data = {
+    closeImg:require("../../assets/images/close.png"),
+    viewportHeight:0,
+  }
+
+  computed = {
+    hasSubTitle(){
+      return !!this.subTitle;
+    },
+    computedLeftBtnStyle(){
+      return this.cancelStyle;
+    },
+    computedRightBtnStyle(){
+      return this.cancelText ? `${this.confirmStyle}` :`width:686cpx;${this.confirmStyle}`
+    },
+    computedFullStyle(){
+      return `height:${this.viewportHeight}cpx;`
+    }
+    
+  }
+
+  watch  = {
+  }
+
+  methods = {
+    handleClose(){
+      this.$cmlEmit('close');
+    },
+    handleCancel(){
+      this.$cmlEmit('cancel');
+    },
+    handleConfirm(){
+      this.$cmlEmit('confirm')
+    }
+
+  }
+
+  beforeCreate() {
+  }
+
+  created() {
+  }
+
+  beforeMount() {
+  }
+
+  mounted() {
+    cml.getSystemInfo().then(info => {
+      console.log('info',info)
+      if(info.env === 'weex'){
+        this.viewportHeight = info.viewportHeight - 100;
+      }else{
+        this.viewportHeight = info.viewportHeight
+      }
+    })
+  }
+
+  beforeDestroy() {
+  }
+
+  destroyed() {
+  }
+}
+
+export default new LightFullScreen();
+</script>
+<style lang="less">
+@import '../../assets/css/var.less';
+.hf_container{
+  opacity: 0.4;
+  background: #000000;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+.hf-screen{
+  background-color:#FFFFFF;
+  padding-left:32cpx;
+  padding-right:32cpx;
+  display:flex;
+  flex-direction:column;
+  height:400cpx;
+}
+.hf-image{
+  display:flex;
+  height:280cpx;
+}
+.hf-close{
+  height:66cpx;
+  width:36cpx;
+  padding-top:30cpx;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.hf-content{
+  overflow:scroll;
+  flex:1;
+}
+.hf-main-title{
+  padding-top:35cpx;
+  padding-bottom:35cpx;
+}
+
+.hf-main-title-text{
+  color:@major-color;
+  font-size:40cpx;
+  font-weight:bold;
+}
+.hf-sub-title{
+  padding-top:32cpx;
+  padding-bottom:18cpx;
+}
+.hf-sub-title-text{
+  padding-top:4cpx;
+  color:@hint-color;
+  font-size:24cpx;
+  font-weight:normal;
+}
+.hf-btnwrap{
+  height:164cpx;
+  padding-top:32cpx;
+  padding-bottom:32cpx;
+  display:flex;
+  flex-direction:row;
+}
+.hf-btn-center{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.hf-left-btn{
+  border: 1px solid #35406B;
+  width:333cpx;
+  height:100cpx;
+  background-color:#FFFFFF;
+  margin-right:20cpx;
+  font-family: PingFangSC-Medium;
+  font-size: 32cpx;
+  color: #35406B;
+  text-align: center;
+}
+
+.hf-right-btn{
+  width:333cpx;
+  height:100cpx;
+  background-color:#1D6EF0;
+  font-family: PingFangSC-Medium;
+  font-size: 32cpx;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+</style>
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {
+      "light-popup": "../light-popup/index"
+    }
+  }
+}
+</script>

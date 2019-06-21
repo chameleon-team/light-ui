@@ -1,0 +1,131 @@
+<template>
+<page title="light-halfscreen">
+  <view class="container">
+    <c-header title="light-halfscreen"></c-header>
+    <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
+      <text c-bind:tap="handleTap">打开半屏弹窗</text>
+    </view>
+
+    <light-halfscreen 
+      show="{{halfShow}}" 
+      c-bind:close="closeHalfScreen"
+      c-bind:confirm="handleConfirm"
+      c-bind:cancel="handleCancel"
+      confirm-text="主要操作"
+      cancel-text="次要操作"
+      cancel-style="color:green"
+      main-title="主标题主标题主标题主标题主标题主标题主标题主标题"
+      sub-title="副标题"
+      >
+      <view style="height:400cpx;">this is content</view>
+    </light-halfscreen>
+
+  </view>
+</page>
+</template>
+<script>
+class CToast {
+
+  data = {
+    halfShow:false,
+    imgSrc:require('../../../assets/images/chameleon.jpg')
+  }
+
+  computed = {
+  }
+
+  watch  = {
+  }
+
+  methods = {
+    closeHalfScreen(){
+      this.halfShow = false;
+    },
+    handleTap(){
+      this.halfShow = true;
+    },
+    handleConfirm(){
+      console.log('handleConfirm');
+    },
+    handleCancel(){
+      console.log('handleCancel')
+    }
+  }
+  
+
+  beforeCreate() {
+  }
+
+  created() {
+  }
+
+  beforeMount() {
+  }
+
+  mounted() {
+  }
+
+  beforeDestroy() {
+  }
+
+  destroyed() {
+  }
+}
+
+export default new CToast();
+</script>
+<style scoped lang="less">
+@import '../../../assets/css/var.less';
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: #f8f8f8;
+}
+.btn {
+  margin-top: 20cpx;
+}
+.hf-title{
+  display:flex;
+  flex-direction:row;
+  background-color:#FFFFFF;
+  height:136cpx;
+}
+.hf-main-title{
+  color:@major-color;
+  font-size:40cpx;
+  font-weight:bold;
+}
+.hf-operation{
+  display:flex;
+  flex-direction:row;
+  align-self:flex-end;
+}
+
+.hf-ope-text{
+  font-size:28cpx;
+  font-weight:Normal;
+  color:@major-color;
+}
+.hf-arrow{
+    width: 10cpx;
+    height: 10cpx;
+    border-top: 2cpx solid @major-color;
+    border-right: 2cpx solid @major-color;
+    transform: rotate(45deg);
+
+}
+</style>
+<script cml-type="json">
+{
+    "base": {
+        "usingComponents": {
+          "c-header": "../../components/c-header/c-header",
+          "light-halfscreen": "/components/light-halfscreen/light-halfscreen"
+        },
+        "navigationBarTitleText": "c-toast",
+        "backgroundTextStyle": "dark",
+        "backgroundColor": "#E2E2E2"
+    }
+}
+</script>
