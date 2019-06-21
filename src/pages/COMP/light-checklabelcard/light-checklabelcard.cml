@@ -6,10 +6,6 @@
       <text c-bind:tap="handleTap">checklabelcard</text>
     </view>
   </view>
-  
-  <view class="checkbox-container">
-    checklabelcard
-  </view>
   <light-checklabelcard
     card-title="我是标题"
     labels="{{labels}}"
@@ -22,6 +18,13 @@
     c-bind:onclick="handleChange2"
     >
     </light-checklabelcard>
+    <light-checklabelcard
+    card-title="省份"
+    labels="{{labels3}}"
+    c-bind:onclick="handleChange3"
+    >
+    </light-checklabelcard>
+    
 </page>
 </template>
 <script>
@@ -41,44 +44,101 @@ class CToast {
       label:'文案2',
       isChecked:false,
     }],
-    labels2:[{
-      label:'文案1',
-      isChecked:false,
-      disable:true,
+    labels2:[
+      {
+        label:'文案1',
+        isChecked:false,
+        disable:true,
 
-    },
-    {
-      label:'文案2',
-      isChecked:false,
-    },
-    {
-      label:'文案2',
-      isChecked:false,
-    },
-    {
-      label:'文案2',
-      isChecked:false,
-    },
-    {
-      label:'文案2',
-      isChecked:false,
-    },
-    {
-      label:'文案2',
-      isChecked:false,
-    },
-    {
-      label:'文案2',
-      isChecked:false,
-    },
-    {
-      label:'文案2',
-      isChecked:false,
-    },
-    {
-      label:'文案2',
-      isChecked:false,
-    },
+      },
+      {
+        label:'文案2',
+        isChecked:false,
+      },
+      {
+        label:'文案2',
+        isChecked:false,
+      },
+      {
+        label:'文案2',
+        isChecked:false,
+      },
+      {
+        label:'文案2',
+        isChecked:false,
+      },
+      {
+        label:'文案2',
+        isChecked:false,
+      },
+      {
+        label:'文案2',
+        isChecked:false,
+      },
+      {
+        label:'文案2',
+        isChecked:false,
+      },
+      {
+        label:'文案2',
+        isChecked:false,
+      },
+    ],
+    labels3:[
+      {
+        label:'浙',
+        isChecked:false,
+        disable:true,
+
+      },
+      {
+        label:'杭',
+        isChecked:false,
+      },
+      {
+        label:'粤',
+        isChecked:false,
+      },
+      {
+        label:'渝',
+        isChecked:false,
+      },
+      {
+        label:'丂',
+        isChecked:false,
+      },
+      {
+        label:'吖',
+        isChecked:false,
+      },
+      {
+        label:'贪',
+        isChecked:false,
+      },
+      {
+        label:'琛',
+        isChecked:false,
+      },
+      {
+        label:'痴',
+        isChecked:false,
+      },
+      {
+        label:'痴',
+        isChecked:false,
+      },
+      {
+        label:'黑',
+        isChecked:false,
+      },
+      {
+        label:'吉',
+        isChecked:false,
+      },
+      {
+        label:'辽',
+        isChecked:false,
+      },
     ]
   }
 
@@ -97,6 +157,10 @@ class CToast {
     handleChange2(e){
       console.log('e',e);
       this.labels2[e.detail.index].isChecked = !this.labels2[e.detail.index].isChecked 
+    },
+    handleChange3(e){
+      console.log('e',e);
+      this.labels3[e.detail.index].isChecked = !this.labels3[e.detail.index].isChecked 
     }
   }
   
