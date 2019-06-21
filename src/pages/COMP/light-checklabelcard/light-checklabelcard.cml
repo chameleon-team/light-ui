@@ -25,6 +25,13 @@
     c-style="width:500cpx;"
     >
     </light-checklabelcard>
+    <light-checklabelcard
+    card-title="省份-只能选中一个"
+    labels="{{labels4}}"
+    c-bind:onclick="handleChange4"
+    c-style="width:500cpx;"
+    >
+    </light-checklabelcard>
     
 </page>
 </template>
@@ -140,6 +147,62 @@ class CToast {
         label:'辽',
         isChecked:false,
       },
+    ],
+    labels4:[
+      {
+        label:'浙',
+        isChecked:false,
+        disable:true,
+
+      },
+      {
+        label:'杭',
+        isChecked:false,
+      },
+      {
+        label:'粤',
+        isChecked:false,
+      },
+      {
+        label:'渝',
+        isChecked:false,
+      },
+      {
+        label:'丂',
+        isChecked:false,
+      },
+      {
+        label:'吖',
+        isChecked:false,
+      },
+      {
+        label:'贪',
+        isChecked:false,
+      },
+      {
+        label:'琛',
+        isChecked:false,
+      },
+      {
+        label:'痴',
+        isChecked:false,
+      },
+      {
+        label:'痴',
+        isChecked:false,
+      },
+      {
+        label:'黑',
+        isChecked:false,
+      },
+      {
+        label:'吉',
+        isChecked:false,
+      },
+      {
+        label:'辽',
+        isChecked:false,
+      },
     ]
   }
 
@@ -162,6 +225,13 @@ class CToast {
     handleChange3(e){
       console.log('e',e);
       this.labels3[e.detail.index].isChecked = !this.labels3[e.detail.index].isChecked 
+    },
+    handleChange4(e){
+      console.log('e',e);
+      this.labels4.forEach((item) => {
+        item.isChecked = false
+      })
+      this.labels4[e.detail.index].isChecked = !this.labels4[e.detail.index].isChecked 
     }
   }
   
