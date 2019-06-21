@@ -1,6 +1,11 @@
 <template>
-  <view class="light-checklabel {{ckLabel}}" c-bind:tap="handleTap">
-    <text class="ck-label-text {{ckLabelText}}">{{labelText}}</text>
+  <view class="ck-label-root">
+    <view class="light-checklabel {{ckLabel}}" c-bind:tap="handleTap">
+      <text class="ck-label-text {{ckLabelText}}">{{labelText}}</text>
+      <text c-if="{{hasArrow}}" class="ck-arrow"></text>
+    </view>
+    <!-- <view class="ck-arrow-container">
+    </view> -->
   </view>
   
 </template>
@@ -20,6 +25,14 @@ class LightChecklabel {
     label:{
       type:String,
       default:""
+    },
+    hasArrow:{
+      type:Boolean,
+      default:false,
+    },
+    index:{ //当用于checkboxard的时候，该字段用于标记数组中赋值某个label的value
+      type:Number,
+      default:-1
     }
   }
 
@@ -63,9 +76,13 @@ class LightChecklabel {
       if(this.disable){
         return ;
       }
+      if(this.hasArrow){
+        this.$cmlEmit('change');
+        return ;
+      }
       let newValue = !this.value;
-      this.$cmlEmit('input',{value:newValue});
-      this.$cmlEmit('change',{value:newValue})
+      this.$cmlEmit('input',{value:newValue,index:this.index});
+      this.$cmlEmit('onclick',{value:newValue,index:this.index});
     }
     
   }
@@ -93,14 +110,17 @@ export default new LightChecklabel();
 </script>
 <style lang="less">
 @import '../../assets/css/var.less';
+.ck-label-root{
+  position:relative;
+}
 .light-checklabel{
   display:flex;
   justify-content: center;
   align-items: center;
+  flex-direction:row;
   height:64cpx;
   padding-left:24cpx;
   padding-right:24cpx;
-  color:red;
 }
 .ck-label-unavailable{
   border: 1cpx solid #ECEDF0;
@@ -123,6 +143,14 @@ export default new LightChecklabel();
 .ck-label-text{
   font-size:24cpx;
 
+}
+
+.ck-arrow{
+  width: 14cpx;
+  height: 14cpx;
+  border-top: 2cpx solid #999DA7;
+  border-right: 2cpx solid #999DA7;
+  transform: rotate(45deg);
 }
 
 </style>

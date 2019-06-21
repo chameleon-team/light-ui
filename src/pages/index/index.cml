@@ -73,6 +73,7 @@ class Demo {
           routeObj["light-checkbox"],
           routeObj["light-checkboxcard"],
           routeObj["light-checklabel"],
+          routeObj["light-checklabelcard"],
           routeObj["light-button"],
           routeObj['light-switch'],
           routeObj['light-badge'],

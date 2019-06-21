@@ -1,46 +1,27 @@
 <template>
-<page title="light-checklabel">
+<page title="light-checklabelcard">
   <view class="container">
-    <c-header title="light-checklabel"></c-header>
+    <c-header title="light-checklabelcard"></c-header>
     <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
-      <text c-bind:tap="handleTap">checklabel</text>
+      <text c-bind:tap="handleTap">checklabelcard</text>
     </view>
   </view>
+  
   <view class="checkbox-container">
-    <text>不可用</text>
-    <light-checklabel
-    label="我是label"
-    disable="{{true}}"
-    >
-    </light-checklabel>
+    checklabelcard
   </view>
-  <view class="checkbox-container">
-    <text>可用-默认选中</text>
-    <light-checklabel
-    has-arrow="{{true}}"
-    label="我是label"
+  <light-checklabelcard
+    card-title="我是标题"
+    labels="{{labels}}"
     c-bind:onclick="handleChange1"
     >
-    </light-checklabel>
-  </view>
-  <view class="checkbox-container">
-    <text>可用-默认不选中</text>
-    <light-checklabel
-    label="选项文案最长不能查过14个，字数超过14个的用省略号代替"
-    c-model="{{isChecked2}}"
+    </light-checklabelcard>
+    <light-checklabelcard
+    card-title="我是标题2"
+    labels="{{labels2}}"
     c-bind:onclick="handleChange2"
     >
-    </light-checklabel>
-  </view>
-  <view class="checkbox-container">
-    <text>value传递-默认不选中</text>
-    <light-checklabel
-    label="选项文案最长不能查过14个，字数超过14个的用省略号代替"
-    value="{{isChecked3}}"
-    c-bind:onclick="handleChange3"
-    >
-    </light-checklabel>
-  </view>
+    </light-checklabelcard>
 </page>
 </template>
 <script>
@@ -51,7 +32,54 @@ class CToast {
     imgSrc:require('../../../assets/images/chameleon.jpg'),
     isChecked1:true,
     isChecked2:false,
-    isChecked3:false
+    labels:[{
+      label:'文案1',
+      isChecked:false,
+      disable:true,
+
+    },{
+      label:'文案2',
+      isChecked:false,
+    }],
+    labels2:[{
+      label:'文案1',
+      isChecked:false,
+      disable:true,
+
+    },
+    {
+      label:'文案2',
+      isChecked:false,
+    },
+    {
+      label:'文案2',
+      isChecked:false,
+    },
+    {
+      label:'文案2',
+      isChecked:false,
+    },
+    {
+      label:'文案2',
+      isChecked:false,
+    },
+    {
+      label:'文案2',
+      isChecked:false,
+    },
+    {
+      label:'文案2',
+      isChecked:false,
+    },
+    {
+      label:'文案2',
+      isChecked:false,
+    },
+    {
+      label:'文案2',
+      isChecked:false,
+    },
+    ]
   }
 
   computed = {
@@ -63,16 +91,12 @@ class CToast {
   methods = {
     handleChange1(e){
       console.log('e',e);
-      console.log('this.isChecked1',this.isChecked1)
+      console.log('this.labels[e.detail.index]',this.labels[e.detail.index]);
+      this.labels[e.detail.index].isChecked = !this.labels[e.detail.index].isChecked 
     },
     handleChange2(e){
       console.log('e',e);
-      console.log('this.isChecked2',this.isChecked3)
-    },
-    handleChange3(e){
-      console.log('e',e);
-      console.log('this.isChecked3',this.isChecked3);
-      this.isChecked3 = !this.isChecked3;
+      this.labels2[e.detail.index].isChecked = !this.labels2[e.detail.index].isChecked 
     }
   }
   
@@ -159,7 +183,7 @@ export default new CToast();
     "base": {
         "usingComponents": {
           "c-header": "../../components/c-header/c-header",
-          "light-checklabel": "/components/light-checklabel/light-checklabel"
+          "light-checklabelcard": "/components/light-checklabelcard/light-checklabelcard"
         },
         "navigationBarTitleText": "c-toast",
         "backgroundTextStyle": "dark",
