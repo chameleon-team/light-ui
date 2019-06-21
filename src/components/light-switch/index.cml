@@ -56,11 +56,11 @@ class LightSwitch {
     },
     circleStyle() {
       const padding = 4;
-      const slideWidth = this.getWidthOutCircle();
+      const slideWidth = this.getOutCircleWidth();
       return `left: ${this.checked ? slideWidth : padding}cpx`
     },
     checkedTextStyle() {
-      const width = this.getWidthOutCircle();
+      const width = this.getOutCircleWidth();
       return `width: ${width}cpx`
     }
   }
@@ -68,7 +68,7 @@ class LightSwitch {
 
   methods = {
 
-    getWidthOutCircle() {
+    getOutCircleWidth() {
       const circleWidth = 40;
       const switchWidth = parseInt(this.width, 10);
       const padding = 4;

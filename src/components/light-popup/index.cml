@@ -12,7 +12,7 @@
 import cml from 'chameleon-api';
 import * as utils from '../../assets/js/util';
 
-const ANIMATE_DURATION = 200;
+const ANIMATE_DURATION = 100;
 const ANIMATE_DELAY = 50;
 
 class LightPopup {
@@ -112,7 +112,7 @@ export default new LightPopup();
   .popup-main {
     // weex 端不支持scale
     transition-property: transform, opacity;
-    transition-duration:  200ms;
+    transition-duration:  100ms;
     transition-delay: 0ms;
     // weex bug: 一定要指定timing-function，否则位移过后不能回到指定位置
     transition-timing-function: ease; 
