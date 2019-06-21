@@ -1,5 +1,5 @@
 <template>
-  <view class="light-checklabelcard">
+  <view class="light-checklabelcard" style="{{cardStyle}}">
     <view class="cd-title" c-if="{{cardTitle}}">{{cardTitle}}</view>
     <view class="cd-labels">
         <view class="cd-label"
@@ -28,6 +28,10 @@ class LightChecklabelCard {
     labels:{
       type:Array,
       default:[]
+    },
+    cStyle:{
+      type:String,
+      default:''
     }
   }
 
@@ -35,6 +39,9 @@ class LightChecklabelCard {
   }
 
   computed = {
+    cardStyle(){
+      return  this.cStyle;
+    }
   }
 
   watch  = {

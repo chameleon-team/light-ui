@@ -22,6 +22,7 @@
     card-title="省份"
     labels="{{labels3}}"
     c-bind:onclick="handleChange3"
+    c-style="width:500cpx;"
     >
     </light-checklabelcard>
     
