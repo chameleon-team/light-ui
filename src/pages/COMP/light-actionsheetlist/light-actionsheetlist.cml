@@ -3,7 +3,12 @@
   <view class="container" >
     <c-header title="light-actionsheetlist"></c-header>
     <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
-      <text c-bind:tap="handleTap">打开ActionSheetList</text>
+      <view c-bind:tap="handleTap" class="button">
+        <text>打开ActionSheetList</text>
+      </view>
+      <view c-bind:tap="handleUserTap" class="button">
+        <text>打开用户自定义ActionSheetList</text>
+      </view>
     </view>
 
     <light-actionsheetlist 
@@ -12,6 +17,16 @@
       c-bind:cancel="handleCancel"
       action-lists="{{actionLists}}"
       >
+    </light-actionsheetlist>
+    <light-actionsheetlist 
+      show="{{useDefineShow}}" 
+      c-bind:confirm="handleUserConfirm"
+      c-bind:cancel="handleUserCancel"
+      user-defined="{{true}}"
+      >
+       <view class="user-defined">
+         <text>这里可以用户自定义内容</text>
+       </view>
     </light-actionsheetlist>
 
   </view>
@@ -22,6 +37,7 @@ class CToast {
 
   data = {
     halfShow:false,
+    useDefineShow:false,
     imgSrc:require('../../../assets/images/chameleon.jpg'),
     actionLists:[
       {
@@ -57,6 +73,17 @@ class CToast {
     handleCancel(){
       console.log('handleCancel');
       this.halfShow = false;
+    },
+    handleUserTap(){
+      this.useDefineShow = true;
+    },
+    handleUserConfirm(e){
+      console.log('handleConfirm',e);
+      this.useDefineShow = false;
+    },
+    handleUserCancel(){
+      console.log('handleCancel');
+      this.useDefineShow = false;
     }
   }
   
@@ -122,6 +149,19 @@ export default new CToast();
     border-right: 2cpx solid @major-color;
     transform: rotate(45deg);
 
+}
+.user-defined{
+  height:300cpx;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.button{
+  height:100cpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
 <script cml-type="json">

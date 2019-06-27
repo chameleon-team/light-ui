@@ -2,7 +2,11 @@
   <!-- <view c-if="{{show}}" class="hf_container"><text>Hello Chameleon!</text></view> -->
   <light-popup position="bottom" show="{{show}}">
     <view class="lg-acs">
+      <view c-if="{{userDefined}}">
+        <slot></slot>
+      </view>
       <view 
+        c-else
         c-for="{{actionLists}}" 
         class="lg-asc-list"
         c-bind:tap="handleConfirm(item,index)"
@@ -38,9 +42,11 @@ class LightActionSheetList {
     actionLists:{
       type:Array,
       default:[],
+    },
+    userDefined:{
+      type:Boolean,
+      default:false,
     }
-    
-
   }
 
   data = {
