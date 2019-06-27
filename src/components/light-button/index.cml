@@ -1,0 +1,214 @@
+<template>
+  <view class="{{btnClasses}}" style="{{mrBtnStyle}}" c-bind:tap="onclick" c-bind:touchstart="touchstart" c-bind:touchend="touchend">
+    <text c-if="{{text}}" class="{{textClasses}}" style="{{mrTextStyle}}">{{text}}</text>
+    <slot c-else></slot>
+  </view>
+</template>
+<script>
+
+import { transCls } from './util'
+
+ class Button implements ButtonInterface {
+    props = {
+      text: {
+        type: String,
+        default: ""
+      },
+      size: {
+        type: String,
+        default: "medium" // large、medium、small、mini
+      },
+      width: {
+        type: Number,
+        default: -1
+      },
+      type: {
+        type: String,
+        default: "default" // default、primary、warning
+      },
+      disabled: {
+        type: Boolean,
+        default: false
+      },
+      btnStyle: {
+        type: String,
+        default: ""
+      },
+      textStyle: {
+        type: String,
+        default: ""
+      },
+      textStyleDisabled: {
+        type: String,
+        default: ""
+      },
+      disabledStyle: {
+        type: String,
+        default: ""
+      },
+      btnHoverStyle: {
+        type: String,
+        default: ''
+      },
+      textHoverStyle: {
+        type: String,
+        default: ''
+      },
+    }
+    data = {
+      hover: false
+    }
+    computed ={
+      hasWidth() {
+        return this.width !== -1
+      },
+      btnClasses() {
+        return transCls('light-btn', this)
+      },
+      textClasses() {
+        return transCls('btn-text', this)
+      },
+      mrBtnStyle() {
+        const { disabled, btnStyle, disabledStyle, hover, btnHoverStyle, hasWidth, width } = this;
+        
+        let style = disabled
+              ? `${btnStyle};${disabledStyle}`
+              : hover
+              ? `${btnStyle};${btnHoverStyle}`
+              : btnStyle
+        
+        if (hasWidth) {
+          style = `width:${width}cpx;${style}`
+        }
+        return style
+      },
+      mrTextStyle() {
+        const { disabled, textStyle, textStyleDisabled, hover, textHoverStyle } = this;
+        return disabled
+              ? `${textStyle};${textStyleDisabled}`
+              : hover
+              ? `${textStyle};${textHoverStyle}`
+              : textStyle
+      }
+    }
+    methods = {
+      onclick(e) {
+        const { type, disabled } = this
+        if (disabled) return;
+        this.$cmlEmit('onClick', {
+          type,
+          disabled
+        });
+      },
+      touchstart(e) {
+        this.hover = true
+      },
+      touchend(e) {
+        this.hover = false
+      }
+    }
+    
+  }
+  export default new Button();
+</script>
+
+<style scoped lang="less">
+@import "../../assets/css/var.less";
+.light-btn {
+  display: flex;
+  padding: 0 30cpx;
+  height: 88cpx;
+  line-height: 88cpx;
+  align-items: center;
+  justify-content: center;
+  font-size: 32cpx;
+  color: @text-color;
+}
+
+
+.light-btn-default {
+  background: @bg-light-color;
+  border: 1px solid @second-color;
+}
+.light-btn-default-disable {
+  background: @bg-light-color;
+  border: 1px solid @area-unable-btn;
+}
+.light-btn-default-active {
+  background: @bg-dark-color;
+}
+.btn-text-default {
+  color: @second-color
+}
+.btn-text-default-disable {
+  color: @unable-color;
+}
+
+
+.light-btn-primary {
+  background: @first-color;
+}
+.light-btn-primary-active {
+   background: @area-press-btn;
+}
+.light-btn-primary-disable {
+  background: @bg-dark-color;
+  border: none;
+}
+.btn-text-primary {
+  color: @text-color;
+}
+.btn-text-primary-disable {
+  color: @text-color;
+}
+
+.light-btn-large {
+  width: 686cpx;
+  height: 100cpx;
+}
+
+.light-btn-medium {
+  width: 318cpx;
+  height: 100cpx;
+}
+
+.light-btn-small {
+  width: 206cpx;
+  height: 100cpx;
+}
+
+.light-btn-mini {
+  width: 136cpx;
+  height: 60cpx;
+}
+.btn-text {
+  text-align: center;
+  vertical-align: middle;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  outline: none;
+  font-size: 36cpx;
+}
+
+.btn-text-large {
+  font-size: 32cpx;
+  font-weight: bold;
+}
+
+.btn-text-medium {
+  font-size: 32cpx;
+  font-weight: bold;
+}
+
+.btn-text-mini {
+  font-size: 24cpx;
+}
+
+.btn-text-small {
+  font-size: 28cpx;
+}
+</style>
+<script cml-type="json">
+{
+}
+</script>

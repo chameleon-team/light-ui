@@ -1,45 +1,126 @@
 <template>
 <page title="light-button">
-  <view class="container">
-    <c-header title="light-button"></c-header>
-    <view>
-      <text>待办</text>
+  <scroller height="{{-1}}">
+    <view class="content">
+      <c-header title="light-button"></c-header>
+      <view class="btn-item" c-for="{{btn}}">
+        <view class="btn-label">
+          <text>{{item.label}}</text>
+        </view>
+        <view class="btn">
+          <light-button
+            text="{{item.text}}"
+            size="{{item.size}}"
+            type="{{item.type}}"
+            disabled="{{item.disabled}}"
+            c-bind:onClick="handleClick"
+          ></light-button>
+        </view>
+      </view>
+    
     </view>
-  </view>
+  </scroller>
 </page>
 </template>
 <script>
+import cml from "chameleon-api";
 class LightButton {
 
   data = {
+    btn: [
+      {
+        label: '默认大按钮：',
+        text: '按钮',
+        size: 'large',
+        type: 'default',
+        disabled: false
+      },
+      { 
+        label: '品牌色大按钮：',
+        text: '按钮',
+        size: 'large',
+        type: 'primary',
+        disabled: false
+      },
+      { 
+        label: '禁用的默认大按钮',
+        text: '禁用状态',
+        size: 'large',
+        type: 'default',
+        disabled: true
+      },
+      { 
+        label: '禁用的品牌色大按钮',
+        text: '禁用状态',
+        size: 'large',
+        type: 'primary',
+        disabled: true
+      },
+      { 
+        label: '默认中等按钮',
+        text: '按钮',
+        size: 'medium',
+        type: 'default',
+        disabled: false
+      },
+      { 
+        label: '品牌色中等按钮',
+        text: '按钮',
+        size: 'medium',
+        type: 'primary',
+        disabled: false
+      },
+      { 
+        label: '禁用的默认中等按钮',
+        text: '按钮',
+        size: 'medium',
+        type: 'default',
+        disabled: true
+      },
+      { 
+        label: '禁用的品牌色中等按钮',
+        text: '按钮',
+        size: 'medium',
+        type: 'primary',
+        disabled: true
+      },
+      { 
+        label: '默认小型按钮',
+        text: '按钮',
+        size: 'small',
+        type: 'default',
+        disabled: false
+      },
+      { 
+        label: '品牌色小型按钮',
+        text: '按钮',
+        size: 'small',
+        type: 'primary',
+        disabled: false
+      },
+       { 
+        label: '品牌色mini按钮',
+        text: '按钮',
+        size: 'mini',
+        type: 'primary',
+        disabled: false
+      },
+       { 
+        label: '品牌色mini按钮',
+        text: '按钮',
+        size: 'mini',
+        type: 'default',
+        disabled: false
+      },
+    ]
   }
-
-  computed = {
-  }
-
-  watch  = {
-  }
-
   methods = {
-  }
-  
-
-  beforeCreate() {
-  }
-
-  created() {
-  }
-
-  beforeMount() {
-  }
-
-  mounted() {
-  }
-
-  beforeDestroy() {
-  }
-
-  destroyed() {
+    handleClick(e) {
+      cml.showToast({
+        message: JSON.stringify(e.detail),
+        duration: 1000
+      })
+    }
   }
 }
 
@@ -55,14 +136,20 @@ export default new LightButton();
 .btn {
   margin-top: 20cpx;
 }
+.btn-item {
+  margin-top: 30cpx;
+  padding: 0 20cpx;
+}
+.content {
+  padding-bottom: 60cpx;
+}
 </style>
 <script cml-type="json">
 {
     "base": {
         "usingComponents": {
           "c-header": "../../components/c-header/c-header",
-          "light-button": "/components/light-button/light-button",
-          "light-switch": "/components/light-switch/index"
+          "light-button": "/components/light-button/index"
         },
         "navigationBarTitleText": "c-toast",
         "backgroundTextStyle": "dark",
