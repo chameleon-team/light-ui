@@ -79,6 +79,12 @@
       "url": "/pages/COMP/light-alert/index",
       "path": "/pages/COMP/light-alert/index",
       "mock": "index.php"
+    },
+    {
+      "name": "light-toast",
+      "url": "/pages/COMP/light-toast/index",
+      "path": "/pages/COMP/light-toast/index",
+      "mock": "index.php"
     }
   ]
 }

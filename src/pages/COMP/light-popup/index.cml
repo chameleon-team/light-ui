@@ -1,10 +1,11 @@
 <template>
-  <view class="container">
+  <page title="light-popup">
     <c-header title="light-popup"></c-header>
     <light-popup
       show="{{show}}"
       position="{{position}}"
       mask="{{true}}"
+      transition="{{true}}"
       c-bind:close="hidePopup"
     >
      <view style="{{contentStyle}}" class="content" >
@@ -14,7 +15,7 @@
     <view class="operator">
       <button c-bind:onclick="toogleShow" text="popup:left/top/right/bottom/center"></button>
     </view>
-  </view>
+  </page>
 </template>
 
 <script>
