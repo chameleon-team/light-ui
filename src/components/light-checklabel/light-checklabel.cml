@@ -1,6 +1,6 @@
 <template>
   <view class="ck-label-root">
-    <view class="light-checklabel {{ckLabel}}" c-bind:tap="handleTap">
+    <view class="light-checklabel {{ckLabel}}" c-catch:tap="handleTap">
       <text class="ck-label-text {{ckLabelText}}">{{labelText}}</text>
       <text c-if="{{hasArrow}}" class="ck-arrow"></text>
     </view>

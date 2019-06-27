@@ -4,7 +4,7 @@
       <text class="ck-main-title">{{mainTitle}}</text>
       <text class="ck-sub-title">{{subTitle}}</text>
     </view>
-    <view class="ck-img" c-bind:tap="handleTap">
+    <view class="ck-img" c-catch:tap="handleTap">
       <image class="checkbox-img" src="{{checkBoxImg}}"></image>
     </view>
   </view>

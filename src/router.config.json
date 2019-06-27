@@ -51,6 +51,12 @@
       "mock": "index.php"
     },
     {
+      "name": "light-actionsheetlist",
+      "url": "/pages/COMP/light-actionsheetlist/light-actionsheetlist",
+      "path": "/pages/COMP/light-actionsheetlist/light-actionsheetlist",
+      "mock": "index.php"
+    },
+    {
       "name": "light-switch",
       "url": "/pages/COMP/light-switch/index",
       "path": "/pages/COMP/light-switch/index",

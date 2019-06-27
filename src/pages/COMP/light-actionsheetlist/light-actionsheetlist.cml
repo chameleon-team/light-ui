@@ -1,33 +1,19 @@
 <template>
-<page title="light-checkbox">
-  <view class="container">
-    <c-header title="light-checkbox"></c-header>
+<page title="light-actionsheetlist">
+  <view class="container" >
+    <c-header title="light-actionsheetlist"></c-header>
     <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
-      <text >checkbox</text>
+      <text c-bind:tap="handleTap">打开ActionSheetList</text>
     </view>
-  </view>
-  <view class="checkbox-container">
-    <text>不可用</text>
-    <light-checkbox
-    disable="{{true}}"
-    >
-    </light-checkbox>
-  </view>
-  <view class="checkbox-container" c-bind:tap="handleTap">
-    <text>可用-默认选中</text>
-    <light-checkbox
-    c-model="{{isChecked1}}"
-    c-bind:change="handleChange1"
-    >
-    </light-checkbox>
-  </view>
-  <view class="checkbox-container" c-bind:tap="handleTap">
-    <text>可用-默认不选中</text>
-    <light-checkbox
-    value="{{isChecked2}}"
-    c-bind:change="handleChange2"
-    >
-    </light-checkbox>
+
+    <light-actionsheetlist 
+      show="{{halfShow}}" 
+      c-bind:confirm="handleConfirm"
+      c-bind:cancel="handleCancel"
+      action-lists="{{actionLists}}"
+      >
+    </light-actionsheetlist>
+
   </view>
 </page>
 </template>
@@ -37,8 +23,21 @@ class CToast {
   data = {
     halfShow:false,
     imgSrc:require('../../../assets/images/chameleon.jpg'),
-    isChecked1:true,
-    isChecked2:false
+    actionLists:[
+      {
+        mainTitle:"选项操作一",
+        subTitle:"附属文案要精简，不要超过20个字",
+        tag:"推荐"
+      },
+      {
+        mainTitle:"选项操作一",
+        subTitle:"附属文案",
+      },
+      {
+        mainTitle:"选项操作一",
+        subTitle:"附属文案",
+      }
+    ]
   }
 
   computed = {
@@ -48,18 +47,16 @@ class CToast {
   }
 
   methods = {
-    handleChange1(e){
-      console.log('e',e);
-      console.log('this.isChecked1',this.isChecked1)
-    },
-    handleChange2(e){
-      console.log('e',e);
-      console.log('this.isChecked2',this.isChecked2);
-      this.isChecked2 = !this.isChecked2;
-    },
     handleTap(){
-      //测试组件内部tap事件阻止冒泡
-      console.log('tap-ck')
+      this.halfShow = true;
+    },
+    handleConfirm(e){
+      console.log('handleConfirm',e);
+      this.halfShow = false;
+    },
+    handleCancel(){
+      console.log('handleCancel');
+      this.halfShow = false;
     }
   }
   
@@ -93,20 +90,6 @@ export default new CToast();
   flex: 1;
   background: #f8f8f8;
 }
-.content{
-  display:flex;
-  justify-content: center;
-  align-items: center;
-}
-.checkbox-container{
-  border:1cpx solid #ECEDF0;
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  justify-content: space-around;
-  height:200cpx;
-}
-
 .btn {
   margin-top: 20cpx;
 }
@@ -146,7 +129,7 @@ export default new CToast();
     "base": {
         "usingComponents": {
           "c-header": "../../components/c-header/c-header",
-          "light-checkbox": "/components/light-checkbox/light-checkbox"
+          "light-actionsheetlist": "/components/light-actionsheetlist/light-actionsheetlist"
         },
         "navigationBarTitleText": "c-toast",
         "backgroundTextStyle": "dark",

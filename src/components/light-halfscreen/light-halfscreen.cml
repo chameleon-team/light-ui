@@ -1,11 +1,10 @@
 <template>
-  <!-- <view c-if="{{show}}" class="hf_container"><text>Hello Chameleon!</text></view> -->
   <light-popup position="bottom" show="{{show}}">
     <view class="hf-screen {{hfScreen}}">
       <view c-if="{{imgSrc}}" class="hf-image">
         <image src="{{imgSrc}}" style="height:280cpx;"></image>
       </view>
-      <view class="hf-close" c-bind:tap="handleClose">
+      <view class="hf-close" c-catch:tap="handleClose">
         <image src="{{closeImg}}" style="width:26cpx;height:26cpx;"></image>
       </view>
       <!-- 标题区域 -->
@@ -27,7 +26,7 @@
           c-if="{{cancelText}}" 
           class="hf-btn-center hf-left-btn" 
           style="{{computedLeftBtnStyle}}"
-          c-bind:tap="handleCancel"
+          c-catch:tap="handleCancel"
           >
           <text>{{cancelText}}</text>
         </view>   
@@ -35,7 +34,7 @@
         <view 
           class="hf-btn-center hf-right-btn" 
           style="{{computedRightBtnStyle}}"
-          c-bind:tap="handleConfirm"
+          c-catch:tap="handleConfirm"
           >
           <text>{{confirmText}}</text>
         </view>     
@@ -146,15 +145,6 @@ export default new LightHalfScreen();
 </script>
 <style lang="less">
 @import '../../assets/css/var.less';
-.hf_container{
-  opacity: 0.4;
-  background: #000000;
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-}
 .hf-screen{
   background-color:#FFFFFF;
   padding-left:48cpx;

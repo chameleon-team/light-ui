@@ -70,6 +70,7 @@ class Demo {
         pages: [
           routeObj["light-halfscreen"],
           routeObj["light-fullscreen"],
+          routeObj["light-actionsheetlist"],
           routeObj["light-checkbox"],
           routeObj["light-checkboxcard"],
           routeObj["light-checklabel"],

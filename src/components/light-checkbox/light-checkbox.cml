@@ -1,5 +1,5 @@
 <template>
-  <view class="light-checkbox" c-bind:tap="handleTap">
+  <view class="light-checkbox" c-catch:tap="handleTap">
     <image class="checkbox-img" src="{{checkBoxImg}}"></image>
   </view>
   
