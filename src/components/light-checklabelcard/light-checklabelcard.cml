@@ -1,6 +1,6 @@
 <template>
   <view class="light-checklabelcard" style="{{cardStyle}}">
-    <view class="cd-title" c-if="{{cardTitle}}">{{cardTitle}}</view>
+    <view  c-if="{{cardTitle}}"><text class="cd-title">{{cardTitle}}</text></view>
     <view class="cd-labels">
         <view class="cd-label"
         c-for="{{labels}}">

@@ -107,7 +107,7 @@ export default new LightActionSheetList();
   background-color:#1D6EF0;
   height:32cpx;
   width:72cpx;
-  border-radius: 18px 18px 18px 0px;
+  border-radius: 18cpx 18cpx 18cpx 0cpx;
   font-family: PingFangSC-Medium;
   font-size: 20cpx;
   color: #FFFFFF;

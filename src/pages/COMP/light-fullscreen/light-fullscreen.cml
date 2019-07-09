@@ -15,7 +15,7 @@
       cancel-text="次要操作"
       cancel-style="color:green"
       >
-      <view style="height:600cpx;" class="content">this is content</view>
+      <view style="height:600cpx;" class="content"><text>this is content</text></view>
     </light-fullscreen>
 
   </view>

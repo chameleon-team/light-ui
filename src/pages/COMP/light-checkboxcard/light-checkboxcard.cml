@@ -4,7 +4,7 @@
   <view class="container">
     <c-header title="light-checkboxcard"></c-header>
     <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
-      <text c-bind:tap="handleTap">checkboxcard</text>
+      <text >checkboxcard</text>
     </view>
   </view>
   <view class="checkbox-container">

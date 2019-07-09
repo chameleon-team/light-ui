@@ -3,7 +3,7 @@
   <view class="container">
     <c-header title="light-checklabelcard"></c-header>
     <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
-      <text c-bind:tap="handleTap">checklabelcard</text>
+      <text >checklabelcard</text>
     </view>
   </view>
   <light-checklabelcard

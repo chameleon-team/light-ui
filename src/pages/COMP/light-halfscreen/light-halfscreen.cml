@@ -17,7 +17,7 @@
       main-title="主标题主标题主标题主标题主标题主标题主标题主标题"
       sub-title="副标题"
       >
-      <view style="height:400cpx;">this is content</view>
+      <view style="height:400cpx;"><text>this is content</text></view>
     </light-halfscreen>
 
   </view>
