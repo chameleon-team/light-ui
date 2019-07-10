@@ -8,7 +8,7 @@
 
     <light-fullscreen 
       show="{{halfShow}}" 
-      c-bind:close="closeHalfScreen"
+      c-bind:close="closeFullScreen"
       c-bind:confirm="handleConfirm"
       c-bind:cancel="handleCancel"
       confirm-text="主要操作"
@@ -36,7 +36,7 @@ class LightFullscreen {
   }
 
   methods = {
-    closeHalfScreen(){
+    closeFullScreen(){
       this.halfShow = false;
     },
     handleTap(){
@@ -70,36 +70,7 @@ export default new LightFullscreen();
 .btn {
   margin-top: 20cpx;
 }
-.hf-title{
-  display:flex;
-  flex-direction:row;
-  background-color:#FFFFFF;
-  height:136cpx;
-}
-.hf-main-title{
-  color:@major-color;
-  font-size:40cpx;
-  font-weight:bold;
-}
-.hf-operation{
-  display:flex;
-  flex-direction:row;
-  align-self:flex-end;
-}
 
-.hf-ope-text{
-  font-size:28cpx;
-  font-weight:Normal;
-  color:@major-color;
-}
-.hf-arrow{
-    width: 10cpx;
-    height: 10cpx;
-    border-top: 2cpx solid @major-color;
-    border-right: 2cpx solid @major-color;
-    transform: rotate(45deg);
-
-}
 </style>
 <script cml-type="json">
 {
