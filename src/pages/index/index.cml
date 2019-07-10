@@ -65,24 +65,17 @@ class Demo {
     comList: [
       {
         cid: "content",
-        name: "基础内容",
+        name: "一般组件",
         open: false,
         pages: [
-          routeObj["light-halfscreen"],
-          routeObj["light-fullscreen"],
-          routeObj["light-actionsheetlist"],
-          routeObj["light-checkbox"],
+          
           routeObj["light-checkboxcard"],
           routeObj["light-checklabel"],
           routeObj["light-checklabelcard"],
           routeObj["light-button"],
-          routeObj['light-switch'],
           routeObj['light-badge'],
           routeObj['light-bartips'],
-          routeObj['light-popup'],
-          routeObj['light-noticetips'],
-          routeObj['light-alert'],
-          routeObj['light-toast']
+          
         ],
         src: require(`../../assets/images/component/kind/content.png`)
       },
@@ -91,14 +84,24 @@ class Demo {
         name: "表单组件",
         open: false,
         pages: [
+          routeObj["light-checkbox"],
+          routeObj['light-switch'],
+
         ],
         src: require(`../../assets/images/component/kind/form.png`)
       },
       {
         cid: "nav",
-        name: "导航",
+        name: "弹屏组件",
         open: false,
         pages: [
+          routeObj["light-halfscreen"],
+          routeObj["light-fullscreen"],
+          routeObj["light-actionsheetlist"],
+          routeObj['light-popup'],
+          routeObj['light-noticetips'],
+          routeObj['light-alert'],
+          routeObj['light-toast']
         ],
         src: require(`../../assets/images/component/kind/nav.png`)
       }
