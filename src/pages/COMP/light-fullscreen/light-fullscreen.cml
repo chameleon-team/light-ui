@@ -22,7 +22,7 @@
 </page>
 </template>
 <script>
-class CToast {
+class LightFullscreen {
 
   data = {
     halfShow:false,
@@ -49,28 +49,10 @@ class CToast {
       console.log('handleCancel')
     }
   }
-  
 
-  beforeCreate() {
-  }
-
-  created() {
-  }
-
-  beforeMount() {
-  }
-
-  mounted() {
-  }
-
-  beforeDestroy() {
-  }
-
-  destroyed() {
-  }
 }
 
-export default new CToast();
+export default new LightFullscreen();
 </script>
 <style scoped lang="less">
 @import '../../../assets/css/var.less';

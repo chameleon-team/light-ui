@@ -36,7 +36,7 @@
 </page>
 </template>
 <script>
-class CToast {
+class LightCheckboxCard {
 
   data = {
     halfShow:false,
@@ -61,28 +61,9 @@ class CToast {
       console.log('this.isChecked2',this.isChecked1)
     }
   }
-  
-
-  beforeCreate() {
-  }
-
-  created() {
-  }
-
-  beforeMount() {
-  }
-
-  mounted() {
-  }
-
-  beforeDestroy() {
-  }
-
-  destroyed() {
-  }
 }
 
-export default new CToast();
+export default new LightCheckboxCard();
 </script>
 <style scoped lang="less">
 @import '../../../assets/css/var.less';

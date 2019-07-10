@@ -44,7 +44,7 @@
 </page>
 </template>
 <script>
-class CToast {
+class LightChecklabel {
 
   data = {
     halfShow:false,
@@ -76,27 +76,9 @@ class CToast {
     }
   }
   
-
-  beforeCreate() {
-  }
-
-  created() {
-  }
-
-  beforeMount() {
-  }
-
-  mounted() {
-  }
-
-  beforeDestroy() {
-  }
-
-  destroyed() {
-  }
 }
 
-export default new CToast();
+export default new LightChecklabel();
 </script>
 <style scoped lang="less">
 @import '../../../assets/css/var.less';

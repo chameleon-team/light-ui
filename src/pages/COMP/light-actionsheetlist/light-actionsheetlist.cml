@@ -33,7 +33,7 @@
 </page>
 </template>
 <script>
-class CToast {
+class LightActionsheetshit {
 
   data = {
     halfShow:false,
@@ -86,28 +86,9 @@ class CToast {
       this.useDefineShow = false;
     }
   }
-  
-
-  beforeCreate() {
-  }
-
-  created() {
-  }
-
-  beforeMount() {
-  }
-
-  mounted() {
-  }
-
-  beforeDestroy() {
-  }
-
-  destroyed() {
-  }
 }
 
-export default new CToast();
+export default new LightActionsheetshit();
 </script>
 <style scoped lang="less">
 @import '../../../assets/css/var.less';

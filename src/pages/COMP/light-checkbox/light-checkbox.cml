@@ -32,11 +32,10 @@
 </page>
 </template>
 <script>
-class CToast {
+class LightCheckbox {
 
   data = {
     halfShow:false,
-    imgSrc:require('../../../assets/images/chameleon.jpg'),
     isChecked1:true,
     isChecked2:false
   }
@@ -63,27 +62,9 @@ class CToast {
     }
   }
   
-
-  beforeCreate() {
-  }
-
-  created() {
-  }
-
-  beforeMount() {
-  }
-
-  mounted() {
-  }
-
-  beforeDestroy() {
-  }
-
-  destroyed() {
-  }
 }
 
-export default new CToast();
+export default new LightCheckbox();
 </script>
 <style scoped lang="less">
 @import '../../../assets/css/var.less';
