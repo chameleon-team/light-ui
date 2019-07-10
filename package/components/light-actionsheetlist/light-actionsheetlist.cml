@@ -1,0 +1,176 @@
+<template>
+  <!-- <view c-if="{{show}}" class="hf_container"><text>Hello Chameleon!</text></view> -->
+  <light-popup position="bottom" show="{{show}}">
+    <view class="lg-acs">
+      <view c-if="{{userDefined}}">
+        <slot></slot>
+      </view>
+      <view c-else>
+        <view 
+        c-for="{{actionLists}}" 
+        class="lg-asc-list"
+        c-bind:tap="handleConfirm(item,index)"
+      >
+        <view class="lg-asc-list-main">
+          <text class="lg-asc-list-main-text" style="{{mainTextStyle}}">{{item.mainTitle || ''}}</text>
+          <text c-if="{{item.tag}}" class="lg-asc-list-tag" style="{{tagStyle}}">{{item.tag || ''}}</text>
+        </view>
+        <view>
+          <text class="lg-asc-list-sub" style="{{subTextStyle}}">{{item.subTitle || ''}}</text>
+        </view>
+      </view>
+      </view>
+      <view class="lg-acs-seperate"></view>
+      <view class="lg-acs-btn" c-catch:tap="handleCancel">
+        <text class="lg-acs-btn-text" style="{{btnStyle}}">{{btnText}}</text>
+      </view>
+    </view>
+  </light-popup>
+</template>
+
+<script>
+
+class LightActionSheetList {
+  props = {
+    show:{
+      type:Boolean,
+      default:true,
+    },
+    btnText:{
+      type:String,
+      default:'取消'
+    },
+    actionLists:{
+      type:Array,
+      default:[],
+    },
+    userDefined:{
+      type:Boolean,
+      default:false,
+    },
+    //自定义style属性接受
+    mainTextStyle:{
+      type:String,
+      default:''
+    },
+    subTextStyle:{
+      type:String,
+      default:'',
+    },
+    tagStyle:{
+      type:String,
+      default:'',
+    },
+    btnStyle:{
+      type:String,
+      default:''
+    }
+  }
+
+  data = {
+    closeImg:require("../../assets/images/close.png"),
+  }
+
+  computed = {
+    
+    
+  }
+
+  watch  = {
+  }
+
+  methods = {
+    handleConfirm(item,index){
+      this.$cmlEmit('confirm',{value:{item,index}})
+    },
+    handleCancel(){
+      this.$cmlEmit('cancel');
+    }
+  }
+
+  beforeCreate() {
+  }
+
+  created() {
+  }
+
+  beforeMount() {
+  }
+
+  mounted() {
+  }
+
+  beforeDestroy() {
+  }
+
+  destroyed() {
+  }
+}
+
+export default new LightActionSheetList();
+</script>
+<style lang="less">
+@import '../../assets/css/var.less';
+.lg-acs{
+  background-color:#FFFFFF;
+}
+.lg-asc-list{
+  height:120cpx;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  border-top:1cpx solid @line-color;
+}
+.lg-asc-list-tag{
+  background-color:#1D6EF0;
+  height:32cpx;
+  width:72cpx;
+  border-radius: 18cpx 18cpx 18cpx 0cpx;
+  font-family: PingFangSC-Medium;
+  font-size: 20cpx;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align:center;
+}
+.lg-asc-list-main{
+  display:flex;
+  flex-direction:row;
+  justify-content: center;
+  align-items: center;
+}
+.lg-asc-list-main-text{
+  padding-right:8cpx;
+  font-size:32cpx;
+  color:@major-color;
+  padding-top:4cpx;
+}
+.lg-asc-list-sub{
+  font-size:24cpx;
+  color:@hint-color;
+  padding-top:4cpx;
+}
+.lg-acs-seperate{
+  height:16cpx;
+  background-color:@line-color;
+}
+.lg-acs-btn{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height:120cpx;
+}
+.lg-acs-btn-text{
+  font-size:32cpx;
+  color:@first-color;
+}
+
+</style>
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {
+      "light-popup": "../light-popup/index"
+    }
+  }
+}
+</script>

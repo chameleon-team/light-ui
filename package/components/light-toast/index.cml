@@ -1,0 +1,125 @@
+<template>
+<c-popup show="{{show}}" mask="{{mask}}" position="center" transition="{{false}}">
+  <view class="toast-content" style="{{compStyle}}">
+    <image c-if="{{needIcon}}" src="{{typeImg}}" class="toast-icon" />
+    <text class="toast-text">{{message}}</text>
+  </view>
+</c-popup>
+</template>
+<script>
+class LightToast {
+  props = {
+    type: {
+      type: String,
+      default: "loading"
+    },
+    message: {
+      type: String,
+      default: ""
+    },
+    duration: {
+      type: Number,
+      default: 3000
+    },
+    show: {
+      type: Boolean,
+      default: false
+    },
+    mask: {
+      type: Boolean,
+      default: false
+    },
+    icon: {
+      type: String,
+      default: ''
+    },
+    needIcon: {
+      type: Boolean,
+      default: true
+    },
+    theme: {
+      type: String,
+      default: ''
+    }
+  }
+  data = {
+    IconMap: {
+      loading: require("./images/loading.gif"),
+      success: require("./images/succ.png"),
+      warn: require("./images/warn.png")
+    }
+  }
+
+  computed = {
+    typeImg() {
+      // 如果指定了icon，就用指定的；否则使用对应type的默认icon
+      return !!this.icon ? this.icon : this.IconMap[this.type];
+    },
+    compStyle() {
+      return !!this.theme ?`background:${this.theme}` : ''
+    },
+    maskClass() {
+      return this.mask ? "has-mask" : "no-mask";
+    }
+  }
+
+  watch  = {
+    show(n, o) {
+      if (n) {
+        setTimeout(() => {
+          this.$cmlEmit("show", { value: false });
+        }, this.duration);
+      }
+    }
+  }
+}
+
+export default new LightToast();
+</script>
+<style scoped>
+@import "../../assets/css/var.less";
+.toast-content {
+  background: @second-color;
+  opacity: .9;
+  max-width: 600cpx;
+  height: 100cpx;
+  padding: 0 40cpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #ccc;
+}
+@media cml-type(weex) {
+  .toast-text {
+    font-size: 28cpx;
+    color: #fff;
+    lines: 1;
+  }
+}
+@media cml-type(web, wx, alipay, baidu) {
+  .toast-text {
+    font-size: 28cpx;
+    color: #fff;
+    flex: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}
+.toast-icon {
+  width: 36cpx;
+  height: 36cpx;
+  margin-right: 16cpx;
+}
+
+</style>
+<script cml-type="json">
+{
+    "base": {
+        "usingComponents": {
+          "c-popup": "../light-popup/index"
+        },
+        "component": true
+    }
+}
+</script>

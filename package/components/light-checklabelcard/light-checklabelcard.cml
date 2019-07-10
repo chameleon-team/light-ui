@@ -1,0 +1,115 @@
+<template>
+  <view class="light-checklabelcard" style="{{cardStyle}}">
+    <view  c-if="{{cardTitle}}"><text class="cd-title">{{cardTitle}}</text></view>
+    <view class="cd-labels">
+        <view class="cd-label"
+        c-for="{{labels}}">
+          <light-checklabel 
+            index="{{index}}"
+            label="{{item.label}}"
+            value="{{item.isChecked}}"
+            disable="{{item.disable}}"
+            c-bind:onclick="handleChange"
+            ></light-checklabel>
+        </view>
+    </view>
+  </view>
+  
+</template>
+
+<script>
+//class用于给初始化的样式  style用于在每次点击的时候，重新赋值；
+class LightChecklabelCard {
+  props = {
+    cardTitle:{
+      type:String,
+      default:''
+    },
+    labels:{
+      type:Array,
+      default:[]
+    },
+    cStyle:{
+      type:String,
+      default:''
+    }
+  }
+
+  data = {
+  }
+
+  computed = {
+    cardStyle(){
+      return  this.cStyle;
+    }
+  }
+
+  watch  = {
+  }
+
+  methods = {
+    handleChange(e){
+      console.log('checkboxcard',e);
+      this.$cmlEmit('onclick',e.detail || {})
+    }
+    
+  }
+
+  beforeCreate() {
+  }
+
+  created() {
+  }
+
+  beforeMount() {
+  }
+
+  mounted() {
+  }
+
+  beforeDestroy() {
+  }
+
+  destroyed() {
+  }
+}
+
+export default new LightChecklabelCard();
+</script>
+<style lang="less">
+@import '../../assets/css/var.less';
+.light-checklabelcard{
+  display:flex;
+  flex-direction:column;
+  width:750cpx;
+  padding-left:48cpx;
+  padding-right:48cpx;
+  padding-top:32cpx;
+  padding-bottom:40cpx;
+}
+.cd-title{
+  color:@major-color;
+  font-size:32cpx;
+  padding-bottom:16cpx;
+}
+.cd-labels{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+}
+.cd-label{
+  padding-right:16cpx;
+  padding-bottom:24cpx;
+}
+
+
+</style>
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {
+      "light-checklabel":"../light-checklabel/light-checklabel"
+    }
+  }
+}
+</script>

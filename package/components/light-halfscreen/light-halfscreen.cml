@@ -1,0 +1,228 @@
+<template>
+  <light-popup position="bottom" show="{{show}}">
+    <view class="hf-screen {{hfScreen}}">
+      <view c-if="{{imgSrc}}" class="hf-image">
+        <image src="{{imgSrc}}" style="height:280cpx;"></image>
+      </view>
+      <view class="hf-close" c-catch:tap="handleClose">
+        <image src="{{closeImg}}" style="width:26cpx;height:26cpx;"></image>
+      </view>
+      <!-- 标题区域 -->
+      <view c-if="{{hasSubTitle}}" class="hf-sub-title">
+          <text class="hf-main-title-text">{{mainTitle}}</text>
+          <text class="hf-sub-title-text">{{subTitle}}</text>
+      </view>
+      <view c-else class="hf-main-title">
+          <text class="hf-main-title-text">{{mainTitle}}</text>
+      </view>
+      <!-- 内容区域 -->
+      <slot ></slot>
+      <!-- 按钮区域 -->
+      <view>
+          <slot name="hs-btn"></slot>
+        </view>
+      <view class="hf-btnwrap">
+        <view 
+          c-if="{{cancelText}}" 
+          class="hf-btn-center hf-left-btn" 
+          style="{{computedLeftBtnStyle}}"
+          c-catch:tap="handleCancel"
+          >
+          <text>{{cancelText}}</text>
+        </view>   
+
+        <view 
+          class="hf-btn-center hf-right-btn" 
+          style="{{computedRightBtnStyle}}"
+          c-catch:tap="handleConfirm"
+          >
+          <text>{{confirmText}}</text>
+        </view>     
+      </view>
+    </view>
+  </light-popup>
+</template>
+
+<script>
+
+class LightHalfScreen {
+  props = {
+    show:{
+      type:Boolean,
+      default:true,
+    },
+    imgSrc:{
+      type:String,
+      default:''
+    },
+    hasCloseBtn:{
+      type:Boolean,
+      default:true
+    },
+    mainTitle:{
+      type:String,
+      default:''
+    },
+    subTitle:{
+      type:String,
+      default:''
+    },
+    cancelText:{
+      type:String,
+      default:''
+    },
+    confirmText:{
+      type:String,
+      default:''
+    },
+    cancelStyle:{
+      type:String,
+      default:''
+    },
+    confirmStyle:{
+      type:String,
+      default:''
+    }
+
+  }
+
+  data = {
+    closeImg:require("../../assets/images/close.png"),
+  }
+
+  computed = {
+    hfScreen(){ //如果按钮在标题区域需要多预留64安全距离
+      let isBtnInTitle = this.hasCloseBtn && !this.imgSrc;
+      return isBtnInTitle ? 'hf-btnintitle' : ''
+    },
+    hasSubTitle(){
+      return !!this.subTitle;
+    },
+    computedLeftBtnStyle(){
+      return this.cancelStyle;
+    },
+    computedRightBtnStyle(){
+      return this.cancelText ? `${this.confirmStyle}` :`width:654cpx;${this.confirmStyle}`
+    },
+    
+  }
+
+  watch  = {
+  }
+
+  methods = {
+    handleClose(){
+      this.$cmlEmit('close');
+    },
+    handleCancel(){
+      this.$cmlEmit('cancel');
+    },
+    handleConfirm(){
+      this.$cmlEmit('confirm')
+    }
+  }
+
+  beforeCreate() {
+  }
+
+  created() {
+  }
+
+  beforeMount() {
+  }
+
+  mounted() {
+  }
+
+  beforeDestroy() {
+  }
+
+  destroyed() {
+  }
+}
+
+export default new LightHalfScreen();
+</script>
+<style lang="less">
+@import '../../assets/css/var.less';
+.hf-screen{
+  background-color:#FFFFFF;
+  padding-left:48cpx;
+  padding-right:48cpx;
+  position:relative;
+}
+.hf-btnintitle{
+  padding-right:100cpx;
+}
+.hf-image{
+  display:flex;
+  height:280cpx;
+}
+.hf-close{
+  position:absolute;
+  right:48cpx;
+  top:50cpx;
+}
+.hf-main-title{
+  padding-top:35cpx;
+  padding-bottom:35cpx;
+}
+
+.hf-main-title-text{
+  color:@major-color;
+  font-size:40cpx;
+  font-weight:bold;
+}
+.hf-sub-title{
+  padding-top:32cpx;
+  padding-bottom:18cpx;
+}
+.hf-sub-title-text{
+  padding-top:4cpx;
+  color:@hint-color;
+  font-size:24cpx;
+  font-weight:normal;
+}
+.hf-btnwrap{
+  padding-top:32cpx;
+  padding-bottom:32cpx;
+  display:flex;
+  flex-direction:row;
+}
+.hf-btn-center{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+.hf-left-btn{
+  border: 1px solid #35406B;
+  width:317cpx;
+  height:100cpx;
+  background-color:#FFFFFF;
+  margin-right:20cpx;
+  font-family: PingFangSC-Medium;
+  font-size: 32cpx;
+  color: #35406B;
+  text-align: center;
+}
+
+.hf-right-btn{
+  width:317cpx;
+  height:100cpx;
+  background-color:#1D6EF0;
+  font-family: PingFangSC-Medium;
+  font-size: 32cpx;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+</style>
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {
+      "light-popup": "../light-popup/index"
+    }
+  }
+}
+</script>

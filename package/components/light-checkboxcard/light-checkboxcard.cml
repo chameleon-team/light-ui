@@ -1,0 +1,178 @@
+<template>
+  <view class="light-checkboxcard" style="{{cardStyle}}">
+    <view class="ck-title">
+      <text class="ck-main-title">{{mainTitle}}</text>
+      <text class="ck-sub-title">{{subTitle}}</text>
+    </view>
+    <view class="ck-img" c-catch:tap="handleTap">
+      <!-- <image class="checkbox-img" src="{{checkBoxImg}}"></image> -->
+      <view class="lg-ckcard-container" style="{{ckContainerStyle}}">
+        <text style="{{ckTextStyle}}">✓</text>
+      </view>
+    </view>
+  </view>
+  
+</template>
+
+<script>
+
+class LightCheckboxCard {
+  props = {
+    disable:{
+      type:Boolean,
+      default:false,
+    },
+    value:{
+      type:Boolean,
+      default:false,
+    },
+    cStyle:{
+      type:String,
+      default:''
+    },
+    mainTitle:{
+      type:String,
+      default:'',
+    },
+    subTitle:{
+      type:String,
+      default:""
+    },
+    boxStyle:{ //设置box的样式
+      type:String,
+      default:"",
+    },
+    checkStyle:{ //设置对号的样式
+      type:String,
+      default:""
+    }
+  }
+
+  data = {
+    selectedImg:require("../../assets/images/checkbox-selected.png"),
+    unavailableImg:require("../../assets/images/checkbox-unavailable.png"),
+    unselectedImg:require("../../assets/images/checkbox-unselected.png"),
+  }
+
+  computed = {
+   checkBoxImg(){
+     if(this.disable){
+       return this.unavailableImg;
+     }else if(this.value){
+       return this.selectedImg
+     }else{
+       return this.unselectedImg
+     }
+   },
+   cardStyle(){
+     return this.cStyle;
+   },
+   ckContainerStyle(){
+     let ckContainer = '';
+     if(this.disable){
+       ckContainer = `border:1cpx solid #CACDD3;`;
+     }else if(this.value){
+       ckContainer = `background-color:#1D6EF0`;
+     }else{
+       ckContainer = `border:1cpx solid #999DA7`
+     }
+     return `${ckContainer};${this.boxStyle || ''}`
+   },
+   ckTextStyle(){
+     return `color:#FFF;${this.checkStyle || ''}`
+   }
+    
+  }
+
+  watch  = {
+  }
+
+  methods = {
+    handleTap(){
+      if(this.disable){
+        return ;
+      }
+      let newValue = !this.value;
+      this.$cmlEmit('input',{value:newValue});
+      this.$cmlEmit('change',{value:newValue})
+    }
+    
+  }
+
+  beforeCreate() {
+  }
+
+  created() {
+  }
+
+  beforeMount() {
+  }
+
+  mounted() {
+  }
+
+  beforeDestroy() {
+  }
+
+  destroyed() {
+  }
+}
+
+export default new LightCheckboxCard();
+</script>
+<style lang="less">
+@import '../../assets/css/var.less';
+.light-checkboxcard{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction:row;
+  width:750cpx;
+  box-sizing:border-box;
+  height:160cpx;
+  padding-left:48cpx;
+  padding-right:48cpx;
+}
+.ck-title{
+  width:554cpx;
+  display:flex;
+  flex-direction:column;
+
+}
+.ck-main-title{
+  font-size:32cpx;
+  color:@major-color;
+  font-weight:bold;
+}
+.ck-sub-title{
+  font-size:24cpx;
+  color:@hint-color;
+}
+.ck-img{
+  display:flex;
+  flex-direction:row;
+  flex:1;
+  justify-content:flex-end;
+}
+.checkbox-img{
+  width:36cpx;
+  height:36cpx;
+}
+.lg-ckcard-container{
+  width:36cpx;
+  height:36cpx;
+  border-radius:17cpx;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+</style>
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {
+    }
+  }
+}
+</script>

@@ -4,7 +4,8 @@
   "description": "chameleon基础组件库&接口能力",
   "scripts": {
     "build": "cml wx build && cml web build && cml weex build",
-    "publish": "sh ./bin/build.sh && cd package && npm publish",
+    "publish-npm": "sh ./bin/build.sh && node ./bin/build.js -npm && cd package && npm publish",
+    "publish-dnpm": "sh ./bin/build.sh && node ./bin/build.js -dnpm && cd package && npm publish",
     "deploy": "sh deploy.sh weex && sh deploy.sh web"
   },
   "author": "Chameleon-Team",
