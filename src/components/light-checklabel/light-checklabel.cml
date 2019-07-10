@@ -1,7 +1,11 @@
 <template>
   <view class="ck-label-root">
-    <view class="light-checklabel {{ckLabel}}" c-catch:tap="handleTap">
-      <text class="ck-label-text {{ckLabelText}}">{{labelText}}</text>
+    <view class="light-checklabel {{ckLabel}}"    c-catch:tap="handleTap"
+    style="{{labelContainerStyle}}"
+    >
+      <text class="ck-label-text {{ckLabelText}}"
+        style="{{labelTextStyle}}"
+      >{{labelText}}</text>
       <text c-if="{{hasArrow}}" class="ck-arrow"></text>
     </view>
     <!-- <view class="ck-arrow-container">
@@ -21,6 +25,14 @@ class LightChecklabel {
     value:{
       type:Boolean,
       default:false,
+    },
+    cStyle:{
+      type:String,
+      default:''
+    },
+    labelStyle:{
+      type:String,
+      default:''
     },
     label:{
       type:String,
@@ -64,6 +76,12 @@ class LightChecklabel {
      }else{
        return 'ck-text-unselected';//background: #FFFFFF;border: 1px solid #CACDD3;
      }
+   },
+   labelContainerStyle(){
+     return this.cStyle;
+   },
+   labelTextStyle(){
+     return this.labelStyle;
    }
     
   }
@@ -77,7 +95,7 @@ class LightChecklabel {
         return ;
       }
       if(this.hasArrow){
-        this.$cmlEmit('change');
+        this.$cmlEmit('onclick');
         return ;
       }
       let newValue = !this.value;

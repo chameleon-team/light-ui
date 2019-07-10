@@ -40,7 +40,6 @@ class LightCheckboxCard {
 
   data = {
     halfShow:false,
-    imgSrc:require('../../../assets/images/chameleon.jpg'),
     isChecked1:true,
     isChecked2:false
   }
