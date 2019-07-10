@@ -68,14 +68,13 @@ class Demo {
         name: "一般组件",
         open: false,
         pages: [
-          
-          routeObj["light-checkboxcard"],
-          routeObj["light-checklabel"],
-          routeObj["light-checklabelcard"],
           routeObj["light-button"],
           routeObj['light-badge'],
           routeObj['light-bartips'],
-          
+          routeObj["light-checkboxcard"],
+          routeObj["light-checklabel"],
+          routeObj["light-checklabelcard"],
+          routeObj['light-noticetips'],
         ],
         src: require(`../../assets/images/component/kind/content.png`)
       },
@@ -99,7 +98,6 @@ class Demo {
           routeObj["light-fullscreen"],
           routeObj["light-actionsheetlist"],
           routeObj['light-popup'],
-          routeObj['light-noticetips'],
           routeObj['light-alert'],
           routeObj['light-toast']
         ],
