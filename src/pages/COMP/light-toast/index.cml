@@ -1,19 +1,15 @@
 <template>
-  <page name="light-bartips">
-   <c-header title="light-bartips"></c-header>
-   <light-bartips
-      show="{{show}}"
-      height="{{80}}"
-      icon="{{icon}}"
-      zIndex="{{99}}"
-      operate-icon="{{operateIcon}}"
-      text="我是文案要简短居中我是文案要简短居中我是文案要简短居中我是文案要简短居中"
-      c-bind:onclick="handleClick"
-      c-bind:operate="handleOperate"
-    >
-    </light-bartips>  
+  <page title="{{'light-toast'}}">
+    <c-header title="light-toast"></c-header>
+    <light-toast 
+      show="{{show}}" 
+      type="{{'warn'}}"
+      message="{{'这是一段message'}}"
+      duration="{{duration}}"
+      c-bind:show="toogleShow"
+    ></light-toast>
     <view class="operator">
-      <button c-bind:onclick="toogleShow" text="切换bartips状态"></button>
+      <button c-bind:onclick="toogleShow" text="toogle toast"></button>
     </view>
   </page>
 </template>
@@ -24,29 +20,18 @@ import cml from 'chameleon-api';
 class LightBartips   {
 
   data = {
-    icon: require('./images/icon.png'),
-    operateIcon: require('./images/right_arrow.png'),
     show: false,
+    duration: 2000,
+    icon: 'http://static.didialift.com/pinche/gift/resource/avatar-6e3a1ee2154fb40aa3afb1cdec39c471.png'
   }
   computed = {
 
   }
 
   methods = {
-    handleClick() {
-      cml.showToast({
-        message: '点击了bartips',
-      })
-    },
-    handleOperate() {
-      cml.showToast({
-        message: '点击了bartips的操作符号'
-      })
-    },
     toogleShow() {
       this.show = !this.show;
     }
-
 
   }
   
@@ -57,9 +42,18 @@ export default new LightBartips();
 
 <style>
 .container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: #f8f8f8;
+}
+.content {
+  justify-content: center;
+  align-items: center;
+  background: #FFFFFF;
 }
 .operator {
-  margin-top: 40cpx;
+  margin-top: 50cpx;
   padding: 20cpx;
 }
 </style>
@@ -68,8 +62,8 @@ export default new LightBartips();
 {
   "base": {
     "usingComponents": {
-      "light-bartips": "/components/light-bartips/index",
-      "c-header": "../../components/c-header/c-header"
+      "c-header": "../../components/c-header/c-header",
+      "light-toast": "/components/light-toast/index"
     }
   },
   "wx": {

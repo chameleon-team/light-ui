@@ -1,5 +1,5 @@
 <template>
-  <view class="container">
+  <page title="light-noticetips">
     <c-header title="light-noticetips"></c-header>
     <light-noticetips
       show="{{show}}"
@@ -16,7 +16,7 @@
       <text>Tip: 当noticetip打开时，你可以上滑关闭它，也可等待它自动关闭(默认的关闭时间是5秒) </text>
     </view>
    <!-- <cml-console/> -->
-  </view>
+  </page>
 </template>
 
 <script>

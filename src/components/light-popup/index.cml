@@ -12,7 +12,7 @@
 import cml from 'chameleon-api';
 import * as utils from '../../assets/js/util';
 
-const ANIMATE_DURATION = 200;
+const ANIMATE_DURATION = 150;
 const ANIMATE_DELAY = 50;
 
 class LightPopup {
@@ -38,6 +38,11 @@ class LightPopup {
     position: {
       type: String,
       default: 'bottom'
+    },
+    // 是否开启动画， 默认开启
+    transition: {
+      type: Boolean,
+      default: true
     }
   }
 
@@ -69,6 +74,10 @@ class LightPopup {
       this.$cmlEmit('close')
     },
     async addAnimateClass() {
+      if (!this.transition) {
+        this.visible = this.show;
+        return;
+      };
       if (this.show) {
         this.animateClass = `hide-slide-out-${this.position}`;
         this.visible = true;

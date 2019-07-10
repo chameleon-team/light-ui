@@ -17,7 +17,7 @@
           c-for-index="index"
           c-bind:tap="handleItemClick(index, item.text)"
         >
-          <text class="operator-text" style="{{item.textStyle}}">{{item.text}}</text>
+          <text class="operator-text" style="{{item.textStyle || ''}}">{{item.text}}</text>
         </view>
       </view>
       <slot></slot>
