@@ -5,23 +5,24 @@
       <view c-if="{{userDefined}}">
         <slot></slot>
       </view>
-      <view 
-        c-else
+      <view c-else>
+        <view 
         c-for="{{actionLists}}" 
         class="lg-asc-list"
         c-bind:tap="handleConfirm(item,index)"
       >
         <view class="lg-asc-list-main">
-          <text class="lg-asc-list-main-text">{{item.mainTitle || ''}}</text>
-          <text c-if="{{item.tag}}" class="lg-asc-list-tag">{{item.tag || ''}}</text>
+          <text class="lg-asc-list-main-text" style="{{mainTextStyle}}">{{item.mainTitle || ''}}</text>
+          <text c-if="{{item.tag}}" class="lg-asc-list-tag" style="{{tagStyle}}">{{item.tag || ''}}</text>
         </view>
         <view>
-          <text class="lg-asc-list-sub">{{item.subTitle || ''}}</text>
+          <text class="lg-asc-list-sub" style="{{subTextStyle}}">{{item.subTitle || ''}}</text>
         </view>
+      </view>
       </view>
       <view class="lg-acs-seperate"></view>
       <view class="lg-acs-btn" c-catch:tap="handleCancel">
-        <text class="lg-acs-btn-text">{{btnText}}</text>
+        <text class="lg-acs-btn-text" style="{{btnStyle}}">{{btnText}}</text>
       </view>
     </view>
   </light-popup>
@@ -46,6 +47,23 @@ class LightActionSheetList {
     userDefined:{
       type:Boolean,
       default:false,
+    },
+    //自定义style属性接受
+    mainTextStyle:{
+      type:String,
+      default:''
+    },
+    subTextStyle:{
+      type:String,
+      default:'',
+    },
+    tagStyle:{
+      type:String,
+      default:'',
+    },
+    btnStyle:{
+      type:String,
+      default:''
     }
   }
 

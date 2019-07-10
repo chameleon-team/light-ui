@@ -5,7 +5,10 @@
       <text class="ck-sub-title">{{subTitle}}</text>
     </view>
     <view class="ck-img" c-catch:tap="handleTap">
-      <image class="checkbox-img" src="{{checkBoxImg}}"></image>
+      <!-- <image class="checkbox-img" src="{{checkBoxImg}}"></image> -->
+      <view class="lg-ckcard-container" style="{{ckContainerStyle}}">
+        <text style="{{ckTextStyle}}">✓</text>
+      </view>
     </view>
   </view>
   
@@ -34,6 +37,14 @@ class LightCheckboxCard {
     subTitle:{
       type:String,
       default:""
+    },
+    boxStyle:{ //设置box的样式
+      type:String,
+      default:"",
+    },
+    checkStyle:{ //设置对号的样式
+      type:String,
+      default:""
     }
   }
 
@@ -55,6 +66,20 @@ class LightCheckboxCard {
    },
    cardStyle(){
      return this.cStyle;
+   },
+   ckContainerStyle(){
+     let ckContainer = '';
+     if(this.disable){
+       ckContainer = `border:1cpx solid #CACDD3;`;
+     }else if(this.value){
+       ckContainer = `background-color:#1D6EF0`;
+     }else{
+       ckContainer = `border:1cpx solid #999DA7`
+     }
+     return `${ckContainer};${this.boxStyle || ''}`
+   },
+   ckTextStyle(){
+     return `color:#FFF;${this.checkStyle || ''}`
    }
     
   }
@@ -132,6 +157,14 @@ export default new LightCheckboxCard();
 .checkbox-img{
   width:36cpx;
   height:36cpx;
+}
+.lg-ckcard-container{
+  width:36cpx;
+  height:36cpx;
+  border-radius:17cpx;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 }
 
 </style>

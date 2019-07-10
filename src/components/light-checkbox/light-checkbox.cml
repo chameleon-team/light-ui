@@ -1,6 +1,9 @@
 <template>
   <view class="light-checkbox" c-catch:tap="handleTap">
-    <image class="checkbox-img" src="{{checkBoxImg}}"></image>
+    <view class="lg-ck-container" style="{{ckContainerStyle}}">
+      <text style="{{ckTextStyle}}">✓</text>
+    </view>
+    <!-- <image class="checkbox-img" src="{{checkBoxImg}}"></image> -->
   </view>
   
 </template>
@@ -18,7 +21,16 @@ class LightCheckbox {
     value:{
       type:Boolean,
       default:false,
+    },
+    boxStyle:{ //设置box的样式
+      type:String,
+      default:"",
+    },
+    checkStyle:{ //设置对号的样式
+      type:String,
+      default:""
     }
+    
   }
 
   data = {
@@ -36,6 +48,20 @@ class LightCheckbox {
      }else{
        return this.unselectedImg
      }
+   },
+   ckContainerStyle(){
+     let ckContainer = '';
+     if(this.disable){
+       ckContainer = `border:1cpx solid #CACDD3;`;
+     }else if(this.value){
+       ckContainer = `background-color:#1D6EF0`;
+     }else{
+       ckContainer = `border:1cpx solid #999DA7`
+     }
+     return `${ckContainer};${this.boxStyle || ''}`
+   },
+   ckTextStyle(){
+     return `color:#FFF;${this.checkStyle || ''}`
    }
     
   }
@@ -87,7 +113,23 @@ export default new LightCheckbox();
   width:36cpx;
   height:36cpx;
 }
+.lg-ck-container{
+  width:36cpx;
+  height:36cpx;
+  border-radius:17cpx;
+  display:flex;
+  justify-content: center;
+  align-items: center;
 
+}
+.lg-ck-check{
+  width:12cpx;
+  height:20cpx;
+  border-color: #FFF;
+  border-style: solid;
+  border-width: 0 2cpx 2cpx 0;//weex不支持，所以只能用图片或者对号
+  transform: rotate(45deg);
+}
 </style>
 <script cml-type="json">
 {
