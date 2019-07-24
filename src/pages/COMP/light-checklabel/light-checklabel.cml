@@ -35,7 +35,7 @@
   <view class="checkbox-container">
     <text>value传递-默认不选中</text>
     <light-checklabel
-    label="选项文案最长不能查过14个，字数超过14个的用省略号代替"
+    label="我是选项"
     value="{{isChecked3}}"
     c-bind:onclick="handleChange3"
     >

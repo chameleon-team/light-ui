@@ -9,7 +9,14 @@
   <light-checklabelcard
     card-title="我是标题"
     labels="{{labels}}"
+    c-bind:onclick="handleChange"
+    >
+    </light-checklabelcard>
+    <light-checklabelcard
+    card-title="我是标题1"
+    labels="{{labels1}}"
     c-bind:onclick="handleChange1"
+    labels-wrap-style="justify-content:space-around"
     >
     </light-checklabelcard>
     <light-checklabelcard
@@ -50,6 +57,18 @@ class LightChecklabelCard {
 
     },{
       label:'文案2',
+      isChecked:false,
+    }],
+    labels1:[{
+      label:'选项文案1',
+      isChecked:false,
+      disable:true,
+
+    },{
+      label:'选项文案2',
+      isChecked:false,
+    },{
+      label:'选项文案3',
       isChecked:false,
     }],
     labels2:[
@@ -213,10 +232,15 @@ class LightChecklabelCard {
   }
 
   methods = {
-    handleChange1(e){
+    handleChange(e){
       console.log('e',e);
       console.log('this.labels[e.detail.index]',this.labels[e.detail.index]);
       this.labels[e.detail.index].isChecked = !this.labels[e.detail.index].isChecked 
+    },
+    handleChange1(e){
+      console.log('e',e);
+      console.log('this.labels[e.detail.index]',this.labels[e.detail.index]);
+      this.labels1[e.detail.index].isChecked = !this.labels1[e.detail.index].isChecked 
     },
     handleChange2(e){
       console.log('e',e);

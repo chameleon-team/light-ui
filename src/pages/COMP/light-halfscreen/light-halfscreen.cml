@@ -2,8 +2,14 @@
 <page title="light-halfscreen">
   <view class="container">
     <c-header title="light-halfscreen"></c-header>
-    <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
-      <text c-bind:tap="handleTap">打开半屏弹窗</text>
+    <view style="color:#35406B;display:flex;justify-content:center;align-items:center;height:100cpx;">
+      <text c-bind:tap="handleTap">打开半屏弹窗-两行标题</text>
+    </view>
+    <view style="color:#35406B;display:flex;justify-content:center;align-items:center;height:100cpx;">
+      <text c-bind:tap="handleTap1">打开半屏弹窗-一行标题</text>
+    </view>
+    <view style="color:#35406B;display:flex;justify-content:center;align-items:center;height:100cpx;">
+      <text c-bind:tap="handleTap2">打开半屏弹窗-无副标题</text>
     </view>
 
     <light-halfscreen 
@@ -13,13 +19,32 @@
       c-bind:cancel="handleCancel"
       confirm-text="主要操作"
       cancel-text="次要操作"
-      cancel-style="color:green"
       main-title="主标题主标题主标题主标题主标题主标题主标题主标题"
       sub-title="副标题"
       >
       <view style="height:400cpx;"><text>this is content</text></view>
     </light-halfscreen>
-
+    <light-halfscreen 
+      show="{{halfShow1}}" 
+      c-bind:close="closeHalfScreen1"
+      c-bind:confirm="handleConfirm"
+      c-bind:cancel="handleCancel"
+      confirm-text="主要操作"
+      main-title="主标题主标题主标题主"
+      sub-title="副标题"
+      >
+      <view style="height:400cpx;"><text>this is content</text></view>
+    </light-halfscreen>
+    <light-halfscreen 
+      show="{{halfShow2}}" 
+      c-bind:close="closeHalfScreen2"
+      c-bind:confirm="handleConfirm"
+      c-bind:cancel="handleCancel"
+      confirm-text="主要操作"
+      main-title="主标题主标题主标题主"
+      >
+      <view style="height:400cpx;"><text>this is content</text></view>
+    </light-halfscreen>
   </view>
 </page>
 </template>
@@ -28,6 +53,8 @@ class LightHalfscreen {
 
   data = {
     halfShow:false,
+    halfShow1:false,
+    halfShow2:false,
     imgSrc:require('../../../assets/images/chameleon.jpg')
   }
 
@@ -43,6 +70,18 @@ class LightHalfscreen {
     },
     handleTap(){
       this.halfShow = true;
+    },
+    closeHalfScreen1(){
+      this.halfShow1 = false;
+    },
+    handleTap1(){
+      this.halfShow1 = true;
+    },
+    closeHalfScreen2(){
+      this.halfShow2 = false;
+    },
+    handleTap2(){
+      this.halfShow2 = true;
     },
     handleConfirm(){
       console.log('handleConfirm');

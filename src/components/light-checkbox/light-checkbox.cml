@@ -1,9 +1,9 @@
 <template>
   <view class="light-checkbox" c-catch:tap="handleTap">
-    <view class="lg-ck-container" style="{{ckContainerStyle}}">
-      <text style="{{ckTextStyle}}">✓</text>
+    <image  c-if="{{useCheckImg}}" class="checkbox-img" src="{{checkBoxImg}}"></image>
+    <view c-else class="lg-ck-container" style="{{ckContainerStyle}}">
+      <text style="{{ckTextStyle}}" >✓</text>
     </view>
-    <!-- <image class="checkbox-img" src="{{checkBoxImg}}"></image> -->
   </view>
   
 </template>
@@ -29,6 +29,10 @@ class LightCheckbox {
     checkStyle:{ //设置对号的样式
       type:String,
       default:""
+    },
+    useCheckImg:{
+      type:Boolean,
+      default:true,
     }
     
   }
@@ -127,8 +131,12 @@ export default new LightCheckbox();
   height:20cpx;
   border-color: #FFF;
   border-style: solid;
-  border-width: 0 2cpx 2cpx 0;//weex不支持，所以只能用图片或者对号
-  transform: rotate(45deg);
+  // border-width: 0 2cpx 2cpx 0;//weex不支持，所以只能用图片或者对号
+  border-top-width:0cpx;
+  border-right-width:2cpx;
+  border-bottom-width:2cpx;
+  border-left-width:0cpx;
+  transform:translate(0cpx,-3cpx) rotate(45deg)
 }
 </style>
 <script cml-type="json">

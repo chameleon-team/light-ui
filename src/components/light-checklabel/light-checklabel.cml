@@ -148,6 +148,7 @@ export default new LightChecklabel();
 }
 .ck-label-selected{
   border: 1cpx solid #1D6EF0;
+  background-color:#F0F6FF;
 }
 .ck-text-unavailable{
   color:@unable-color;

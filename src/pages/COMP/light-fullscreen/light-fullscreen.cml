@@ -2,8 +2,11 @@
 <page title="light-fullscreen">
   <view class="container">
     <c-header title="light-fullscreen"></c-header>
-    <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
+    <view style="color:#35406B;display:flex;justify-content:center;align-items:center;height:100cpx;">
       <text c-bind:tap="handleTap">打开全屏弹窗</text>
+    </view>
+    <view style="color:#35406B;display:flex;justify-content:center;align-items:center;height:100cpx;">
+      <text c-bind:tap="handleTap1">打开全屏弹窗-一个按钮</text>
     </view>
 
     <light-fullscreen 
@@ -13,7 +16,15 @@
       c-bind:cancel="handleCancel"
       confirm-text="主要操作"
       cancel-text="次要操作"
-      cancel-style="color:green"
+      >
+      <view style="height:600cpx;" class="content"><text>this is content</text></view>
+    </light-fullscreen>
+     <light-fullscreen 
+      show="{{halfShow1}}" 
+      c-bind:close="closeFullScreen1"
+      c-bind:confirm="handleConfirm"
+      c-bind:cancel="handleCancel"
+      confirm-text="主要操作"
       >
       <view style="height:600cpx;" class="content"><text>this is content</text></view>
     </light-fullscreen>
@@ -26,6 +37,7 @@ class LightFullscreen {
 
   data = {
     halfShow:false,
+    halfShow1:false,
     imgSrc:require('../../../assets/images/chameleon.jpg')
   }
 
@@ -41,6 +53,12 @@ class LightFullscreen {
     },
     handleTap(){
       this.halfShow = true;
+    },
+    closeFullScreen1(){
+      this.halfShow1 = false;
+    },
+    handleTap1(){
+      this.halfShow1= true;
     },
     handleConfirm(){
       console.log('handleConfirm');

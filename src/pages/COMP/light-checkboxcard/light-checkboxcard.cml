@@ -26,8 +26,9 @@
   </view>
   <view class="checkbox-container">
     <light-checkboxcard
-     main-title="我是主标题"
+      main-title="我是主标题"
       sub-title="我是副标题"
+      main-title-style="font-size:30cpx;"
       c-model="{{isChecked2}}"
       c-bind:change="handleChange2"
     >

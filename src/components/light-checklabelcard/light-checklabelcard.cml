@@ -1,9 +1,9 @@
 <template>
   <view class="light-checklabelcard" style="{{cardStyle}}">
-    <view  c-if="{{cardTitle}}"><text class="cd-title">{{cardTitle}}</text></view>
-    <view class="cd-labels">
+    <view  c-if="{{cardTitle}}"><text class="cd-title" style="{{cardTitleStyle}}">{{cardTitle}}</text></view>
+    <view class="cd-labels" style="{{labelsWrapStyle}}">
         <view class="cd-label"
-        c-for="{{labels}}">
+        c-for="{{labels}}" style="{{labelStyle}}">
           <light-checklabel 
             index="{{index}}"
             label="{{item.label}}"
@@ -32,6 +32,18 @@ class LightChecklabelCard {
     cStyle:{
       type:String,
       default:''
+    },
+    cardTitleStyle:{
+      type:String,
+      default:'',
+    },
+    labelsWrapStyle:{
+      type:String,
+      default:''
+    },
+    labelStyle:{
+      type:String,
+      default:""
     }
   }
 
