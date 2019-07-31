@@ -1,5 +1,5 @@
 <template>
-  <page name="light-bartips">
+  <page title="light-bartips">
    <c-header title="light-bartips"></c-header>
    <light-bartips
       show="{{show}}"
