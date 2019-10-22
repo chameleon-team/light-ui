@@ -1,5 +1,5 @@
 {
-  "name": "cml-ui",
+  "name": "light-ui",
   "version": "0.0.5",
   "description": "chameleon基础组件库&接口能力",
   "scripts": {
@@ -13,9 +13,9 @@
   "email": "ChameleonCore@didiglobal.com",
   "dependencies": {
     "@didi/cml-console": "0.0.5",
-    "chameleon-api": "^0.4.1",
-    "chameleon-runtime": "^0.2.0-alpha.0",
-    "chameleon-store": "~0.0.3",
-    "chameleon-ui-builtin": "^0.1.2"
+    "chameleon-api": "^1.0.1",
+    "chameleon-runtime": "^1.0.0",
+    "chameleon-store": "^1.0.0",
+    "chameleon-ui-builtin": "^1.0.3"
   }
 }
