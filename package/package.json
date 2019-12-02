@@ -1,5 +1,5 @@
 {
-  "name": "@didi/light-cml-ui",
+  "name": "light-cml-ui",
   "version": "0.0.1",
   "description": "light-ui组件库",
   "main": "/components",

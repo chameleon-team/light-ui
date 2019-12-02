@@ -30,7 +30,7 @@
 
 <script>
 // TODO: 支付宝小程序 touch 时有bug，待跟进
-import cml from '@didi/chameleon-api';
+import cml from 'chameleon-api';
 
 let _timer;
 const CHECK_THRESHOLD = 100; // 滑动检查阈值, 超过阈值才算是有效滑动，单位cpx
