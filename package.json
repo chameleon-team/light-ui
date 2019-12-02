@@ -3,8 +3,6 @@
   "version": "0.0.5",
   "description": "chameleon基础组件库&接口能力",
   "scripts": {
-    "publish-npm": "npm run build-npm  && cd package && npm publish",
-    "publish-dnpm": "npm run build-dnpm && cd package && npm publish",
     "build-dnpm": "sh ./bin/build.sh dnpm && node ./bin/build.js --dnpm",
     "build-npm": "sh ./bin/build.sh npm && node ./bin/build.js --npm"
   },
