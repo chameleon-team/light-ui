@@ -1,12 +1,12 @@
 <template>
   <view class="light-checkboxcard" style="{{cardStyle}}">
     <view class="ck-title">
-      <text class="ck-main-title">{{mainTitle}}</text>
-      <text class="ck-sub-title">{{subTitle}}</text>
+      <text class="ck-main-title" style="{{cMainTitleStyle}}">{{mainTitle}}</text>
+      <text class="ck-sub-title" style="{{cSubTitleStyle}}">{{subTitle}}</text>
     </view>
     <view class="ck-img" c-catch:tap="handleTap">
-      <!-- <image class="checkbox-img" src="{{checkBoxImg}}"></image> -->
-      <view class="lg-ckcard-container" style="{{ckContainerStyle}}">
+      <image c-if="{{useCheckImg}}" class="checkbox-img" src="{{checkBoxImg}}"></image>
+      <view c-else class="lg-ckcard-container" style="{{ckContainerStyle}}">
         <text style="{{ckTextStyle}}">✓</text>
       </view>
     </view>
@@ -34,6 +34,14 @@ class LightCheckboxCard {
       type:String,
       default:'',
     },
+    mainTitleStyle:{
+      type:String,
+      default:''
+    },
+    subTitleStyle:{
+      type:String,
+      default:''
+    },
     subTitle:{
       type:String,
       default:""
@@ -45,6 +53,10 @@ class LightCheckboxCard {
     checkStyle:{ //设置对号的样式
       type:String,
       default:""
+    },
+    useCheckImg:{
+      type:Boolean,
+      default:true,
     }
   }
 
@@ -80,6 +92,18 @@ class LightCheckboxCard {
    },
    ckTextStyle(){
      return `color:#FFF;${this.checkStyle || ''}`
+   },
+   cMainTitleStyle(){
+     if(this.disable){
+       return `color:#CACDD3;${this.mainTitleStyle}`
+     }
+     return this.mainTitleStyle
+   },
+   cSubTitleStyle(){
+     if(this.disable){
+       return `color:#CACDD3;${this.subTitleStyle};`
+     }
+     return this.subTitleStyle
    }
     
   }
@@ -142,7 +166,6 @@ export default new LightCheckboxCard();
 .ck-main-title{
   font-size:32cpx;
   color:@major-color;
-  font-weight:bold;
 }
 .ck-sub-title{
   font-size:24cpx;

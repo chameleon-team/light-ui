@@ -1,12 +1,13 @@
 {
-  "name": "gentle-ui",
+  "name": "light-cml-ui",
   "version": "0.0.5",
   "description": "chameleon基础组件库&接口能力",
   "scripts": {
     "build": "cml wx build && cml web build && cml weex build",
     "publish-npm": "sh ./bin/build.sh && node ./bin/build.js -npm && cd package && npm publish",
     "publish-dnpm": "sh ./bin/build.sh && node ./bin/build.js -dnpm && cd package && npm publish",
-    "deploy": "sh deploy.sh weex && sh deploy.sh web"
+    "deploy": "sh deploy.sh weex && sh deploy.sh web",
+    "test":"sh ./bin/build.sh dnpm"
   },
   "author": "Chameleon-Team",
   "license": "Apache",

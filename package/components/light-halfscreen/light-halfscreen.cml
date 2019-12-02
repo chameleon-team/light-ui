@@ -49,7 +49,7 @@ class LightHalfScreen {
   props = {
     show:{
       type:Boolean,
-      default:true,
+      default:false,
     },
     imgSrc:{
       type:String,
