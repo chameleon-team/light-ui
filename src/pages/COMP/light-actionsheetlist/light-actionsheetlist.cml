@@ -38,7 +38,6 @@ class LightActionsheetshit {
   data = {
     halfShow:false,
     useDefineShow:false,
-    imgSrc:require('../../../assets/images/chameleon.jpg'),
     actionLists:[
       {
         mainTitle:"选项操作一",
