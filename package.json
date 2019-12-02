@@ -3,11 +3,10 @@
   "version": "0.0.5",
   "description": "chameleon基础组件库&接口能力",
   "scripts": {
-    "build": "cml wx build && cml web build && cml weex build",
-    "publish-npm": "sh ./bin/build.sh && node ./bin/build.js -npm && cd package && npm publish",
-    "publish-dnpm": "sh ./bin/build.sh && node ./bin/build.js -dnpm && cd package && npm publish",
-    "deploy": "sh deploy.sh weex && sh deploy.sh web",
-    "test":"sh ./bin/build.sh dnpm"
+    "publish-npm": "npm run build-npm  && cd package && npm publish",
+    "publish-dnpm": "npm run build-dnpm && cd package && npm publish",
+    "build-dnpm": "sh ./bin/build.sh dnpm && node ./bin/build.js --dnpm",
+    "build-npm": "sh ./bin/build.sh npm && node ./bin/build.js --npm"
   },
   "author": "Chameleon-Team",
   "license": "Apache",
@@ -18,5 +17,8 @@
     "chameleon-runtime": "^1.0.0",
     "chameleon-store": "^1.0.0",
     "chameleon-ui-builtin": "^1.0.3"
+  },
+  "devDependencies": {
+    "optimist": "^0.6.1"
   }
 }

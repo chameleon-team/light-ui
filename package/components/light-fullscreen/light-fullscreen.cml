@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import cml from '@didi/chameleon-api.';
+import cml from '@didi/chameleon-api';
 class LightFullScreen {
   props = {
     show:{

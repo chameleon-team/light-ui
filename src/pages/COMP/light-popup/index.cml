@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import cml from 'chameleon-api';
 const direction = ['left', 'top', 'right', 'bottom', 'center'];
 let clickTime = 0;
 
