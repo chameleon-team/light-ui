@@ -1,0 +1,183 @@
+<template>
+  <view class="ck-label-root">
+    <view class="light-checklabel {{ckLabel}}"    c-catch:tap="handleTap"
+    style="{{labelContainerStyle}}"
+    >
+      <text class="ck-label-text {{ckLabelText}}"
+        style="{{labelTextStyle}}"
+      >{{labelText}}</text>
+      <text c-if="{{hasArrow}}" class="ck-arrow"></text>
+    </view>
+    <!-- <view class="ck-arrow-container">
+    </view> -->
+  </view>
+  
+</template>
+
+<script>
+
+class LightChecklabel {
+  props = {
+    disable:{
+      type:Boolean,
+      default:false,
+    },
+    value:{
+      type:Boolean,
+      default:false,
+    },
+    cStyle:{
+      type:String,
+      default:''
+    },
+    labelStyle:{
+      type:String,
+      default:''
+    },
+    label:{
+      type:String,
+      default:""
+    },
+    hasArrow:{
+      type:Boolean,
+      default:false,
+    },
+    index:{ //当用于checkboxard的时候，该字段用于标记数组中赋值某个label的value
+      type:Number,
+      default:-1
+    }
+  }
+
+  data = {
+  }
+
+  computed = {
+    labelText(){
+      if(this.label.length < 14){
+        return this.label
+      }else{
+        return `${this.label.slice(0,13)}...`
+      }
+    },
+    ckLabel(){
+     if(this.disable){//border: 1px solid #ECEDF0;
+       return 'ck-label-unavailable';
+     }else if(this.value){//
+       return 'ck-label-selected'
+     }else{
+       return 'ck-label-unselected';//background: #FFFFFF;border: 1px solid #CACDD3;
+     }
+   },
+    ckLabelText(){
+     if(this.disable){//border: 1px solid #ECEDF0;
+       return 'ck-text-unavailable';
+     }else if(this.value){//
+       return 'ck-text-selected'
+     }else{
+       return 'ck-text-unselected';//background: #FFFFFF;border: 1px solid #CACDD3;
+     }
+   },
+   labelContainerStyle(){
+     return this.cStyle;
+   },
+   labelTextStyle(){
+     return this.labelStyle;
+   }
+    
+  }
+
+  watch  = {
+  }
+
+  methods = {
+    handleTap(){
+      if(this.disable){
+        return ;
+      }
+      if(this.hasArrow){
+        this.$cmlEmit('onclick');
+        return ;
+      }
+      let newValue = !this.value;
+      this.$cmlEmit('input',{value:newValue,index:this.index});
+      this.$cmlEmit('onclick',{value:newValue,index:this.index});
+    }
+    
+  }
+
+  beforeCreate() {
+  }
+
+  created() {
+  }
+
+  beforeMount() {
+  }
+
+  mounted() {
+  }
+
+  beforeDestroy() {
+  }
+
+  destroyed() {
+  }
+}
+
+export default new LightChecklabel();
+</script>
+<style lang="less">
+@import '../../assets/css/var.less';
+.ck-label-root{
+  position:relative;
+}
+.light-checklabel{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction:row;
+  height:64cpx;
+  padding-left:24cpx;
+  padding-right:24cpx;
+}
+.ck-label-unavailable{
+  border: 1cpx solid #ECEDF0;
+}
+.ck-label-unselected{
+  border: 1cpx solid #CACDD3;
+}
+.ck-label-selected{
+  border: 1cpx solid #1D6EF0;
+  background-color:#F0F6FF;
+}
+.ck-text-unavailable{
+  color:@unable-color;
+}
+.ck-text-unselected{
+  color:@minor-color;
+}
+.ck-text-selected{
+  color:@first-color;
+}
+.ck-label-text{
+  font-size:24cpx;
+
+}
+
+.ck-arrow{
+  width: 14cpx;
+  height: 14cpx;
+  border-top: 2cpx solid #999DA7;
+  border-right: 2cpx solid #999DA7;
+  transform: rotate(45deg);
+}
+
+</style>
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {
+    }
+  }
+}
+</script>

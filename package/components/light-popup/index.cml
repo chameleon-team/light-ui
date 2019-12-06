@@ -1,0 +1,217 @@
+<template>
+  <view c-if="{{visible}}" class="{{popupClass}}" style="{{popupStyle}}">
+    <view class="mask" c-if="{{mask}}" c-catch:tap="handleHide"></view>
+    <view class="popup-main {{positionClass}} {{animateClass}}">
+      <slot></slot>
+    </view>
+  </view>
+</template>
+
+<script>
+
+import cml from 'chameleon-api';
+import * as utils from '../../assets/js/util';
+
+const ANIMATE_DURATION = 150;
+const ANIMATE_DELAY = 50;
+
+class LightPopup {
+
+  props = {
+    show: {
+      type: Boolean,
+      default: false
+    },
+    // mask为false时，页面的其余部分时可操作的
+    mask: {
+      type: Boolean,
+      default: true
+    },
+    zIndex: {
+      type: Number,
+      default: 9
+    },
+    // ['top', 'left', 'right', 'bottom', 'center']
+    //  left/right时弹出时容器必须有宽度
+    //  top/bottom时容器必须有高度
+    //  center时容器必须有宽高
+    position: {
+      type: String,
+      default: 'bottom'
+    },
+    // 是否开启动画， 默认开启
+    transition: {
+      type: Boolean,
+      default: true
+    }
+  }
+
+  data = {
+    animateClass: '',
+    visible: false
+  }
+
+  computed = {
+    positionClass() {
+      return `position-${this.position}`;
+    },
+    popupClass() {
+      return (this.mask || this.position === 'center') ? 'popup-with-mask' : ''
+    },
+    popupStyle() {
+      return (this.mask || this.position === 'center') ? `z-index: ${this.zIndex || 9}` : ''
+    }
+  }
+
+  watch  = {
+    show() {
+      this.addAnimateClass()
+    },
+  }
+
+  methods = {
+    handleHide() {
+      this.$cmlEmit('close')
+    },
+    async addAnimateClass() {
+      if (!this.transition) {
+        this.visible = this.show;
+        return;
+      };
+      if (this.show) {
+        this.animateClass = `hide-slide-out-${this.position}`;
+        this.visible = true;
+        await utils.wait(ANIMATE_DELAY); // 兼容小程序与weex, 不能wait(0)
+        this.animateClass = `show-slide-out-${this.position}`;
+      } else {
+        this.animateClass = `hide-slide-out-${this.position}`;
+        await utils.wait(ANIMATE_DURATION);
+        this.visible = false;
+      }
+    }
+  }
+
+  mounted() {
+    this.addAnimateClass();
+  }
+}
+
+export default new LightPopup();
+</script>
+<style scope lang="less">
+@import "../../assets/css/var.less";
+.mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgba(0, 0, 0, .3);
+}
+.popup-with-mask {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+}
+@media cml-type(weex) {
+  .popup-main {
+    // weex 端不支持scale
+    transition-property: transform, opacity;
+    transition-duration:  200ms;
+    transition-delay: 0ms;
+    // weex bug: 一定要指定timing-function，否则位移过后不能回到指定位置
+    transition-timing-function: ease; 
+    overflow: hidden;
+  }
+}
+@media cml-type(web, wx, alipay, baidu) {
+  .popup-main {
+    transition-property: transform, opacity, scale;
+    transition-duration:  200ms;
+    transition-delay: 0ms;
+    overflow: hidden;
+  }
+}
+// 从中间显示
+.position-center {
+  position: absolute;
+}
+.show-slide-out-center {
+  transform: scale(1, 1);
+  opacity: 1;
+}
+.hide-slide-out-center {
+  transform: scale(0, 0);
+  opacity: 0;
+}
+
+// 从上滑出
+.position-top {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+}
+.show-slide-out-top {
+  transform: translateY(0);
+}
+.hide-slide-out-top {
+  transform: translateY(-100%)
+}
+// 从左滑出
+.position-left {
+  position: fixed;
+  left: 0;
+  bottom:0;
+  top: 0;
+  flex-direction: row;
+}
+.show-slide-out-left {
+  transform: translateX(0)
+}
+.hide-slide-out-left {
+  transform: translateX(-100%);
+}
+// 从右滑出
+.position-right {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  flex-direction: row;
+}
+.show-slide-out-right {
+  transform: translateX(0)
+}
+.hide-slide-out-right {
+  transform: translateX(100%);
+}
+
+// 从下滑出
+.position-bottom {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.show-slide-out-bottom {
+  transform: translateY(0)
+}
+.hide-slide-out-bottom{
+  transform: translateY(100%);
+}
+
+
+
+</style>
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {}
+  }
+}
+</script>
