@@ -1,13 +1,13 @@
 {
   "name": "light-cml-ui",
   "version": "0.0.5",
-  "description": "chameleon基础组件库&接口能力",
+  "description": "丰富chameleon组件生态",
   "scripts": {
     "build-dnpm": "sh ./bin/build.sh dnpm && node ./bin/build.js --dnpm",
     "build-npm": "sh ./bin/build.sh npm && node ./bin/build.js --npm"
   },
   "author": "Chameleon-Team",
-  "license": "Apache",
+  "license": "Apache 2.0",
   "email": "ChameleonCore@didiglobal.com",
   "dependencies": {
     "@didi/cml-console": "0.0.5",
