@@ -4,8 +4,8 @@
   "routes":[
     {
       "url": "/",
-      "path": "/pages/index/index",
-      "name": "首页",
+      "path": "/pages/index/new-index",
+      "name": "index",
       "mock": "index.php"
     },
     {
