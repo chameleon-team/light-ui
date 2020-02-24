@@ -68,7 +68,7 @@ export default new LightBartips();
 {
   "base": {
     "usingComponents": {
-      "light-bartips": "/components/light-bartips/index",
+      "light-bartips": "/components/light-bartips/light-bartips",
       "c-header": "../../components/c-header/c-header"
     }
   },

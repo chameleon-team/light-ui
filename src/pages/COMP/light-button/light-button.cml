@@ -149,7 +149,7 @@ export default new LightButton();
     "base": {
         "usingComponents": {
           "c-header": "../../components/c-header/c-header",
-          "light-button": "/components/light-button/index"
+          "light-button": "/components/light-button/light-button"
         },
         "navigationBarTitleText": "c-toast",
         "backgroundTextStyle": "dark",

@@ -268,7 +268,7 @@ export default new LightNoticeTips();
 {
   "base": {
     "usingComponents": {
-      "light-popup": "/components/light-popup/index"
+      "light-popup": "/components/light-popup/light-popup"
     }
   }
 }

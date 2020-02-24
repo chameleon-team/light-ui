@@ -117,7 +117,7 @@ export default new LightToast();
 {
     "base": {
         "usingComponents": {
-          "c-popup": "../light-popup/index"
+          "c-popup": "../light-popup/light-popup"
         },
         "component": true
     }

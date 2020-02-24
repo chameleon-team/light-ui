@@ -63,7 +63,7 @@ export default new LightNoticeTips();
 {
   "base": {
     "usingComponents": {
-      "light-noticetips": "/components/light-noticetips/index",
+      "light-noticetips": "/components/light-noticetips/light-noticetips",
       "c-header": "../../components/c-header/c-header"
     }
   },

@@ -98,7 +98,7 @@ export default new LigthSwitch();
     "base": {
         "usingComponents": {
           "c-header": "../../components/c-header/c-header",
-          "light-switch": "/components/light-switch/index"
+          "light-switch": "/components/light-switch/light-switch"
         },
         "navigationBarTitleText": "c-toast",
         "backgroundTextStyle": "dark",

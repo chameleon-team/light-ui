@@ -106,7 +106,7 @@ export default new LightButton();
     "base": {
         "usingComponents": {
           "c-header": "../../components/c-header/c-header",
-          "light-alert": "/components/light-alert/index"
+          "light-alert": "/components/light-alert/light-alert"
         },
         "navigationBarTitleText": "c-toast",
         "backgroundTextStyle": "dark",

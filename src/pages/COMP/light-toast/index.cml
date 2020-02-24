@@ -62,7 +62,7 @@ export default new LightBartips();
   "base": {
     "usingComponents": {
       "c-header": "../../components/c-header/c-header",
-      "light-toast": "/components/light-toast/index"
+      "light-toast": "/components/light-toast/light-toast"
     }
   },
   "wx": {

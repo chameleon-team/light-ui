@@ -219,7 +219,7 @@ export default new LightFullScreen();
 {
   "base": {
     "usingComponents": {
-      "light-popup": "../light-popup/index"
+      "light-popup": "../light-popup/light-popup"
     }
   }
 }

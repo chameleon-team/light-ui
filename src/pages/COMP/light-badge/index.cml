@@ -106,7 +106,7 @@ export default new LightBadge();
     "base": {
         "usingComponents": {
           "c-header": "../../components/c-header/c-header",
-          "light-badge": "/components/light-badge/index"
+          "light-badge": "/components/light-badge/light-badge"
         },
         "navigationBarTitleText": "c-toast",
         "backgroundTextStyle": "dark",
