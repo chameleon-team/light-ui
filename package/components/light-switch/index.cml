@@ -28,7 +28,7 @@ class LightSwitch {
       default: false
     },
     theme: {
-      type: String, // 颜色， 默认为顺风车品牌色
+      type: String, // 颜色
       default: '#1D6EF0' 
     },
     width: {

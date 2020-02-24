@@ -1,7 +1,29 @@
+# badge
+
+-------
+
+badge图标
+
+### 属性
+
+
+
+| 属性名    | 类型           | 必填 | 默认值   | 说明                                         |
+| --------- | -------------- | ---- | -------- | -------------------------------------------- |
+| value     | String、Number | 否   | 0        | badge里面要显示的内容                        |
+| max       | Number         | 否   | 99       | 当value值大于max的时候，显示文本为` ...`     |
+| show-zero | Boolean        | 否   | false    | 当value值为0的时候是否显示                   |
+| is-dot    | Boolean        | 否   | false    | badge图标是否为一个点                        |
+| theme     | String         | 否   | \#ED5050 | badge图标的背景颜色                          |
+| size      | String         | 否   | large    | 可选值为'large'(32x32cpx) 'small' (24x24cpx) |
+| offset    | Array [x,y]    | 否   | [0,0]    | badge图标相对于原来位置的偏移量              |
+
+### 示例
+
+```vue
 <template>
 <page title="light-badge">
   <scroller height="{{-1}}">
-    <c-header title="light-badge"></c-header>
     <view class="badge-container" c-for="{{badgeData}}">
       <view class="badge-desc">
         <text>{{item.desc}}</text>
@@ -107,8 +129,6 @@ export default new LightBadge();
 {
     "base": {
         "usingComponents": {
-          "c-header": "../../components/c-header/c-header",
-          "light-badge": "/components/light-badge/light-badge"
         },
         "navigationBarTitleText": "c-toast",
         "backgroundTextStyle": "dark",
@@ -116,3 +136,5 @@ export default new LightBadge();
     }
 }
 </script>
+
+```

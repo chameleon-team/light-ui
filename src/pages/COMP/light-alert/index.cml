@@ -20,7 +20,7 @@
 </template>
 <script>
 import cml from 'chameleon-api';
-class LightButton {
+class LightAlert {
 
   data = {
     show: false,
@@ -87,7 +87,7 @@ class LightButton {
   }
 }
 
-export default new LightButton();
+export default new LightAlert();
 </script>
 <style scoped>
 .container {

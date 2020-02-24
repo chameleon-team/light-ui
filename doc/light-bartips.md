@@ -1,0 +1,118 @@
+# Bartips
+
+-------
+
+Bartips 提示
+
+### 属性
+
+
+
+| 属性名         | 类型         | 必填 | 默认值   | 说明                        |
+| -------------- | ------------ | ---- | -------- | --------------------------- |
+| show           | Boolean      | 是   | false    | bartips是否显示             |
+| height         | Number       | 否   | 80       | bartips的高度，默认80cpx    |
+| theme          | String       | 否   | \#35406B | bartips的背景色             |
+| icon           | String       | 否   | ''       | bartips的左边展示图标       |
+| operate-icon   | String       | 否   | ''       | bartips的右边操作图标       |
+| c-bind:onclick | EventHandler |      |          | bartips点击事件             |
+| c-bind:operate | EventHandler |      |          | bartips右边操作图标点击事件 |
+
+### 示例
+
+```vue
+<template>
+  <page title="light-bartips">
+   <light-bartips
+      show="{{show}}"
+      height="{{80}}"
+      icon="{{icon}}"
+      zIndex="{{99}}"
+      operate-icon="{{operateIcon}}"
+      text="我是文案要简短居中我是文案要简短居中我是文案要简短居中我是文案要简短居中"
+      c-bind:onclick="handleClick"
+      c-bind:operate="handleOperate"
+    >
+    </light-bartips>  
+    <view class="operator">
+      <button c-bind:onclick="toogleShow" text="切换bartips状态"></button>
+    </view>
+  </page>
+</template>
+
+<script>
+import cml from 'chameleon-api';
+
+class LightBartips   {
+
+  data = {
+    icon: require('./images/icon.png'),
+    operateIcon: require('./images/right_arrow.png'),
+    show: false,
+  }
+  computed = {
+
+  }
+
+  methods = {
+    handleClick() {
+      cml.showToast({
+        message: '点击了bartips',
+      })
+    },
+    handleOperate() {
+      cml.showToast({
+        message: '点击了bartips的操作符号'
+      })
+    },
+    toogleShow() {
+      this.show = !this.show;
+    }
+
+
+  }
+  
+}
+
+export default new LightBartips();
+</script>
+
+<style>
+.container {
+}
+.operator {
+  margin-top: 40cpx;
+  padding: 20cpx;
+}
+</style>
+
+<script cml-type="json">
+{
+  "base": {
+    "usingComponents": {
+    }
+  },
+  "wx": {
+    "navigationBarTitleText": "index",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#E2E2E2"
+  },
+  "alipay": {
+    "defaultTitle": "index",
+    "pullRefresh": false,
+    "allowsBounceVertical": "YES",
+    "titleBarColor": "#ffffff"
+  },
+  "baidu": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "index",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50
+  }
+}
+</script>
+
+```

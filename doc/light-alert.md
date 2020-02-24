@@ -8,108 +8,126 @@ alert弹层
 
 
 
-| 属性名             | 类型         | 必填 | 默认值 | 说明                                                     |
-| ------------------ | ------------ | ---- | ------ | -------------------------------------------------------- |
-| disable            | Boolean      | 否   | false  | 是否禁用                                                 |
-| use-check-img      | Boolean      | 否   | true   | 定义复选框是否用图片                                     |
-| box-style          | String       | 否   | ''     | 可以自定义checkbox外框样式，use-check-img为false时可用   |
-| check-style        | String       | 否   | ''     | 可以自定义checkbox对号的样式，use-check-img为false时可用 |
-| c-bind:change      | EventHandler |      |        | checkbox值改变的时候触发的事件                           |
-| c-model 或者 value | Boolean      |      |        | checkbox是否默认选中                                     |
+| 属性名     | 类型    | 必填 | 默认值 | 说明                   |
+| ---------- | ------- | ---- | ------ | ---------------------- |
+| show       | Boolean | 是   | false  | 控制alert弹层是否显示  |
+| title      | String  | 是   | ''     | alert弹层的标题        |
+| content    | String  | 是   | ''     | alert弹层的内容        |
+| show-close | Boolean | 否   | false  | 是否显示右上角关闭图标 |
+| closeIcon  | String  | 否   |        | 右上角图标地址         |
 
-**注意如果传递value值需要在事件中改变对应的值**
 
 ### 示例
 
 ```vue
 <template>
-<page title="light-checkbox">
+<page title="light-alert">
   <view class="container">
-    <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
-      <text >checkbox</text>
+    <light-alert
+      show="{{show}}"
+      title="弹框标题"
+      content="我是弹框内容我是弹框内容内容我是容我是弹框内容我是弹框内容"
+      operator="{{operator}}"
+      direction="column"
+      show-close="{{true}}"
+      c-bind:operate="handleOperate"
+      c-bind:close="handleClose"
+    ></light-alert>
+    <view class="operator">
+      <button text="打开弹框" c-bind:onclick="showAlert"></button>
     </view>
-  </view>
-  <view class="checkbox-container">
-    <text>不可用</text>
-    <light-checkbox
-    disable="{{true}}"
-    >
-    </light-checkbox>
-  </view>
-  <view class="checkbox-container" c-bind:tap="handleTap">
-    <text>可用-默认选中</text>
-    <light-checkbox
-    c-model="{{isChecked1}}"
-    c-bind:change="handleChange1"
-    >
-    </light-checkbox>
-  </view>
-  <view class="checkbox-container" c-bind:tap="handleTap">
-    <text>可用-默认不选中</text>
-    <light-checkbox
-    value="{{isChecked2}}"
-    c-bind:change="handleChange2"
-    >
-    </light-checkbox>
   </view>
 </page>
 </template>
 <script>
-class LightCheckbox {
+import cml from 'chameleon-api';
+class LightAlert {
 
   data = {
-    halfShow:false,
-    isChecked1:true,
-    isChecked2:false
+    show: false,
+    operator: [
+      {
+        text: '按钮文案',
+        textStyle: 'color: #555869'
+       },
+      {
+        text: '引导文案',
+        textStyle: 'color: #1D6EF0'
+      },
+      {
+        text: '第三个按钮',
+        textStyle: 'color: #1D6EF0'
+      },
+      {
+        text: '第四个按钮',
+        textStyle: 'color: #1D6EF0'
+      }
+    ]
   }
+
+  computed = {
+  }
+
+  watch  = {
+  }
+
   methods = {
-    handleChange1(e){
-      //c-model传递的值默认会改变
-      console.log('e',e);
-      console.log('this.isChecked1',this.isChecked1)
+    showAlert() {
+      this.show = true
     },
-    handleChange2(e){
-      console.log('e',e);
-      //c-model本身就是value作为属性值传递的语法糖，这里也可以传递value值，然后改变它
-      console.log('this.isChecked2',this.isChecked2);
-      this.isChecked2 = !this.isChecked2;
+    handleClose() {
+      this.show = false;
     },
+    handleOperate(e) {
+      let { index, text } = e.detail;
+      cml.showToast({
+        message: `点击第${index + 1}个按钮， 文案为"${text}"` ,
+        duration: 800
+      });
+      this.show = false;
+    }
   }
   
+
+  beforeCreate() {
+  }
+
+  created() {
+  }
+
+  beforeMount() {
+  }
+
+  mounted() {
+  }
+
+  beforeDestroy() {
+  }
+
+  destroyed() {
+  }
 }
 
-export default new LightCheckbox();
+export default new LightAlert();
 </script>
-<style scoped lang="less">
-@import '../../../assets/css/var.less';
+<style scoped>
 .container {
   display: flex;
   flex-direction: column;
   flex: 1;
   background: #f8f8f8;
 }
-.content{
-  display:flex;
-  justify-content: center;
-  align-items: center;
-}
-.checkbox-container{
-  border:1cpx solid #ECEDF0;
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  justify-content: space-around;
-  height:200cpx;
-}
-
-.btn {
-  margin-top: 20cpx;
+.operator {
+  margin-top: 50cpx;
+  padding: 20cpx;
 }
 </style>
 <script cml-type="json">
 {
     "base": {
         "usingComponents": {
+          "c-header": "../../components/c-header/c-header",
+          "light-alert": "/components/light-alert/light-alert"
         },
         "navigationBarTitleText": "c-toast",
         "backgroundTextStyle": "dark",
