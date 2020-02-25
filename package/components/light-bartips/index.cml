@@ -93,7 +93,7 @@ export default new LightBartips();
      lines:1;
   }
 }
-@media cml-type(web, wx, alipay, baidu) {
+@media cml-type(web, wx, alipay, baidu,qq) {
   .bartips-text {
     display: block;
     max-width: 640cpx;

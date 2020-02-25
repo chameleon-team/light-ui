@@ -413,7 +413,7 @@ export default new Demo();
     "base": {
         "usingComponents": {
         },
-        "navigationBarTitleText": "cml-ui组件库",
+        "navigationBarTitleText": "light-ui组件库",
         "backgroundTextStyle": "dark",
         "backgroundColor": "#E2E2E2",
         "enablePullDownRefresh": true

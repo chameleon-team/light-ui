@@ -151,9 +151,7 @@ export default new LightButton();
           "c-header": "../../components/c-header/c-header",
           "light-button": "/components/light-button/light-button"
         },
-        "navigationBarTitleText": "c-toast",
-        "backgroundTextStyle": "dark",
-        "backgroundColor": "#E2E2E2"
+        "backgroundTextStyle": "dark"
     }
 }
 </script>

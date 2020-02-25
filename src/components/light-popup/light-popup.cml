@@ -128,7 +128,7 @@ export default new LightPopup();
     overflow: hidden;
   }
 }
-@media cml-type(web, wx, alipay, baidu) {
+@media cml-type(web, wx, alipay, baidu,qq) {
   .popup-main {
     transition-property: transform, opacity, scale;
     transition-duration:  200ms;

@@ -114,10 +114,27 @@ export default new LightHalfscreen();
         "usingComponents": {
           "c-header": "../../components/c-header/c-header",
           "light-halfscreen": "/components/light-halfscreen/light-halfscreen"
-        },
-        "navigationBarTitleText": "c-toast",
-        "backgroundTextStyle": "dark",
-        "backgroundColor": "#E2E2E2"
-    }
+        }
+    },
+    "wx": {
+    "navigationBarTitleText": "index",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#E2E2E2"
+  },
+  "alipay": {
+    "defaultTitle": "index",
+    "pullRefresh": false,
+    "allowsBounceVertical": "YES",
+    "titleBarColor": "#ffffff"
+  },
+  "baidu": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "index",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50
+  }
 }
 </script>

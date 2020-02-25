@@ -142,7 +142,7 @@ export default new LightAlert();
   margin-bottom: 16cpx;
   align-items: center;
 }
-@media cml-type(web, wx, alipay, baidu) {
+@media cml-type(web, wx, alipay, baidu,qq) {
   .title-text {
     font-size: 40cpx;
     font-weight: bold;

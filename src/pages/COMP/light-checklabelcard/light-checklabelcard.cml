@@ -1,44 +1,46 @@
 <template>
 <page title="light-checklabelcard">
-  <view class="container">
-    <c-header title="light-checklabelcard"></c-header>
-    <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
-      <text >checklabelcard</text>
+  <scroller height="{{-1}}">
+    <view class="container">
+      <c-header title="light-checklabelcard"></c-header>
+      <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
+        <text >checklabelcard</text>
+      </view>
     </view>
-  </view>
-  <light-checklabelcard
-    card-title="我是标题"
-    labels="{{labels}}"
-    c-bind:onclick="handleChange"
-    >
+    <light-checklabelcard
+      card-title="我是标题"
+      labels="{{labels}}"
+      c-bind:onclick="handleChange"
+      >
     </light-checklabelcard>
     <light-checklabelcard
-    card-title="我是标题1"
-    labels="{{labels1}}"
-    c-bind:onclick="handleChange1"
-    labels-wrap-style="justify-content:space-around"
-    >
+      card-title="我是标题1"
+      labels="{{labels1}}"
+      c-bind:onclick="handleChange1"
+      labels-wrap-style="justify-content:space-around"
+      >
     </light-checklabelcard>
     <light-checklabelcard
-    card-title="我是标题2"
-    labels="{{labels2}}"
-    c-bind:onclick="handleChange2"
-    >
+      card-title="我是标题2"
+      labels="{{labels2}}"
+      c-bind:onclick="handleChange2"
+      >
     </light-checklabelcard>
     <light-checklabelcard
-    card-title="省份"
-    labels="{{labels3}}"
-    c-bind:onclick="handleChange3"
-    c-style="width:500cpx;"
-    >
+      card-title="省份"
+      labels="{{labels3}}"
+      c-bind:onclick="handleChange3"
+      c-style="width:500cpx;"
+      >
     </light-checklabelcard>
     <light-checklabelcard
-    card-title="省份-只能选中一个"
-    labels="{{labels4}}"
-    c-bind:onclick="handleChange4"
-    c-style="width:500cpx;"
-    >
+      card-title="省份-只能选中一个"
+      labels="{{labels4}}"
+      c-bind:onclick="handleChange4"
+      c-style="width:500cpx;"
+      >
     </light-checklabelcard>
+  </scroller>
     
 </page>
 </template>
@@ -295,10 +297,27 @@ export default new LightChecklabelCard();
         "usingComponents": {
           "c-header": "../../components/c-header/c-header",
           "light-checklabelcard": "/components/light-checklabelcard/light-checklabelcard"
-        },
-        "navigationBarTitleText": "c-toast",
-        "backgroundTextStyle": "dark",
-        "backgroundColor": "#E2E2E2"
-    }
+        }
+    },
+    "wx": {
+    "navigationBarTitleText": "index",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#E2E2E2"
+  },
+  "alipay": {
+    "defaultTitle": "index",
+    "pullRefresh": false,
+    "allowsBounceVertical": "YES",
+    "titleBarColor": "#ffffff"
+  },
+  "baidu": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "index",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50
+  }
 }
 </script>
