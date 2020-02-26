@@ -1,5 +1,5 @@
 <template>
-<page title="light-button">
+<page title="light-switch">
   <view class="container">
     <c-header title="light-switch"></c-header>
     <view class="switch-line" c-for="{{switchData}}">
