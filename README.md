@@ -1,11 +1,12 @@
-项目概述
+### 项目概述
+
 LIGHT-UI组件库是一款基于[chameleon](https://github.com/didi/chameleon)开发一组跨多端的组件库。
 
-功能支持
+### 功能支持
 
 提供的组件包括弹层、消息提示、操作列表等组件，具备良好的跨多端能力。
 
-如何使用
+### 如何使用
 
 首先需要全局安装chameleon-tool[文档参考](https://cmljs.org/#/)
 
