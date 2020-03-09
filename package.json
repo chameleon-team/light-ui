@@ -3,14 +3,11 @@
   "version": "0.0.5",
   "description": "丰富chameleon组件生态",
   "scripts": {
-    "build-dnpm": "sh ./bin/build.sh dnpm && node ./bin/build.js --dnpm",
-    "build-npm": "sh ./bin/build.sh npm && node ./bin/build.js --npm"
   },
   "author": "Chameleon-Team",
   "license": "Apache 2.0",
   "email": "ChameleonCore@didiglobal.com",
   "dependencies": {
-    "@didi/cml-console": "0.0.5",
     "chameleon-api": "^1.0.1",
     "chameleon-runtime": "^1.0.0",
     "chameleon-store": "^1.0.0",
@@ -18,7 +15,7 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg":"commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "devDependencies": {
