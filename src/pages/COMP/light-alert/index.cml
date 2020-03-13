@@ -1,7 +1,6 @@
 <template>
 <page title="light-alert">
   <view class="container">
-    <c-header title="light-alert"></c-header>
     <light-alert
       show="{{show}}"
       title="弹框标题"
@@ -105,8 +104,7 @@ export default new LightAlert();
 {
     "base": {
         "usingComponents": {
-          "c-header": "../../components/c-header/c-header",
-          "light-alert": "/components/light-alert/light-alert"
+          "light-alert": "@cmlkit/light-ui/components/light-alert/light-alert"
         }
     },
     "wx": {

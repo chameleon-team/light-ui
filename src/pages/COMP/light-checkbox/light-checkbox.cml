@@ -1,7 +1,6 @@
 <template>
 <page title="light-checkbox">
   <view class="container">
-    <c-header title="light-checkbox"></c-header>
     <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
       <text >checkbox</text>
     </view>
@@ -67,7 +66,6 @@ class LightCheckbox {
 export default new LightCheckbox();
 </script>
 <style scoped lang="less">
-@import '../../../assets/css/var.less';
 .container {
   display: flex;
   flex-direction: column;
@@ -97,8 +95,7 @@ export default new LightCheckbox();
 {
     "base": {
         "usingComponents": {
-          "c-header": "../../components/c-header/c-header",
-          "light-checkbox": "/components/light-checkbox/light-checkbox"
+          "light-checkbox": "@cmlkit/light-ui/components/light-checkbox/light-checkbox"
         }
     },
     "wx": {

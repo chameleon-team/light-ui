@@ -1,7 +1,6 @@
 <template>
 <page title="light-checklabel">
   <view class="container">
-    <c-header title="light-checklabel"></c-header>
     <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
       <text>checklabel</text>
     </view>
@@ -80,7 +79,7 @@ class LightChecklabel {
 export default new LightChecklabel();
 </script>
 <style scoped lang="less">
-@import '../../../assets/css/var.less';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -110,8 +109,7 @@ export default new LightChecklabel();
 {
     "base": {
         "usingComponents": {
-          "c-header": "../../components/c-header/c-header",
-          "light-checklabel": "/components/light-checklabel/light-checklabel"
+          "light-checklabel": "@cmlkit/light-ui/components/light-checklabel/light-checklabel"
         }
     },
     "wx": {

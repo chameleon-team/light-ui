@@ -1,7 +1,6 @@
 <template>
 <page title="light-halfscreen">
   <view class="container">
-    <c-header title="light-halfscreen"></c-header>
     <view style="color:#35406B;display:flex;justify-content:center;align-items:center;height:100cpx;">
       <text c-bind:tap="handleTap">打开半屏弹窗-两行标题</text>
     </view>
@@ -55,7 +54,6 @@ class LightHalfscreen {
     halfShow:false,
     halfShow1:false,
     halfShow2:false,
-    imgSrc:require('../../../assets/images/chameleon.jpg')
   }
 
   computed = {
@@ -96,7 +94,7 @@ class LightHalfscreen {
 export default new LightHalfscreen();
 </script>
 <style scoped lang="less">
-@import '../../../assets/css/var.less';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -112,8 +110,7 @@ export default new LightHalfscreen();
 {
     "base": {
         "usingComponents": {
-          "c-header": "../../components/c-header/c-header",
-          "light-halfscreen": "/components/light-halfscreen/light-halfscreen"
+          "light-halfscreen": "@cmlkit/light-ui/components/light-halfscreen/light-halfscreen"
         }
     },
     "wx": {

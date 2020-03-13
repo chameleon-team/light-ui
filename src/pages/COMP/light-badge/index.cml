@@ -1,7 +1,6 @@
 <template>
 <page title="light-badge">
   <scroller height="{{-1}}">
-    <c-header title="light-badge"></c-header>
     <view class="badge-container" c-for="{{badgeData}}">
       <view class="badge-desc">
         <text>{{item.desc}}</text>
@@ -107,8 +106,7 @@ export default new LightBadge();
 {
     "base": {
         "usingComponents": {
-          "c-header": "../../components/c-header/c-header",
-          "light-badge": "/components/light-badge/light-badge"
+          "light-badge": "@cmlkit/light-ui/components/light-badge/light-badge"
         }
     },
     "wx": {

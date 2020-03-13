@@ -1,6 +1,5 @@
 <template>
   <page title="light-bartips">
-   <c-header title="light-bartips"></c-header>
    <light-bartips
       show="{{show}}"
       height="{{80}}"
@@ -68,8 +67,7 @@ export default new LightBartips();
 {
   "base": {
     "usingComponents": {
-      "light-bartips": "/components/light-bartips/light-bartips",
-      "c-header": "../../components/c-header/c-header"
+      "light-bartips": "@cmlkit/light-ui/components/light-bartips/light-bartips"
     }
   },
   "wx": {

@@ -1,6 +1,5 @@
 <template>
   <page title="{{'light-toast'}}">
-    <c-header title="light-toast"></c-header>
     <light-toast 
       show="{{show}}" 
       type="{{'warn'}}"
@@ -61,8 +60,7 @@ export default new LightBartips();
 {
   "base": {
     "usingComponents": {
-      "c-header": "../../components/c-header/c-header",
-      "light-toast": "/components/light-toast/light-toast"
+      "light-toast": "@cmlkit/light-ui/components/light-toast/light-toast"
     }
   },
   "wx": {

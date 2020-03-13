@@ -2,7 +2,6 @@
 <page title="light-checklabelcard">
   <scroller height="{{-1}}">
     <view class="container">
-      <c-header title="light-checklabelcard"></c-header>
       <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
         <text >checklabelcard</text>
       </view>
@@ -49,7 +48,6 @@ class LightChecklabelCard {
 
   data = {
     halfShow:false,
-    imgSrc:require('../../../assets/images/chameleon.jpg'),
     isChecked1:true,
     isChecked2:false,
     labels:[{
@@ -265,7 +263,7 @@ class LightChecklabelCard {
 export default new LightChecklabelCard();
 </script>
 <style scoped lang="less">
-@import '../../../assets/css/var.less';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -295,8 +293,7 @@ export default new LightChecklabelCard();
 {
     "base": {
         "usingComponents": {
-          "c-header": "../../components/c-header/c-header",
-          "light-checklabelcard": "/components/light-checklabelcard/light-checklabelcard"
+          "light-checklabelcard": "@cmlkit/light-ui/components/light-checklabelcard/light-checklabelcard"
         }
     },
     "wx": {

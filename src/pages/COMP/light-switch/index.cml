@@ -1,7 +1,6 @@
 <template>
 <page title="light-switch">
   <view class="container">
-    <c-header title="light-switch"></c-header>
     <view class="switch-line" c-for="{{switchData}}">
       <text class="switch-desc">{{item.desc}}</text>
       <light-switch
@@ -97,8 +96,7 @@ export default new LigthSwitch();
 {
     "base": {
         "usingComponents": {
-          "c-header": "../../components/c-header/c-header",
-          "light-switch": "/components/light-switch/light-switch"
+          "light-switch": "@cmlkit/light-ui/components/light-switch/light-switch"
         }
     },
     "wx": {

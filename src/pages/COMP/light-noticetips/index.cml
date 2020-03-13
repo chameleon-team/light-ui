@@ -1,6 +1,5 @@
 <template>
   <page title="light-noticetips">
-    <c-header title="light-noticetips"></c-header>
     <light-noticetips
       show="{{show}}"
       icon="{{icon}}"
@@ -63,8 +62,7 @@ export default new LightNoticeTips();
 {
   "base": {
     "usingComponents": {
-      "light-noticetips": "/components/light-noticetips/light-noticetips",
-      "c-header": "../../components/c-header/c-header"
+      "light-noticetips": "@cmlkit/light-ui/components/light-noticetips/light-noticetips"
     }
   },
   "wx": {

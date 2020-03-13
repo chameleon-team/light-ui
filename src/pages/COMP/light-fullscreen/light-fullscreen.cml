@@ -1,7 +1,6 @@
 <template>
 <page title="light-fullscreen">
   <view class="container">
-    <c-header title="light-fullscreen"></c-header>
     <view style="color:#35406B;display:flex;justify-content:center;align-items:center;height:100cpx;">
       <text c-bind:tap="handleTap">打开全屏弹窗</text>
     </view>
@@ -38,7 +37,6 @@ class LightFullscreen {
   data = {
     halfShow:false,
     halfShow1:false,
-    imgSrc:require('../../../assets/images/chameleon.jpg')
   }
 
   computed = {
@@ -73,7 +71,7 @@ class LightFullscreen {
 export default new LightFullscreen();
 </script>
 <style scoped lang="less">
-@import '../../../assets/css/var.less';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -94,8 +92,7 @@ export default new LightFullscreen();
 {
     "base": {
         "usingComponents": {
-          "c-header": "../../components/c-header/c-header",
-          "light-fullscreen": "/components/light-fullscreen/light-fullscreen"
+          "light-fullscreen": "@cmlkit/light-ui/components/light-fullscreen/light-fullscreen"
         }
     },
     "wx": {

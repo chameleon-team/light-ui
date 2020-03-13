@@ -2,7 +2,6 @@
 <page title="light-button">
   <scroller height="{{-1}}">
     <view class="content">
-      <c-header title="light-button"></c-header>
       <view class="btn-item" c-for="{{btn}}">
         <view class="btn-label">
           <text>{{item.label}}</text>
@@ -148,8 +147,7 @@ export default new LightButton();
 {
     "base": {
         "usingComponents": {
-          "c-header": "../../components/c-header/c-header",
-          "light-button": "/components/light-button/light-button"
+          "light-button": "@cmlkit/light-ui/components/light-button/light-button"
         },
         "backgroundTextStyle": "dark"
     }

@@ -2,7 +2,6 @@
 <template>
 <page title="light-checkboxcard">
   <view class="container">
-    <c-header title="light-checkboxcard"></c-header>
     <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
       <text >checkboxcard</text>
     </view>
@@ -66,7 +65,6 @@ class LightCheckboxCard {
 export default new LightCheckboxCard();
 </script>
 <style scoped lang="less">
-@import '../../../assets/css/var.less';
 .container {
   display: flex;
   flex-direction: column;
@@ -97,7 +95,7 @@ export default new LightCheckboxCard();
   height:136cpx;
 }
 .hf-main-title{
-  color:@major-color;
+  color:#2A2D3C;
   font-size:40cpx;
   font-weight:bold;
 }
@@ -110,13 +108,13 @@ export default new LightCheckboxCard();
 .hf-ope-text{
   font-size:28cpx;
   font-weight:Normal;
-  color:@major-color;
+  color:#2A2D3C;
 }
 .hf-arrow{
     width: 10cpx;
     height: 10cpx;
-    border-top: 2cpx solid @major-color;
-    border-right: 2cpx solid @major-color;
+    border-top: 2cpx solid #2A2D3C;
+    border-right: 2cpx solid #2A2D3C;
     transform: rotate(45deg);
 
 }
@@ -125,8 +123,7 @@ export default new LightCheckboxCard();
 {
     "base": {
         "usingComponents": {
-          "c-header": "../../components/c-header/c-header",
-          "light-checkboxcard": "/components/light-checkboxcard/light-checkboxcard"
+          "light-checkboxcard": "@cmlkit/light-ui/components/light-checkboxcard/light-checkboxcard"
         }
     },
     "wx": {

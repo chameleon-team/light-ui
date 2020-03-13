@@ -1,6 +1,5 @@
 <template>
   <page title="light-popup">
-    <c-header title="light-popup"></c-header>
     <light-popup
       show="{{show}}"
       position="{{position}}"
@@ -90,8 +89,7 @@ export default new LightBartips();
 {
   "base": {
     "usingComponents": {
-      "light-popup": "/components/light-popup/light-popup",
-      "c-header": "../../components/c-header/c-header"
+      "light-popup": "@cmlkit/light-ui/components/light-popup/light-popup"
     }
   },
   "wx": {

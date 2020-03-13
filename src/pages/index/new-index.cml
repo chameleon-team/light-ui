@@ -43,7 +43,6 @@ class Demo {
         name: "全部",
         open: false,
         pages: allCompRoute,
-        src: require(`../../assets/images/component/kind/content.png`)
       },
       {
         cid: "content",
@@ -56,7 +55,6 @@ class Demo {
           routeObj["light-checklabel"],
           routeObj["light-checklabelcard"],
         ],
-        src: require(`../../assets/images/component/kind/content.png`)
       },
       {
         cid: "form",
@@ -67,7 +65,6 @@ class Demo {
           routeObj['light-switch'],
 
         ],
-        src: require(`../../assets/images/component/kind/form.png`)
       },
       {
         cid: "nav",
@@ -83,25 +80,15 @@ class Demo {
           routeObj['light-noticetips'],
           routeObj['light-bartips'],
         ],
-        src: require(`../../assets/images/component/kind/nav.png`)
       }
     ],
-    comLogoSrc: require(`../../assets/images/component/kind/logo.png`),
-    apiLogoSrc: require(`../../assets/images/api/kind/logo.png`),
-    activeTab: "component",
-    arrowIcon: "https://gw.alicdn.com/tfs/TB11zBUpwMPMeJjy1XbXXcwxVXa-22-22.png"
   }
 
   computed = {
     scrollerStyl() {
       return this.winHeight ? `height: ${this.winHeight}cpx;` : ''
     },
-    computedStyle() {
-      let transVal = this.activeTab === "api" ? "-750" : "0";
-      let styl = `transform: translateX(${transVal}cpx)`;
-
-      return styl;
-    },
+    
     bodyComputedStyl() {
       let styl = "";
       return styl;
@@ -117,6 +104,7 @@ class Demo {
   methods = {
     handleTap(index){
       this.activeIndex = index;
+      console.log(this.activeComps)
     },
     routeTo(path) {
       console.log(path)
