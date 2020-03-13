@@ -53,7 +53,7 @@ export default new LightNoticeTips();
   align-items: center;
 }
 .operator {
-  margin-top: 50cpx;
+  margin-top: 300cpx;
   padding: 20cpx;
 }
 </style>
