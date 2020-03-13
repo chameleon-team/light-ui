@@ -29,7 +29,7 @@
 </template>
 
 <script>
-
+// TODO: 支付宝小程序 touch 时有bug，待跟进
 import cml from 'chameleon-api';
 
 let _timer;
@@ -198,7 +198,7 @@ export default new LightNoticeTips();
   flex: 1;
   overflow: hidden;
 }
-@media cml-type(web, wx, alipay, baidu) {
+@media cml-type(web, wx, alipay, baidu,qq) {
   .text-container {
     line-height: 36cpx;
     overflow: hidden;
@@ -268,7 +268,7 @@ export default new LightNoticeTips();
 {
   "base": {
     "usingComponents": {
-      "light-popup": "/components/light-popup/index"
+      "light-popup": "/components/light-popup/light-popup"
     }
   }
 }

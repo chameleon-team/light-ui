@@ -1,15 +1,11 @@
 {
-  "name": "light-ui",
+  "name": "@cmlkit/light-ui",
   "version": "0.0.1",
   "description": "chameleon基础组件库&接口能力",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "Chameleon-Team",
   "license": "Apache 2.0",
   "email": "ChameleonCore@didiglobal.com",
-  "dependencies": {
-    
-  },
-  "devDependencies": {
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }

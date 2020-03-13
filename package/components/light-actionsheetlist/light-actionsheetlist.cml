@@ -169,7 +169,7 @@ export default new LightActionSheetList();
 {
   "base": {
     "usingComponents": {
-      "light-popup": "../light-popup/index"
+      "light-popup": "../light-popup/light-popup"
     }
   }
 }

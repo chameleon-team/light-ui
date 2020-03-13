@@ -96,7 +96,7 @@ export default new LightToast();
     lines: 1;
   }
 }
-@media cml-type(web, wx, alipay, baidu) {
+@media cml-type(web, wx, alipay, baidu,qq) {
   .toast-text {
     font-size: 28cpx;
     color: #fff;
@@ -117,7 +117,7 @@ export default new LightToast();
 {
     "base": {
         "usingComponents": {
-          "c-popup": "../light-popup/index"
+          "c-popup": "../light-popup/light-popup"
         },
         "component": true
     }
