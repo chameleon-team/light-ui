@@ -2,7 +2,7 @@
 
 LIGHT-UI组件库是一款基于[chameleon](https://github.com/didi/chameleon)开发一组跨多端的组件库。
 
-[文档参考](http://cmljs.org/light-ui.github.io/)
+
 
 ### 功能支持
 
@@ -24,4 +24,4 @@ cml init project
 
 在初始化的chameleon工程中,安装组件库，`npm i @cmlkit/light-ui`
 
-具体使用方式[参考](https://cmljs.org/#/)
+具体使用方式[文档参考](http://cmljs.org/light-ui.github.io/)
