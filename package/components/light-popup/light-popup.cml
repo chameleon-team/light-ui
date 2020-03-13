@@ -9,7 +9,7 @@
 
 <script>
 
-import cml from 'chameleon-api';
+import cml from '@didi/chameleon-api';
 import * as utils from '../../assets/js/util';
 
 const ANIMATE_DURATION = 150;

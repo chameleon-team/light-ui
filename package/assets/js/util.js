@@ -1,4 +1,4 @@
-import cml from 'chameleon-api'
+import cml from '@didi/chameleon-api'
 
 export function pxTransform(s) {
     if (!s) return '';
