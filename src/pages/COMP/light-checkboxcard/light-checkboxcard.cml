@@ -29,7 +29,7 @@
       main-title="我是主标题"
       sub-title="我是副标题"
       main-title-style="font-size:30cpx;"
-      c-model="{{isChecked2}}"
+      value="{{isChecked2}}"
       c-bind:change="handleChange2"
     >
     </light-checkboxcard>
@@ -58,7 +58,7 @@ class LightCheckboxCard {
     },
     handleChange2(e){
       console.log('e',e);
-      console.log('this.isChecked2',this.isChecked1)
+      this.isChecked2 = !this.isChecked2;
     }
   }
 }
