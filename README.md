@@ -8,7 +8,7 @@ LIGHT-UI组件库是一款基于[chameleon](https://github.com/didi/chameleon)�
 
 ### 如何使用
 
-首先需要全局安装chameleon-tool[文档参考](https://cmljs.org/#/)
+首先需要全局安装chameleon-tool[文档参考](http://cmljs.org/light-ui.github.io/)
 
 ```
 npm i chameleon-tool -g
