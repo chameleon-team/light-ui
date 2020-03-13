@@ -117,7 +117,7 @@ export default new LightBartips();
 {
   "base": {
     "usingComponents": {
-      "light-popup": "/components/light-popup/light-popup"
+      "light-popup": "../light-popup/light-popup"
     }
   }
 }

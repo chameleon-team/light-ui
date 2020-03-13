@@ -216,7 +216,7 @@ export default new LightAlert();
 {
   "base": {
     "usingComponents": {
-      "light-popup": "/components/light-popup/light-popup"
+      "light-popup": "../light-popup/light-popup"
     }
   }
 }
