@@ -20,4 +20,6 @@ npm i chameleon-tool -g
 cml init project
 ```
 
-在初始化的chameleon工程中,安装light-ui组件库，具体使用方式[参考](https://cmljs.org/#/)
+在初始化的chameleon工程中,安装组件库，`npm i @cmlkit/light-ui`
+
+具体使用方式[参考](https://cmljs.org/#/)
