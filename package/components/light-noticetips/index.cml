@@ -29,7 +29,7 @@
 </template>
 
 <script>
-// TODO: 支付宝小程序 touch 时有bug，待跟进
+
 import cml from 'chameleon-api';
 
 let _timer;
