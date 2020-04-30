@@ -54,9 +54,10 @@
   </view>
   <view class="checkbox-container">
     <light-checkboxcard
-     main-title="我是主标题"
+      main-title="我是主标题"
       sub-title="我是副标题"
-      c-model="{{isChecked2}}"
+      main-title-style="font-size:30cpx;"
+      value="{{isChecked2}}"
       c-bind:change="handleChange2"
     >
     </light-checkboxcard>
@@ -85,8 +86,6 @@ class LightCheckboxCard {
     },
     handleChange2(e){
       console.log('e',e);
-      //c-model本身就是value作为属性值传递的语法糖，这里也可以传递value值，然后改变它
-      console.log('this.isChecked2',this.isChecked2);
       this.isChecked2 = !this.isChecked2;
     }
   }
@@ -95,7 +94,6 @@ class LightCheckboxCard {
 export default new LightCheckboxCard();
 </script>
 <style scoped lang="less">
-@import '../../../assets/css/var.less';
 .container {
   display: flex;
   flex-direction: column;
@@ -119,18 +117,72 @@ export default new LightCheckboxCard();
 .btn {
   margin-top: 20cpx;
 }
+.hf-title{
+  display:flex;
+  flex-direction:row;
+  background-color:#FFFFFF;
+  height:136cpx;
+}
+.hf-main-title{
+  color:#2A2D3C;
+  font-size:40cpx;
+  font-weight:bold;
+}
+.hf-operation{
+  display:flex;
+  flex-direction:row;
+  align-self:flex-end;
+}
+
+.hf-ope-text{
+  font-size:28cpx;
+  font-weight:Normal;
+  color:#2A2D3C;
+}
+.hf-arrow{
+    width: 10cpx;
+    height: 10cpx;
+    border-top: 2cpx solid #2A2D3C;
+    border-right: 2cpx solid #2A2D3C;
+    transform: rotate(45deg);
+
+}
 </style>
 <script cml-type="json">
 {
     "base": {
         "usingComponents": {
-          "light-checkboxcard": "/components/light-checkboxcard/light-checkboxcard"
-        },
-        "navigationBarTitleText": "c-toast",
-        "backgroundTextStyle": "dark",
-        "backgroundColor": "#E2E2E2"
-    }
+          "light-checkboxcard": "@cmlkit/light-ui/components/light-checkboxcard/light-checkboxcard"
+        }
+    },
+    "wx": {
+    "navigationBarTitleText": "index",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#E2E2E2"
+  },
+  "alipay": {
+    "defaultTitle": "index",
+    "pullRefresh": false,
+    "allowsBounceVertical": "YES",
+    "titleBarColor": "#ffffff"
+  },
+  "baidu": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "index",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50
+  }
 }
 </script>
 
 ```
+
+### 效果图
+
+| web                                                          | weex                                                         | wx                                                           | alipay                                                       | baidu                                                        | qq                                                           |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <img src="../assets/images/web/web-checkboxcard.jpg" width="200px" /> | <img src="../assets/images/weex/weex-checkboxcard.jpg" width="200px" /> | <img src="../assets/images/wx/wx-checkcard.png" width="200px" /> | <img src="../assets/images/alipay/ali-checkboxcard.png" width="200px" /> | <img src="../assets/images/baidu/baidu-checkboxcard.png" width="200px" /> | <img src="../assets/images/qq/qq-checkboxcard.png" width="200px" /> |
+

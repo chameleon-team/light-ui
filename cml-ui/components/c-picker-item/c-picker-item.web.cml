@@ -1,0 +1,69 @@
+<template>
+  <picker 
+    :item-style="itemStyle"
+    :data="list"
+    :text-align="textAlign"
+    :wraper-style="wraperStyle"
+    :default-index="defaultIndex"
+    @selectchange="weexSelectChange"
+  ></picker>
+</template>
+<script>
+ class CPickerItem implements CPickerItemInterface {
+    props = {
+      list: {
+        type: Array,
+        default: ['']
+      },
+      defaultIndex: {
+        type: Number,
+        default: 0
+      },
+      height: {
+        type: Number,
+        default: 400
+      },
+      textAlign: {
+        type: String,
+        default: "center"
+      },
+      itemStyle:{
+        type: String,
+        default: ""
+      }
+    }
+    
+    computed ={
+      wraperStyle() {
+        let style = `height: ${this.height}cpx`;
+        return style;
+      }
+    }
+    
+    methods = {
+      weexSelectChange(e) {
+        this.$cmlEmit("selectchange", {
+          index: e.detail.index
+        });
+      }
+    }
+  }
+
+  export default new CPickerItem();
+
+</script>
+
+<style scoped>
+
+</style>
+
+<script cml-type="json">
+{
+  "web": {
+    "usingComponents": {
+      "picker": "./com/picker"
+    },
+    "component": true
+  }
+}
+</script>

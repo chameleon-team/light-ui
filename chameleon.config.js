@@ -3,11 +3,14 @@
 const publicPath = 'https://beatles-chameleon.github.io/cml-ui/dist';
 //设置api请求前缀
 const apiPrefix = 'https://api.chameleon.com';
-
+const path = require('path')
 cml.config.merge({
   cmlNpm: [
   ],
   platforms: ["web","weex","wx", "baidu", "alipay",'qq'],
+  babelPath:[
+    path.join(__dirname,'node_modules/@cmlkit/light-ui'),
+  ],
   cmlComponents: [
   ],
   buildInfo: {

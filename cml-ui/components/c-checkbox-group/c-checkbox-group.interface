@@ -1,0 +1,22 @@
+<script cml-type="interface">
+type EventDetail = {
+  index: Number,
+  value: ArrayType,
+  selected: selectedType
+}
+type ArrayType = [CMLObject]
+
+type selectedType = [String]
+
+interface CheckboxgroupInterface {
+  cstyle: String,
+  option: ArrayType,
+  position: String,
+  horizontal: Boolean,
+  uncheckIcon: String,
+  checkedIcon: String,
+  itemStyle: String,
+  groupchange(eventDetail: EventDetail): void;
+}
+</script>
+<script cml-type="web,weex,baidu,wx,alipay,qq,tt" src="./c-checkbox-group.cml"></script>

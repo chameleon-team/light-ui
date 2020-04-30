@@ -2,26 +2,28 @@
 
 -------
 
-switch开关
+通用开关
 
 ### 属性
 
+| 属性名             | 类型         | 必填 | 默认值 | 说明                                                     |
+| ------------------ | ------------ | ---- | ------ | -------------------------------------------------------- |
+| disabled            | Boolean     | 否  | false  | 是否禁用开关                                              |
+| checked            | Boolean     | 否  | false  | 是否是打开状态，默认不是打开状态                                              |
+| theme            | String     | 否 | #1D6EF0  | 主题颜色                                              |
+| width            | String/Number     | 否  | 80  | 开关的宽度，默认80cpx                                              |
+| checkedText            | String     | 否  | ''  | 开关打开时显示的文本                                              |
+| uncheckedText            | String     | 否 | #''  | 开关关闭时显示的文本                                              |
+| c-bind:change            | EventHandle     | 否  |   | 开关状态发生变化时触发的事件, event.detail = {!checked}                       |
 
 
-| 属性名        | 类型    | 必填 | 默认值   | 说明                            |
-| ------------- | ------- | ---- | -------- | ------------------------------- |
-| disabled      | Boolean | 否   | false    | switch开关是否禁用              |
-| checked       | Boolean | 否   | false    | switch开关是否选中              |
-| theme         | String  | 否   | \#1D6EF0 | switch开关选中状态的背景色      |
-| width         | Number  | 否   | 80       | switch开关的默认宽度，默认80cpx |
-| checkedText   | String  | 否   | ''       | switch开关选中时所展示的文案    |
-| uncheckedText | String  | 否   | ''       | switch开关未选中时所展示的文案  |
+
 
 ### 示例
 
 ```vue
 <template>
-<page title="light-button">
+<page title="light-switch">
   <view class="container">
     <view class="switch-line" c-for="{{switchData}}">
       <text class="switch-desc">{{item.desc}}</text>
@@ -118,12 +120,36 @@ export default new LigthSwitch();
 {
     "base": {
         "usingComponents": {
-        },
-        "navigationBarTitleText": "c-toast",
-        "backgroundTextStyle": "dark",
-        "backgroundColor": "#E2E2E2"
-    }
+          "light-switch": "@cmlkit/light-ui/components/light-switch/light-switch"
+        }
+    },
+    "wx": {
+    "navigationBarTitleText": "index",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#E2E2E2"
+  },
+  "alipay": {
+    "defaultTitle": "index",
+    "pullRefresh": false,
+    "allowsBounceVertical": "YES",
+    "titleBarColor": "#ffffff"
+  },
+  "baidu": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "index",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50
+  }
 }
 </script>
 
 ```
+
+### 效果图
+
+| web                                                          | weex                                                         | wx                                                           | alipay                                                       | baidu                                                        | qq                                                           |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <img src="../assets/images/web/web-switch.jpg" width="200px" /> | <img src="../assets/images/weex/weex-switch.jpg" width="200px" /> | <img src="../assets/images/wx/wx-switch.png" width="200px" /> | <img src="../assets/images/alipay/ali-switch.png" width="200px" /> | <img src="../assets/images/baidu/baidu-switch.png" width="200px" /> | <img src="../assets/images/qq/qq-switch.png" width="200px" /> |

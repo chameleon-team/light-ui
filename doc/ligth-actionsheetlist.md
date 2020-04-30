@@ -1,6 +1,6 @@
 # actionsheetlist	
 
-
+-------
 
 ### 属性
 
@@ -27,7 +27,6 @@
 <template>
 <page title="light-actionsheetlist">
   <view class="container" >
-    <c-header title="light-actionsheetlist"></c-header>
     <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
       <view c-bind:tap="handleTap" class="button">
         <text>打开ActionSheetList</text>
@@ -64,7 +63,6 @@ class LightActionsheetshit {
   data = {
     halfShow:false,
     useDefineShow:false,
-    imgSrc:require('../../../assets/images/chameleon.jpg'),
     actionLists:[
       {
         mainTitle:"选项操作一",
@@ -117,7 +115,6 @@ class LightActionsheetshit {
 export default new LightActionsheetshit();
 </script>
 <style scoped lang="less">
-@import '../../../assets/css/var.less';
 .container {
   display: flex;
   flex-direction: column;
@@ -146,13 +143,37 @@ export default new LightActionsheetshit();
 {
     "base": {
         "usingComponents": {
-          "light-actionsheetlist": "/components/light-actionsheetlist/light-actionsheetlist"
-        },
-        "navigationBarTitleText": "c-toast",
-        "backgroundTextStyle": "dark",
-        "backgroundColor": "#E2E2E2"
-    }
+          "light-actionsheetlist": "@cmlkit/light-ui/components/light-actionsheetlist/light-actionsheetlist"
+        }
+    },
+    "wx": {
+    "navigationBarTitleText": "index",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#E2E2E2"
+  },
+  "alipay": {
+    "defaultTitle": "index",
+    "pullRefresh": false,
+    "allowsBounceVertical": "YES",
+    "titleBarColor": "#ffffff"
+  },
+  "baidu": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "index",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50
+  }
 }
 </script>
 
+
 ```
+
+### 效果图
+
+| web                                                          | weex                                                         | wx                                                           | alipay                                                       | baidu                                                        | qq                                                           |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <img src="../assets/images/web/web-actionsheet.jpg" width="200px" /> | <img src="../assets/images/weex/weex-actionsheet.jpg" width="200px" /> | <img src="../assets/images/wx/wx-actionsheet.png" width="200px" /> | <img src="../assets/images/alipay/ali-actionsheet.png" width="200px" /> | <img src="../assets/images/baidu/baidu-actionsheet.png" width="200px" /> | <img src="../assets/images/qq/qq-actionsheet.png" width="200px" /> |

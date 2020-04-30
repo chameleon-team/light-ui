@@ -1,0 +1,7 @@
+<script cml-type="interface">
+
+interface HeadInterface {
+  headStyle: String
+}
+</script>
+<script cml-type="web,weex,baidu,wx,alipay.qq" src="./head.cml"></script>

@@ -60,7 +60,7 @@
   <view class="checkbox-container">
     <text>value传递-默认不选中</text>
     <light-checklabel
-    label="选项文案最长不能查过14个，字数超过14个的用省略号代替"
+    label="我是选项"
     value="{{isChecked3}}"
     c-bind:onclick="handleChange3"
     >
@@ -105,7 +105,7 @@ class LightChecklabel {
 export default new LightChecklabel();
 </script>
 <style scoped lang="less">
-@import '../../../assets/css/var.less';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -135,13 +135,36 @@ export default new LightChecklabel();
 {
     "base": {
         "usingComponents": {
-          "light-checklabel": "/components/light-checklabel/light-checklabel"
-        },
-        "navigationBarTitleText": "c-toast",
-        "backgroundTextStyle": "dark",
-        "backgroundColor": "#E2E2E2"
-    }
+          "light-checklabel": "@cmlkit/light-ui/components/light-checklabel/light-checklabel"
+        }
+    },
+    "wx": {
+    "navigationBarTitleText": "index",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#E2E2E2"
+  },
+  "alipay": {
+    "defaultTitle": "index",
+    "pullRefresh": false,
+    "allowsBounceVertical": "YES",
+    "titleBarColor": "#ffffff"
+  },
+  "baidu": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "index",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50
+  }
 }
 </script>
 
 ```
+
+### 效果图
+
+| web                                                          | weex                                                         | wx                                                           | alipay                                                       | baidu                                                        | qq                                                           |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <img src="../assets/images/web/web-checklabel.jpg" width="200px" /> | <img src="../assets/images/weex/weex-checklabel.jpg" width="200px" /> | <img src="../assets/images/wx/wx-checklabel.png" width="200px" /> | <img src="../assets/images/alipay/ali-checklabel.png" width="200px" /> | <img src="../assets/images/baidu/baidu-checklabel.png" width="200px" /> | <img src="../assets/images/qq/qq-checklabel.png" width="200px" /> |

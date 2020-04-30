@@ -62,18 +62,27 @@ class LightCheckbox {
     isChecked1:true,
     isChecked2:false
   }
+
+  computed = {
+  }
+
+  watch  = {
+  }
+
   methods = {
     handleChange1(e){
-      //c-model传递的值默认会改变
       console.log('e',e);
       console.log('this.isChecked1',this.isChecked1)
     },
     handleChange2(e){
       console.log('e',e);
-      //c-model本身就是value作为属性值传递的语法糖，这里也可以传递value值，然后改变它
       console.log('this.isChecked2',this.isChecked2);
       this.isChecked2 = !this.isChecked2;
     },
+    handleTap(){
+      //测试组件内部tap事件阻止冒泡
+      console.log('tap-ck')
+    }
   }
   
 }
@@ -81,7 +90,6 @@ class LightCheckbox {
 export default new LightCheckbox();
 </script>
 <style scoped lang="less">
-@import '../../../assets/css/var.less';
 .container {
   display: flex;
   flex-direction: column;
@@ -105,18 +113,44 @@ export default new LightCheckbox();
 .btn {
   margin-top: 20cpx;
 }
+
 </style>
 <script cml-type="json">
 {
     "base": {
         "usingComponents": {
-        },
-        "navigationBarTitleText": "c-toast",
-        "backgroundTextStyle": "dark",
-        "backgroundColor": "#E2E2E2"
-    }
+          "light-checkbox": "@cmlkit/light-ui/components/light-checkbox/light-checkbox"
+        }
+    },
+    "wx": {
+    "navigationBarTitleText": "index",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#E2E2E2"
+  },
+  "alipay": {
+    "defaultTitle": "index",
+    "pullRefresh": false,
+    "allowsBounceVertical": "YES",
+    "titleBarColor": "#ffffff"
+  },
+  "baidu": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "index",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50
+  }
+        
+
 }
 </script>
 
 ```
 
+### 效果图
+
+| web                                                          | weex                                                         | wx                                                           | alipay                                                       | baidu                                                        | qq                                                           |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <img src="../assets/images/web/web-checkbox.jpg" width="200px" /> | <img src="../assets/images/weex/weex-checkbox.jpg" width="200px" /> | <img src="../assets/images/wx/wx-checkbox.png" width="200px" /> | <img src="../assets/images/alipay/ali-checkbox.png" width="200px" /> | <img src="../assets/images/baidu/baidu-checkbox.png" width="200px" /> | <img src="../assets/images/qq/qq-checkbox.png" width="200px" /> |

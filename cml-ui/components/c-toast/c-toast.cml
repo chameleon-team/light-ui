@@ -1,0 +1,130 @@
+<template>
+<c-popup show="{{show}}" mask="{{mask}}">
+  <view class="toast-content" style="{{computedToastStyle}}">
+    <image c-if="{{needIcon}}" src="{{typeImg}}" class="toast-icon" style="{{computedIconStyle}}"/>
+    <text class="toast-text" style="{{computedTextStyle}}">{{message}}</text>
+  </view>
+</c-popup>
+</template>
+<script>
+class CToast implements CToastInterface {
+  props = {
+    type: {
+      type: String,
+      default: "loading"
+    },
+    message: {
+      type: String,
+      default: ""
+    },
+    duration: {
+      type: Number,
+      default: 3000
+    },
+    show: {
+      type: Boolean,
+      default: false
+    },
+    mask: {
+      type: Boolean,
+      default: false
+    },
+    needIcon: {
+      type: Boolean,
+      default: true
+    },
+    toastStyle:{
+      type:String,
+      default:''
+    },
+    iconStyle:{
+      type:String,
+      default:"",
+    },
+    textStyle:{
+      type:String,
+      default:"",
+    },
+    iconImg:{
+      type:String,
+      default:""
+    }
+
+  }
+  data = {
+    transitionStyle: "",
+    IconMap: {
+      loading: require('./images/loading.gif'),
+      success: require('./images/succ.png'),
+      warn: require('./images/warn.png')
+    }
+  }
+
+  computed = {
+    typeImg() {
+      return this.iconImg || this.IconMap[this.type];
+    },
+    maskClass() {
+      return this.mask ? "has-mask" : "no-mask";
+    },
+    computedToastStyle(){
+      return this.toastStyle || '';
+    },
+    computedIconStyle(){
+      return this.iconStyle || '';
+    },
+    computedTextStyle(){
+      return this.textStyle || '';
+    }
+  }
+
+  watch  = {
+    show(n, o) {
+      if (n) {
+        setTimeout(() => {
+          this.$cmlEmit("show", { value: false });
+        }, this.duration);
+      }
+    }
+  }
+}
+
+export default new CToast();
+</script>
+<style scoped>
+.toast-content {
+  background: rgba(37, 38, 45, 0.9);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 26cpx 32cpx;
+  color: #ccc;
+  background-color: rgba(37, 38, 45, 0.9);
+  border-radius: 4cpx;
+}
+.toast-icon {
+  width: 48cpx;
+  height: 48cpx;
+  margin-right: 16cpx;
+}
+.toast-text {
+  font-size: 32cpx;
+  color: #fff;
+  flex: 1;
+  line-height: 40cpx;
+  font-size: 28cpx;
+  max-width: 600cpx;
+  max-height: 80cpx;
+  overflow: hidden;
+}
+</style>
+<script cml-type="json">
+{
+    "base": {
+        "usingComponents": {
+          "c-popup": "../c-popup/c-popup"
+        },
+        "component": true
+    }
+}
+</script>

@@ -2,78 +2,106 @@
 
 -------
 
-Popup弹层
+通用弹出层， alert、fullscreen、halfscreen、bartips等组件基于此组件构建
 
 ### 属性
 
 
 
-| 属性名         | 类型         | 必填 | 默认值   | 说明                                                         |
-| -------------- | ------------ | ---- | -------- | ------------------------------------------------------------ |
-| show           | Boolean      | 是   | false    | Popup是否显示                                                |
-| mask           | Boolean      | 否   | true     | 当该属性值设置为false的时候，页面其他部分可操作              |
-| position       | String       | 否   | 'botton' | popup弹层出现的位置<br />left/right时弹出时容器必须有宽度<br />top/bottom时容器必须有高度<br />center时容器必须有宽高 |
-| z-index        | Number       |      |          | popup弹层的z-index层级                                       |
-| transition     | Boolean      | 否   | true     | popup弹层出现的时候是否有动画                                |
-| c-bind:onclick | EventHandler |      |          | noticetips点击事件                                           |
-| c-bind:close   | EventHandler |      |          | 向上滑动关闭noticetips的时候的关闭事件                       |
+| 属性名             | 类型         | 必填 | 默认值 | 说明                                                     |
+| ------------------ | ------------ | ---- | ------ | -------------------------------------------------------- |
+| show            | Boolean     | 否  | false  | 是否显示弹出层                                               |
+| mask            | Boolean     | 否  | true  | 是否展示黑色蒙层，当mask为false时，页面的其余部分是可操作的                                               |
+| zIndex            | Number     | 否  | 9  | 弹出层的z-index                                             |
+| position            | String     | 否  | bottom  | 弹出层弹出的方向，可选值 ['top', 'left', 'right', 'bottom', 'center']， 其中left/right时容器必须指定宽度， top/bottom时容器必须指定高度                                            |
+| transition            | Boolean     | 否  | true  | 弹出层弹出时是否开启动画，默认开启                                             |
+| c-bind:close            | EventHandle     | 否  |   | 点击蒙层时触发的事件                     |
+
+
 
 ### 示例
 
 ```vue
 <template>
-  <page title="light-noticetips">
-    <light-noticetips
+  <page title="light-popup">
+    <light-popup
       show="{{show}}"
-      icon="{{icon}}"
-      title="{{'消息类别'}}"
-      text="{{'这里是消息内容最多支持两行这里是消息内容最多这里是消息内容最多这里是消息内容最多这里是消息内容最多'}}"
-      duration="{{5000}}"
-      c-bind:close="hide"
-      c-bind:onclick="handleNoticeClick"
+      position="{{position}}"
+      mask="{{true}}"
+      transition="{{true}}"
+      c-bind:close="hidePopup"
     >
-    </light-noticetips>
+     <view style="{{contentStyle}}" class="content" >
+        <text c-bind:tap="hidePopup">点击关闭popup</text>
+      </view>
+    </light-popup>
     <view class="operator">
-      <button text="点击打开noticetip" c-bind:onclick="open"></button>
-      <text>Tip: 当noticetip打开时，你可以上滑关闭它，也可等待它自动关闭(默认的关闭时间是5秒) </text>
+      <button c-bind:onclick="toogleShow" text="popup:left/top/right/bottom/center"></button>
     </view>
-   <!-- <cml-console/> -->
   </page>
 </template>
 
 <script>
-import cml from 'chameleon-api';
+const direction = ['left', 'top', 'right', 'bottom', 'center'];
+let clickTime = 0;
 
-class LightNoticeTips   {
+class LightPopup   {
 
   data = {
+    icon: '',
     show: false,
-    icon: require('./images/icon.jpg')
+    position: direction[0],
+  }
+  computed = {
+    contentStyle() {
+      let style = '';
+      switch (this.position) {
+        case 'right':
+        case 'left': 
+          style += "width: 300cpx;";
+          break;
+        case 'top':
+        case 'bottom':
+          style += "height: 300cpx;"
+          break;
+        default:
+          style += 'height:300cpx;width:600cpx;'
+          break;
+      }
+      return style;
+    }
+
   }
 
   methods = {
-    open() {
-      this.show = true
+    toogleShow() {
+      this.position = direction[clickTime % 5];
+      ++clickTime;
+      this.show = !this.show;
     },
-    hide() {
-      this.show = false
-    },
-    handleNoticeClick() {
-      cml.showToast({
-        message: '点击了noticeTips'
-      })
+    hidePopup() {
+      this.show = false;
     }
+
+
   }
   
 }
 
-export default new LightNoticeTips();
+export default new LightPopup();
 </script>
 
 <style>
 .container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: #f8f8f8;
+}
+.content {
   justify-content: center;
   align-items: center;
+  background: #FFFFFF;
 }
 .operator {
   margin-top: 50cpx;
@@ -85,6 +113,7 @@ export default new LightNoticeTips();
 {
   "base": {
     "usingComponents": {
+      "light-popup": "@cmlkit/light-ui/components/light-popup/light-popup"
     }
   },
   "wx": {
@@ -111,3 +140,9 @@ export default new LightNoticeTips();
 </script>
 
 ```
+
+### 效果图
+
+| web                                                          | weex                                                         | wx                                                           | alipay                                                       | baidu                                                        | qq                                                           |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <img src="../assets/images/web/web-popup.png" width="200px" /> | <img src="../assets/images/weex/weex-popup.jpg" width="200px" /> | <img src="../assets/images/wx/wx-popup.png" width="200px" /> | <img src="../assets/images/alipay/ali-popup.png" width="200px" /> | <img src="../assets/images/baidu/baidu-popup.png" width="200px" /> | <img src="../assets/images/qq/qq-popup.png" width="200px" /> |

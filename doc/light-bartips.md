@@ -1,22 +1,27 @@
-# Bartips
+# bartips
 
 -------
 
-Bartips 提示
+通用顶部通知条
 
 ### 属性
 
 
 
-| 属性名         | 类型         | 必填 | 默认值   | 说明                        |
-| -------------- | ------------ | ---- | -------- | --------------------------- |
-| show           | Boolean      | 是   | false    | bartips是否显示             |
-| height         | Number       | 否   | 80       | bartips的高度，默认80cpx    |
-| theme          | String       | 否   | \#35406B | bartips的背景色             |
-| icon           | String       | 否   | ''       | bartips的左边展示图标       |
-| operate-icon   | String       | 否   | ''       | bartips的右边操作图标       |
-| c-bind:onclick | EventHandler |      |          | bartips点击事件             |
-| c-bind:operate | EventHandler |      |          | bartips右边操作图标点击事件 |
+| 属性名             | 类型         | 必填 | 默认值 | 说明                                                     |
+| ------------------ | ------------ | ---- | ------ | -------------------------------------------------------- |
+| show            | Boolean     | 否  | false  | 是否显示通知条                                               |
+| height            | Nubmer/String     | 否  | 80  | 通知条的高度，默认为80cpx                                               |
+| icon            | String     | 否  | ''  |   左侧icon的url                                           |
+| text            | String     | 否  | ''  | 通知条的文本内容                                             |
+| operateIcon            | String     | 否  | ''  | 右侧操作区域icon的url                                               |
+| theme            | String     | 否  | #35406B  | 通知条的颜色主题                                               |
+| zIndex            | Number     | 否  | 9  | 通知条的z-index值                                               |
+| c-bind:onclick            | EventHandle     | 否  |   | 点击通知条时触发的事件                                             |
+| c-bind:operate            | EventHandle     | 否  |   | 点击通知条右侧操作符时触发的事件                                             |
+
+
+
 
 ### 示例
 
@@ -90,6 +95,7 @@ export default new LightBartips();
 {
   "base": {
     "usingComponents": {
+      "light-bartips": "@cmlkit/light-ui/components/light-bartips/light-bartips"
     }
   },
   "wx": {
@@ -116,3 +122,9 @@ export default new LightBartips();
 </script>
 
 ```
+
+### 效果图
+
+| web                                                          | weex                                                         | wx                                                           | alipay                                                       | baidu                                                        | qq                                                           |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <img src="../assets/images/web/web-bartips.jpg" width="200px" /> | <img src="../assets/images/weex/weex-bartips.jpg" width="200px" /> | <img src="../assets/images/wx/wx-bartips.png" width="200px" /> | <img src="../assets/images/alipay/ali-bartip.png" width="200px" /> | <img src="../assets/images/baidu/baidu-bartips.png" width="200px" /> | <img src="../assets/images/qq/qq-bartips.png" width="200px" /> |

@@ -26,37 +26,46 @@
 ```vue
 <template>
 <page title="light-checklabelcard">
-  <view class="container">
-    <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
-      <text >checklabelcard</text>
+  <scroller height="{{-1}}">
+    <view class="container">
+      <view style="color:#35406B;display:flex;justify-content:center;align-items:center">
+        <text >checklabelcard</text>
+      </view>
     </view>
-  </view>
-  <light-checklabelcard
-    card-title="我是标题"
-    labels="{{labels}}"
-    c-bind:onclick="handleChange1"
-    >
+    <light-checklabelcard
+      card-title="我是标题"
+      labels="{{labels}}"
+      c-bind:onclick="handleChange"
+      >
     </light-checklabelcard>
     <light-checklabelcard
-    card-title="我是标题2"
-    labels="{{labels2}}"
-    c-bind:onclick="handleChange2"
-    >
+      card-title="我是标题1"
+      labels="{{labels1}}"
+      c-bind:onclick="handleChange1"
+      labels-wrap-style="justify-content:space-around"
+      >
     </light-checklabelcard>
     <light-checklabelcard
-    card-title="省份"
-    labels="{{labels3}}"
-    c-bind:onclick="handleChange3"
-    c-style="width:500cpx;"
-    >
+      card-title="我是标题2"
+      labels="{{labels2}}"
+      c-bind:onclick="handleChange2"
+      >
     </light-checklabelcard>
     <light-checklabelcard
-    card-title="省份-只能选中一个"
-    labels="{{labels4}}"
-    c-bind:onclick="handleChange4"
-    c-style="width:500cpx;"
-    >
+      card-title="省份"
+      labels="{{labels3}}"
+      c-bind:onclick="handleChange3"
+      c-style="width:500cpx;"
+      >
     </light-checklabelcard>
+    <light-checklabelcard
+      card-title="省份-只能选中一个"
+      labels="{{labels4}}"
+      c-bind:onclick="handleChange4"
+      c-style="width:500cpx;"
+      >
+    </light-checklabelcard>
+  </scroller>
     
 </page>
 </template>
@@ -65,7 +74,6 @@ class LightChecklabelCard {
 
   data = {
     halfShow:false,
-    imgSrc:require('../../../assets/images/chameleon.jpg'),
     isChecked1:true,
     isChecked2:false,
     labels:[{
@@ -75,6 +83,18 @@ class LightChecklabelCard {
 
     },{
       label:'文案2',
+      isChecked:false,
+    }],
+    labels1:[{
+      label:'选项文案1',
+      isChecked:false,
+      disable:true,
+
+    },{
+      label:'选项文案2',
+      isChecked:false,
+    },{
+      label:'选项文案3',
       isChecked:false,
     }],
     labels2:[
@@ -238,10 +258,15 @@ class LightChecklabelCard {
   }
 
   methods = {
-    handleChange1(e){
+    handleChange(e){
       console.log('e',e);
       console.log('this.labels[e.detail.index]',this.labels[e.detail.index]);
       this.labels[e.detail.index].isChecked = !this.labels[e.detail.index].isChecked 
+    },
+    handleChange1(e){
+      console.log('e',e);
+      console.log('this.labels[e.detail.index]',this.labels[e.detail.index]);
+      this.labels1[e.detail.index].isChecked = !this.labels1[e.detail.index].isChecked 
     },
     handleChange2(e){
       console.log('e',e);
@@ -264,7 +289,7 @@ class LightChecklabelCard {
 export default new LightChecklabelCard();
 </script>
 <style scoped lang="less">
-@import '../../../assets/css/var.less';
+
 .container {
   display: flex;
   flex-direction: column;
@@ -294,13 +319,36 @@ export default new LightChecklabelCard();
 {
     "base": {
         "usingComponents": {
-          "light-checklabelcard": "/components/light-checklabelcard/light-checklabelcard"
-        },
-        "navigationBarTitleText": "c-toast",
-        "backgroundTextStyle": "dark",
-        "backgroundColor": "#E2E2E2"
-    }
+          "light-checklabelcard": "@cmlkit/light-ui/components/light-checklabelcard/light-checklabelcard"
+        }
+    },
+    "wx": {
+    "navigationBarTitleText": "index",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#E2E2E2"
+  },
+  "alipay": {
+    "defaultTitle": "index",
+    "pullRefresh": false,
+    "allowsBounceVertical": "YES",
+    "titleBarColor": "#ffffff"
+  },
+  "baidu": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "index",
+    "backgroundColor": "#ffffff",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50
+  }
 }
 </script>
 
 ```
+
+### 效果图
+
+| web                                                          | weex                                                         | wx                                                           | alipay                                                       | baidu                                                        | qq                                                           |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| <img src="../assets/images/web/web-checklabelcard.png" width="200px" /> | <img src="../assets/images/weex/weex-checklabelcard.jpg" width="200px" /> | <img src="../assets/images/wx/wx-checklabelcard.png" width="200px" /> | <img src="../assets/images/alipay/ali-checklabelcard.png" width="200px" /> | <img src="../assets/images/baidu/baidu-checklabelcard.png" width="200px" /> | <img src="../assets/images/qq/qq-checklabelcard.png" width="200px" /> |

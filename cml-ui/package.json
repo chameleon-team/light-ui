@@ -1,0 +1,41 @@
+{
+  "_from": "cml-ui",
+  "_id": "cml-ui@1.0.3",
+  "_inBundle": false,
+  "_integrity": "sha1-m2PT3IIM7dZOcTYBxAGaLeUO6TU=",
+  "_location": "/cml-ui",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cml-ui",
+    "name": "cml-ui",
+    "escapedName": "cml-ui",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "http://registry.npm.xiaojukeji.com/cml-ui/download/cml-ui-1.0.3.tgz",
+  "_shasum": "9b63d3dc820cedd64e713601c4019a2de50ee935",
+  "_spec": "cml-ui",
+  "_where": "/Users/didi/work/chameleon-space/light-ui",
+  "author": {
+    "name": "Chameleon-Team"
+  },
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "chameleon基础组件库&接口能力",
+  "email": "ChameleonCore@didiglobal.com",
+  "license": "Apache",
+  "main": "/components",
+  "name": "cml-ui",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.3"
+}
