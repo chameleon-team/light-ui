@@ -24,7 +24,7 @@ cml init project
 
 在初始化的chameleon工程中,安装组件库，`npm i @cmlkit/light-ui`
 
-配置babel-path:http://cml.didi.cn/docs/config.html#%E9%85%8D%E7%BD%AEbabel-loader%E5%A4%84%E7%90%86%E7%9A%84%E6%96%87%E4%BB%B6
+[配置babel-path](http://cml.didi.cn/docs/config.html#%E9%85%8D%E7%BD%AEbabel-loader%E5%A4%84%E7%90%86%E7%9A%84%E6%96%87%E4%BB%B6)
 
 ```javascript
 const path = require('path');
