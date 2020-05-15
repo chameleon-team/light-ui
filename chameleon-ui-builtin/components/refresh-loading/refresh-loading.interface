@@ -1,7 +1,0 @@
-
-<script cml-type="interface">
-
-interface RefreshLoadingInterface {
-}
-</script>
-<script cml-type="web,weex,baidu,wx,alipay,qq" src="./refresh-loading.cml"></script>
